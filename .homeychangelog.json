@@ -19,5 +19,20 @@
   },
   "1.0.1": {
     "en": "First version"
+  },
+  "1.0.2": {
+    "en": "Fix app/driver icon rendering — switched from hard-coded black to currentColor so the icon adapts to the Homey UI and Athom dashboard theme.",
+    "nl": "Pictogram van app/driver hersteld — overgeschakeld van vast zwart naar currentColor zodat het pictogram zich aanpast aan het thema van de Homey-UI en het Athom-dashboard.",
+    "da": "Rettet app/driver-ikon — skiftet fra hårdkodet sort til currentColor, så ikonet tilpasser sig Homey UI- og Athom-dashboard-temaet.",
+    "de": "App/Treiber-Symbol behoben — von hart codiertem Schwarz auf currentColor umgestellt, damit sich das Symbol an das Theme der Homey-UI und des Athom-Dashboards anpasst.",
+    "es": "Icono de app/driver corregido — se cambió del negro fijo a currentColor para que el icono se adapte al tema de la UI de Homey y del panel de Athom.",
+    "fr": "Correction de l'icône app/pilote — passage du noir codé en dur à currentColor pour que l'icône s'adapte au thème de l'UI Homey et du tableau de bord Athom.",
+    "it": "Icona app/driver corretta — passata dal nero fisso a currentColor in modo che l'icona si adatti al tema dell'UI Homey e della dashboard Athom.",
+    "no": "Fikset app-/driver-ikon — byttet fra hardkodet svart til currentColor så ikonet tilpasser seg temaet i Homey-UI og Athom-dashbordet.",
+    "sv": "Fixade app-/driver-ikonen — bytte från hårdkodad svart till currentColor så att ikonen anpassar sig till temat i Homey-gränssnittet och Athom-dashboarden.",
+    "pl": "Naprawiono ikonę aplikacji/sterownika — zmieniono z na sztywno wpisanego czarnego na currentColor, aby ikona dostosowywała się do motywu UI Homey i panelu Athom.",
+    "ru": "Исправлена иконка приложения/драйвера — заменён фиксированный чёрный цвет на currentColor, чтобы иконка адаптировалась к теме UI Homey и панели Athom.",
+    "ko": "앱/드라이버 아이콘 수정 — 고정된 검은색에서 currentColor로 전환하여 아이콘이 Homey UI 및 Athom 대시보드 테마에 맞게 조정되도록 했습니다.",
+    "ar": "تصحيح أيقونة التطبيق/المشغل — تم التحويل من الأسود الثابت إلى currentColor حتى تتكيّف الأيقونة مع سمة واجهة Homey ولوحة تحكم Athom."
   }
 }
