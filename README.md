@@ -1,8 +1,8 @@
 # Toshiba Estia — Homey App
 
-Homey Pro integration for **Toshiba Estia** air-to-water heat pumps (R410A 4/5 Series WM, R32 1 Series WM/AIO), over **Modbus TCP**.
+Homey Pro integration for **Toshiba Estia** air-to-water heat pumps (R410A 4/5 Series WM, R32 1/2 Series WM/AIO), over **Modbus TCP**.
 
-Works with Toshiba's official **BMS-IFMB0UEW-E** Modbus RTU interface wired to any Modbus TCP gateway. Tested with the **Waveshare RS485-to-WiFi/ETH** converter in "Modbus TCP ↔ Modbus RTU" mode.
+Works with the Toshiba **BMS-IFMB0UEW-E** Modbus RTU interface (or any compatible interface that exposes the Estia register map) wired to any Modbus TCP gateway. Tested with the **Waveshare RS485-to-WiFi/ETH** converter in "Modbus TCP ↔ Modbus RTU" mode.
 
 ## Features
 
@@ -20,6 +20,7 @@ Works with Toshiba's official **BMS-IFMB0UEW-E** Modbus RTU interface wired to a
 
 - Heat pump on/off + mode (heat / cool / off)
 - Zone 1 setpoint, with min/max bounded by the unit's own limits
+- Zone 2 setpoint *(when enabled in device settings)*, with the unit's per-zone limits
 - Domestic hot water on/off + setpoint
 - Energy-saving toggles: frost protection, night setback, auto temperature (weather compensation)
 - Anti-bacteria cycle (DHW)

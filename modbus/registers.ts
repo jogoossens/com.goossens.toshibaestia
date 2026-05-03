@@ -41,7 +41,7 @@ export const REGISTERS = {
   frostProtectionOnOff:{ number: 40010, key: 'frostProtectionOnOff',writable: true,  kind: 'boolean',     description: 'Frost protection on/off' },
   antibacteriaOnOff:   { number: 40011, key: 'antibacteriaOnOff',   writable: true,  kind: 'boolean',     description: 'Anti-bacteria on/off' },
 
-  // Runtime hour counters (lifetime, x1 hour). All R32 1 Series ✓ per EEU-006.
+  // Runtime hour counters (lifetime, x1 hour). All R32 1/2 Series ✓ per EEU-006.
   // Used by the energy estimator: kWh ≈ hours × rated input power per mode.
   dhwCompressorHours:    { number: 40035, key: 'dhwCompressorHours',    writable: false, kind: 'hours', description: 'DHW mode compressor ON integrated time (hours)' },
   heatingCompressorHours:{ number: 40036, key: 'heatingCompressorHours',writable: false, kind: 'hours', description: 'Heating mode compressor ON integrated time (hours)' },
@@ -111,7 +111,7 @@ export function decodeHydroUnitType(code: number): string {
   switch (code) {
     case 0x0004: return 'R410A 4 Series (WM)';
     case 0x0005: return 'R410A 5 Series (WM)';
-    case 0x0101: return 'R32 1 Series (WM/AIO)';
+    case 0x0101: return 'R32 1/2 Series (WM/AIO)';
     default:     return `Unknown (0x${code.toString(16).padStart(4, '0').toUpperCase()})`;
   }
 }

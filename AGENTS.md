@@ -6,7 +6,7 @@ Knowledge base for AI agents (and humans) working on this repo. Captures everyth
 
 ## 1. What this app does
 
-Bridges a **Toshiba Estia** air-to-water heat pump (R410A 4/5 Series WM, R32 1 Series WM/AIO) to **Homey Pro** over **Modbus TCP**. Physical chain:
+Bridges a **Toshiba Estia** air-to-water heat pump (R410A 4/5 Series WM, R32 1/2 Series WM/AIO) to **Homey Pro** over **Modbus TCP**. Physical chain:
 
 ```
 Toshiba hydro unit
