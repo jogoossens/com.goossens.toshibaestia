@@ -1,9 +1,11 @@
 {
   "id": "com.goossens.toshibaestia",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": ">=12.0.0",
   "sdk": 3,
-  "platforms": ["local"],
+  "platforms": [
+    "local"
+  ],
   "name": {
     "en": "Toshiba Estia"
   },
@@ -23,9 +25,19 @@
     "ar": "التحكم المحلي عبر Modbus في مضختك الحرارية Toshiba Estia — يتطلب واجهة BMS-IFMB0UEW-E (أو ما يشابهها) وبوابة Modbus TCP."
   },
   "tags": {
-    "en": ["toshiba", "estia", "heat pump", "awhp", "modbus", "thermostat", "dhw"]
+    "en": [
+      "toshiba",
+      "estia",
+      "heat pump",
+      "awhp",
+      "modbus",
+      "thermostat",
+      "dhw"
+    ]
   },
-  "category": ["climate"],
+  "category": [
+    "climate"
+  ],
   "brandColor": "#E60012",
   "permissions": [],
   "images": {
