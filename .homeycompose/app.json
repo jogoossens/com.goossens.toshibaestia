@@ -1,0 +1,45 @@
+{
+  "id": "com.goossens.toshibaestia",
+  "version": "1.0.0",
+  "compatibility": ">=12.0.0",
+  "sdk": 3,
+  "platforms": ["local"],
+  "name": {
+    "en": "Toshiba Estia"
+  },
+  "description": {
+    "en": "Local Modbus control of your Toshiba Estia heat pump — requires a BMS-IFMB0UEW-E (or similar) interface and a Modbus TCP gateway.",
+    "nl": "Lokale Modbus-besturing van je Toshiba Estia warmtepomp — vereist een BMS-IFMB0UEW-E (of vergelijkbare) interface en een Modbus TCP-gateway.",
+    "da": "Lokal Modbus-styring af din Toshiba Estia varmepumpe — kræver en BMS-IFMB0UEW-E (eller lignende) interface og en Modbus TCP-gateway.",
+    "de": "Lokale Modbus-Steuerung Ihrer Toshiba Estia Wärmepumpe — benötigt eine BMS-IFMB0UEW-E (oder ähnliche) Schnittstelle und ein Modbus TCP-Gateway.",
+    "es": "Control Modbus local de tu bomba de calor Toshiba Estia — requiere una interfaz BMS-IFMB0UEW-E (o similar) y una pasarela Modbus TCP.",
+    "fr": "Contrôle Modbus local de votre pompe à chaleur Toshiba Estia — nécessite une interface BMS-IFMB0UEW-E (ou similaire) et une passerelle Modbus TCP.",
+    "it": "Controllo Modbus locale della tua pompa di calore Toshiba Estia — richiede un'interfaccia BMS-IFMB0UEW-E (o simile) e un gateway Modbus TCP.",
+    "no": "Lokal Modbus-styring av din Toshiba Estia varmepumpe — krever et BMS-IFMB0UEW-E (eller lignende) grensesnitt og en Modbus TCP-gateway.",
+    "sv": "Lokal Modbus-styrning av din Toshiba Estia värmepump — kräver ett BMS-IFMB0UEW-E (eller liknande) gränssnitt och en Modbus TCP-gateway.",
+    "pl": "Lokalna kontrola Modbus pompy ciepła Toshiba Estia — wymaga interfejsu BMS-IFMB0UEW-E (lub podobnego) i bramy Modbus TCP.",
+    "ru": "Локальное управление Modbus тепловым насосом Toshiba Estia — требуется интерфейс BMS-IFMB0UEW-E (или аналогичный) и шлюз Modbus TCP.",
+    "ko": "Toshiba Estia 히트펌프의 로컬 Modbus 제어 — BMS-IFMB0UEW-E (또는 유사한) 인터페이스와 Modbus TCP 게이트웨이가 필요합니다.",
+    "ar": "التحكم المحلي عبر Modbus في مضختك الحرارية Toshiba Estia — يتطلب واجهة BMS-IFMB0UEW-E (أو ما يشابهها) وبوابة Modbus TCP."
+  },
+  "tags": {
+    "en": ["toshiba", "estia", "heat pump", "awhp", "modbus", "thermostat", "dhw"]
+  },
+  "category": ["climate"],
+  "brandColor": "#E60012",
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Jo Goossens",
+    "email": "jo.goossens@hosted-power.com"
+  },
+  "source": "https://github.com/jogoossens/com.goossens.toshibaestia",
+  "support": "https://github.com/jogoossens/com.goossens.toshibaestia/issues",
+  "bugs": {
+    "url": "https://github.com/jogoossens/com.goossens.toshibaestia/issues"
+  }
+}

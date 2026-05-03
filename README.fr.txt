@@ -1,0 +1,6 @@
+Amenez votre pompe à chaleur air-eau Toshiba Estia dans Homey. Elle communique directement avec l'unité via Modbus sur votre réseau domestique — pas de cloud, pas de délais. Lisez chaque capteur de température, voyez quand la pompe se met en défaut et contrôlez l'allumage/l'arrêt, le mode, les points de consigne, le boost ECS, l'antigel, la réduction nocturne et le mode compensé par le climat via des flows.
+
+Nécessite une interface Modbus RTU Toshiba BMS-IFMB0UEW-E (ou similaire) câblée au bus AB de la pompe à chaleur, ainsi qu'une passerelle Modbus TCP connectée à l'interface (Waveshare RS485-to-WiFi/ETH, Elfin EW-11, USR-W630 ou similaire). Votre Homey Pro doit pouvoir accéder à la passerelle sur le réseau local LAN.
+
+Prend en charge les unités hydro Estia des séries R410A 4 WM, R410A 5 WM, et R32 1 (WM et AIO). Installations à une ou deux zones, avec ou sans réservoir d'eau chaude sanitaire — activez chaque option dans les paramètres de l'appareil et seules les capacités pertinentes apparaîtront.
+Toshiba et Estia sont des marques de Toshiba Corporation. Cette application est développée par la communauté et n'est ni affiliée à ni approuvée par Toshiba.

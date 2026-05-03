@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Toshiba Estia &mdash; Features</title>
+  <style>
+    .help { font-size: .8em; color: #888; margin: .1em 0 .75em 2em; }
+    fieldset.homey-form-fieldset { padding: .75em 1em; }
+    header.homey-header { margin-bottom: .5em; }
+    .homey-subtitle { margin: .2em 0; font-size: .9em; }
+    .homey-form-group { margin-bottom: .5em; }
+    .homey-form-checkbox label b { font-weight: 600; }
+    #status { margin-top: .75em; font-size: .9em; color: #c62828; }
+  </style>
+</head>
+<body>
+  <header class="homey-header">
+    <h1 class="homey-title">Which features are installed?</h1>
+    <p class="homey-subtitle">You can change these later in device settings.</p>
+  </header>
+
+  <fieldset class="homey-form-fieldset">
+    <legend class="homey-form-legend">Installation</legend>
+
+    <div class="homey-form-group">
+      <div class="homey-form-checkbox">
+        <input id="enableDhw" type="checkbox" checked />
+        <label for="enableDhw"><b>Domestic hot water tank</b></label>
+      </div>
+      <p class="help">All-in-One or external DHW cylinder.</p>
+    </div>
+
+    <div class="homey-form-group">
+      <div class="homey-form-checkbox">
+        <input id="enableZone2" type="checkbox" />
+        <label for="enableZone2"><b>Second heating zone</b></label>
+      </div>
+      <p class="help">Enable only for dual-zone installations.</p>
+    </div>
+
+    <div class="homey-form-group">
+      <label class="homey-form-label" for="tempScaling">Temperature scaling</label>
+      <select id="tempScaling" class="homey-form-input">
+        <option value="x1" selected>°C × 1 (S4.1 OFF, default)</option>
+        <option value="x10">°C × 10 (S4.1 ON)</option>
+      </select>
+    </div>
+  </fieldset>
+
+  <button id="next" class="homey-button-primary-full" style="margin-top:1em;">Add heat pump</button>
+
+  <div id="status"></div>
+
+  <script type="text/javascript">
+    (function() {
+      // Wrap Homey.emit to support both promise- and callback-style SDK versions.
+      function emit(event, data) {
+        return new Promise(function(resolve, reject) {
+          var settled = false;
+          function done(err, val) {
+            if (settled) return; settled = true;
+            if (err) reject(err); else resolve(val);
+          }
+          try {
+            var ret = Homey.emit(event, data, function(err, result) { done(err, result); });
+            if (ret && typeof ret.then === 'function') ret.then(function(r){ done(null, r); }, done);
+          } catch (e) { done(e); }
+        });
+      }
+
+      var dhwEl     = document.getElementById('enableDhw');
+      var zone2El   = document.getElementById('enableZone2');
+      var scalingEl = document.getElementById('tempScaling');
+      var nextBtn   = document.getElementById('next');
+      var statusEl  = document.getElementById('status');
+
+      function fail(msg) {
+        statusEl.textContent = String(msg);
+        nextBtn.disabled = false;
+        nextBtn.textContent = 'Add heat pump';
+        addInProgress = false;
+      }
+
+      var addInProgress = false;
+      function onAddClicked() {
+        if (addInProgress) return;
+        addInProgress = true;
+        statusEl.textContent = '';
+        nextBtn.disabled = true;
+        nextBtn.textContent = 'Adding…';
+
+        emit('set_features', {
+          enableDhw:   dhwEl.checked,
+          enableZone2: zone2El.checked,
+          tempScaling: scalingEl.value,
+        })
+          .then(function() { return emit('build_device'); })
+          .then(function(spec) {
+            if (!spec) throw new Error('Connection probe failed.');
+            return new Promise(function(resolve, reject) {
+              var settled = false;
+              function done(err) {
+                if (settled) return; settled = true;
+                if (err) reject(err); else resolve();
+              }
+              try {
+                var ret = Homey.createDevice(spec, function(err) { done(err); });
+                if (ret && typeof ret.then === 'function') ret.then(function(){ done(null); }, done);
+              } catch (e) { done(e); }
+            });
+          })
+          .then(function() { try { Homey.done(); } catch (e) {} })
+          .catch(function(err) { fail((err && err.message) ? err.message : err); });
+      }
+
+      // Homey's pair iframe intercepts clicks on .homey-button-* classes before
+      // target-phase listeners fire. Listen in capture phase at the document
+      // level so we always see the click first.
+      document.addEventListener('click', function(e) {
+        if (e.target && e.target.id === 'next') onAddClicked();
+      }, true);
+
+      // Preload any previously-chosen feature flags; ignore failures.
+      emit('get_config').then(function(cfg) {
+        if (!cfg) return;
+        if (typeof cfg.enableDhw   === 'boolean') dhwEl.checked   = cfg.enableDhw;
+        if (typeof cfg.enableZone2 === 'boolean') zone2El.checked = cfg.enableZone2;
+        if (cfg.tempScaling) scalingEl.value = cfg.tempScaling;
+      }).catch(function() { /* ignore */ });
+
+      try { Homey.ready(); } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

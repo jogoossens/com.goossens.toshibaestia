@@ -1,0 +1,6 @@
+Bring din Toshiba Estia luft-til-vand varmepumpe ind i Homey. Kommunikerer direkte med enheden via Modbus på dit hjemmenetværk — ingen sky, ingen forsinkelser. Læs hver temperatursensor, se når pumpen fejler, og styr tænd/sluk, tilstand, indstillingspunkter, varmtvandsboost, frostsikring, nattilbagesætning og vejrkompenseret tilstand fra flows.
+
+Kræver et Toshiba BMS-IFMB0UEW-E (eller lignende) Modbus RTU interface, der er tilsluttet varmepumpens AB-bus, samt en hvilken som helst Modbus TCP-gateway tilsluttet interface (Waveshare RS485-til-WiFi/ETH, Elfin EW-11, USR-W630 eller lignende). Din Homey Pro skal kunne nå gatewayen på det lokale LAN.
+
+Understøtter R410A 4 Series WM, R410A 5 Series WM, og R32 1 Series (WM og AIO) Estia hydroenheder. Enkeltzone- eller dobbeltzoneinstallationer, med eller uden en husholdningsvarmtvandstank — skift hver enkelt i enhedsindstillingerne, og kun de relevante funktioner vises.
+Toshiba og Estia er varemærker tilhørende Toshiba Corporation. Dette er en fællesskabsudviklet app og er ikke tilknyttet eller godkendt af Toshiba.

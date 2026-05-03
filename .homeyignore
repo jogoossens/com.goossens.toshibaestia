@@ -1,0 +1,4 @@
+modbus-test/
+tsconfig.json
+.eslintrc.js
+AGENTS.md

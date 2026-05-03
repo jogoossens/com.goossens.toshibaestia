@@ -1,0 +1,92 @@
+{
+  "id": "dhw_boost_for",
+  "title": {
+    "en": "Boost DHW for [[minutes]] minutes",
+    "nl": "Boost SWW voor [[minutes]] minuten",
+    "da": "Boost VVB i [[minutes]] minutter",
+    "de": "DHW für [[minutes]] Minuten verstärken",
+    "es": "Aumentar ACS durante [[minutes]] minutos",
+    "fr": "Augmenter l'ECS pendant [[minutes]] minutes",
+    "it": "Aumenta ACS per [[minutes]] minuti",
+    "no": "Øk varmtvann i [[minutes]] minutter",
+    "sv": "Öka VVC i [[minutes]] minuter",
+    "pl": "Zwiększ DHW na [[minutes]] minut",
+    "ru": "Ускорить ГВС на [[minutes]] минут",
+    "ko": "[[minutes]]분 동안 DHW 부스트",
+    "ar": "تعزيز DHW لمدة [[minutes]] دقيقة"
+  },
+  "titleFormatted": {
+    "en": "Boost DHW for [[minutes]] minutes",
+    "nl": "Boost DHW voor [[minutes]] minuten",
+    "da": "Boost VVB i [[minutes]] minutter",
+    "de": "DHW für [[minutes]] Minuten verstärken",
+    "es": "Aumentar ACS durante [[minutes]] minutos",
+    "fr": "Augmenter l'ECS pendant [[minutes]] minutes",
+    "it": "Aumenta ACS per [[minutes]] minuti",
+    "no": "Øk varmtvann i [[minutes]] minutter",
+    "sv": "Öka VVC i [[minutes]] minuter",
+    "pl": "Zwiększ DHW na [[minutes]] minut",
+    "ru": "Ускорить ГВС на [[minutes]] минут",
+    "ko": "[[minutes]]분 동안 DHW 부스트",
+    "ar": "تعزيز المياه الساخنة لمدة [[minutes]] دقيقة"
+  },
+  "hint": {
+    "en": "Turns DHW boost on immediately, then off after the specified number of minutes. Requires a DHW tank (device setting).",
+    "nl": "Zet de DHW-boost direct aan en schakelt deze uit na het opgegeven aantal minuten. Vereist een DHW-tank (apparaatinstelling).",
+    "da": "Tænder straks for DHW boost og slukker derefter efter det angivne antal minutter. Kræver en DHW-tank (enhedsindstilling).",
+    "de": "Schaltet den DHW-Boost sofort ein und nach der angegebenen Anzahl von Minuten wieder aus. Erfordert einen DHW-Tank (Geräteeinstellung).",
+    "es": "Activa el refuerzo de ACS de inmediato y luego lo apaga después del número de minutos especificado. Requiere un tanque de ACS (configuración del dispositivo).",
+    "fr": "Active immédiatement le boost ECS, puis l'éteint après le nombre de minutes spécifié. Nécessite un réservoir ECS (paramètre de l'appareil).",
+    "it": "Attiva immediatamente il potenziamento ACS, quindi lo disattiva dopo il numero di minuti specificato. Richiede un serbatoio ACS (impostazione del dispositivo).",
+    "no": "Slår på DHW-boost umiddelbart, og deretter av etter det angitte antallet minutter. Krever en DHW-tank (enhetsinnstilling).",
+    "sv": "Slår på DHW-boost omedelbart och stänger av den efter det angivna antalet minuter. Kräver en DHW-tank (enhetsinställning).",
+    "pl": "Natychmiast włącza tryb zwiększenia CWU, a następnie wyłącza go po określonej liczbie minut. Wymaga zbiornika CWU (ustawienie urządzenia).",
+    "ru": "Включает усиление ГВС немедленно, затем выключает через указанное количество минут. Требуется бак ГВС (настройка устройства).",
+    "ko": "DHW 부스트를 즉시 켠 후, 지정된 분 수 후에 꺼집니다. DHW 탱크(장치 설정)가 필요합니다.",
+    "ar": "يشغل تعزيز الماء الساخن المنزلي (DHW) فورًا، ثم يطفئه بعد عدد الدقائق المحدد. يتطلب وجود خزان ماء ساخن (إعداد الجهاز)."
+  },
+  "args": [
+    {
+      "name": "device",
+      "type": "device",
+      "filter": "driver_id=heatpump"
+    },
+    {
+      "name": "minutes",
+      "type": "number",
+      "title": {
+        "en": "Minutes",
+        "nl": "Minuten",
+        "da": "Minutter",
+        "de": "Minuten",
+        "es": "Minutos",
+        "fr": "Minutes",
+        "it": "Minuti",
+        "no": "Minutter",
+        "sv": "Minuter",
+        "pl": "Minuty",
+        "ru": "Минуты",
+        "ko": "분",
+        "ar": "دقائق"
+      },
+      "min": 1,
+      "max": 240,
+      "step": 1,
+      "placeholder": {
+        "en": "30",
+        "nl": "30",
+        "da": "30",
+        "de": "30",
+        "es": "30",
+        "fr": "30",
+        "it": "30",
+        "no": "30",
+        "sv": "30",
+        "pl": "30",
+        "ru": "30",
+        "ko": "30",
+        "ar": "٣٠"
+      }
+    }
+  ]
+}

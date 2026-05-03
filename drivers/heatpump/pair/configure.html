@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Toshiba Estia &mdash; Connect</title>
+  <style>
+    .row { display: flex; gap: .5em; margin-top: 1em; }
+    .row .homey-button-primary,
+    .row .homey-button-primary-full { flex: 1; }
+    .help { font-size: .85em; color: #888; margin: .2em 0 0 0; }
+    .group { margin-bottom: .75em; }
+    fieldset.homey-form-fieldset { padding: .75em 1em; }
+    header.homey-header { margin-bottom: .5em; }
+    .homey-subtitle { margin: .2em 0; font-size: .9em; }
+    #status { margin-top: .75em; white-space: pre-wrap; font-size: .9em; }
+    .prereq {
+      background: #fff7e6;
+      border: 1px solid #ffd591;
+      border-radius: 4px;
+      padding: .6em .8em;
+      margin-bottom: .9em;
+      font-size: .85em;
+      line-height: 1.4;
+    }
+    .prereq strong { color: #ad6800; }
+    .prereq ul { margin: .35em 0 0 1.1em; padding: 0; }
+    .prereq li { margin: .15em 0; }
+  </style>
+</head>
+<body>
+  <header class="homey-header">
+    <h1 class="homey-title">Connect to your heat pump</h1>
+    <p class="homey-subtitle">Test the connection, then continue.</p>
+  </header>
+
+  <div class="prereq">
+    <strong>Before you continue, you need:</strong>
+    <ul>
+      <li>A <strong>Toshiba BMS-IFMB0UEW-E</strong> (or similar) Modbus RTU interface, wired to the heat pump's AB bus.</li>
+      <li>A <strong>Modbus TCP gateway</strong> connected to the interface and reachable on your LAN — Waveshare RS485-WiFi/ETH, Elfin EW-11, USR-W630, or similar.</li>
+    </ul>
+    Enter the <em>gateway's</em> IP below (not the heat pump's). The gateway translates Modbus TCP from Homey to RTU on the wire.
+  </div>
+
+  <fieldset class="homey-form-fieldset">
+    <legend class="homey-form-legend">Gateway</legend>
+
+    <div class="homey-form-group group">
+      <label class="homey-form-label" for="host">Host or IP</label>
+      <input id="host" class="homey-form-input" type="text" placeholder="192.168.1.30" value="192.168.1.30" />
+    </div>
+
+    <div class="homey-form-group group">
+      <label class="homey-form-label" for="port">TCP port</label>
+      <input id="port" class="homey-form-input" type="number" min="1" max="65535" value="502" />
+    </div>
+
+    <div class="homey-form-group group">
+      <label class="homey-form-label" for="unitId">Modbus unit ID</label>
+      <input id="unitId" class="homey-form-input" type="number" min="1" max="63" value="1" />
+      <p class="help">Slave address (DIP S3 bits 1-6). Default 1.</p>
+    </div>
+  </fieldset>
+
+  <div class="row">
+    <button id="test" class="homey-button-primary">Test connection</button>
+    <button id="next" class="homey-button-primary-full" disabled>Continue</button>
+  </div>
+
+  <div id="status"></div>
+
+  <script type="text/javascript">
+    (function() {
+      function emit(event, data) {
+        return new Promise(function(resolve, reject) {
+          try {
+            var ret = Homey.emit(event, data, function(err, result) {
+              if (err) reject(err); else resolve(result);
+            });
+            if (ret && typeof ret.then === 'function') ret.then(resolve, reject);
+          } catch (e) { reject(e); }
+        });
+      }
+
+      var hostEl   = document.getElementById('host');
+      var portEl   = document.getElementById('port');
+      var unitIdEl = document.getElementById('unitId');
+      var testBtn  = document.getElementById('test');
+      var nextBtn  = document.getElementById('next');
+      var statusEl = document.getElementById('status');
+
+      function showStatus(msg, kind) {
+        statusEl.textContent = msg;
+        statusEl.style.color = kind === 'ok'  ? '#2e7d32'
+                             : kind === 'err' ? '#c62828'
+                             : '';
+      }
+
+      function pushConfig() {
+        return emit('set_config', {
+          host: hostEl.value.trim(),
+          port: Number(portEl.value),
+          unitId: Number(unitIdEl.value),
+          timeoutMs: 3000,
+        });
+      }
+
+      function onTestClicked() {
+        if (testBtn.disabled) return;
+        testBtn.disabled = true;
+        nextBtn.disabled = true;
+        showStatus('Probing…');
+        pushConfig()
+          .then(function() { return emit('probe'); })
+          .then(function(result) {
+            if (result && result.ok) {
+              showStatus(
+                (result.hydroUnitSeries || 'OK')
+                + ' — unit ' + (result.slaveAddress == null ? '?' : result.slaveAddress)
+                + ' @ ' + (result.baudRate == null ? '?' : result.baudRate + ' bps'),
+                'ok'
+              );
+              nextBtn.disabled = false;
+            } else {
+              showStatus((result && result.error) || 'Unknown error', 'err');
+            }
+          })
+          .catch(function(err) {
+            showStatus((err && err.message) ? err.message : String(err), 'err');
+          })
+          .then(function() { testBtn.disabled = false; });
+      }
+
+      function onNextClicked() {
+        if (nextBtn.disabled) return;
+        pushConfig().then(function() { Homey.showView('features'); })
+                    .catch(function(err) {
+                      try { Homey.alert((err && err.message) || String(err)); } catch (e) {}
+                    });
+      }
+
+      // Homey's pair iframe swallows button-level click events; capture at
+      // document level instead.
+      document.addEventListener('click', function(e) {
+        var id = e.target && e.target.id;
+        if (id === 'test') onTestClicked();
+        else if (id === 'next') onNextClicked();
+      }, true);
+
+      // Best-effort load of prior inputs; swallow failures.
+      emit('get_config').then(function(cfg) {
+        if (!cfg) return;
+        if (cfg.host)   hostEl.value   = cfg.host;
+        if (cfg.port)   portEl.value   = cfg.port;
+        if (cfg.unitId) unitIdEl.value = cfg.unitId;
+      }).catch(function() { /* ignore */ });
+
+      try { Homey.ready(); } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

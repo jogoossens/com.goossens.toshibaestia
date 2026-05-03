@@ -1,0 +1,5 @@
+{
+  "error": {
+    "poll_failed": "Błąd ankiety Modbus: {{reason}}"
+  }
+}

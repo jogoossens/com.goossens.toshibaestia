@@ -1,0 +1,5 @@
+{
+  "error": {
+    "poll_failed": "فشل في الاستطلاع عبر Modbus: {{reason}}"
+  }
+}

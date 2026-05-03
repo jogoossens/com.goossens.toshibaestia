@@ -1,0 +1,37 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Fault code",
+    "nl": "Foutcode",
+    "da": "Fejlkode",
+    "de": "Fehlercode",
+    "es": "Código de error",
+    "fr": "Code d'erreur",
+    "it": "Codice di errore",
+    "no": "Feilkode",
+    "sv": "Felkod",
+    "pl": "Kod błędu",
+    "ru": "Код ошибки",
+    "ko": "오류 코드",
+    "ar": "رمز الخطأ"
+  },
+  "desc": {
+    "en": "Toshiba alarm code (e.g. A01, E03, F10) or a description when no fault is active",
+    "nl": "Toshiba alarmcode (bijv. A01, E03, F10) of een beschrijving wanneer er geen storing actief is.",
+    "da": "Toshiba alarmkode (f.eks. A01, E03, F10) eller en beskrivelse, når der ikke er nogen fejl aktiv",
+    "de": "Toshiba-Alarmcode (z. B. A01, E03, F10) oder eine Beschreibung, wenn kein Fehler aktiv ist.",
+    "es": "Código de alarma de Toshiba (por ejemplo, A01, E03, F10) o una descripción cuando no hay fallas activas.",
+    "fr": "Code d'alarme Toshiba (par exemple A01, E03, F10) ou une description lorsqu'aucune panne n'est active.",
+    "it": "Codice di allarme Toshiba (ad es. A01, E03, F10) o una descrizione quando non è attivo alcun guasto.",
+    "no": "Toshiba alarmkode (f.eks. A01, E03, F10) eller en beskrivelse når ingen feil er aktiv",
+    "sv": "Toshiba larmkod (t.ex. A01, E03, F10) eller en beskrivning när ingen felkod är aktiv",
+    "pl": "Kod alarmu Toshiba (np. A01, E03, F10) lub opis, gdy nie występuje żaden błąd.",
+    "ru": "Код ошибки Toshiba (например, A01, E03, F10) или описание, если неисправностей нет.",
+    "ko": "도시바 알람 코드 (예: A01, E03, F10) 또는 문제가 없을 때의 설명",
+    "ar": "رمز إنذار Toshiba (مثل A01، E03، F10) أو وصف عند عدم وجود خطأ نشط"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "preventInsights": true
+}

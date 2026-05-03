@@ -1,0 +1,6 @@
+Podłącz swoją pompę ciepła powietrze-woda Toshiba Estia do Homey. Bezpośrednie połączenie z urządzeniem przez Modbus w sieci domowej — bez chmury, bez opóźnień. Odczytuj wszystkie czujniki temperatury, zobacz, kiedy występują usterki pompy, i steruj włączaniem/wyłączaniem, trybami, punktami nastawy, przyspieszeniem CWU, antyzamrożeniem, temperaturą nocną i trybem skompensowanym pogodowo z pomocą flowów.
+
+Wymaga interfejsu Toshiba BMS-IFMB0UEW-E Modbus RTU podłączonego do magistrali AB pompy ciepła oraz dowolnej bramy Modbus TCP połączonej z interfejsem (Waveshare RS485-to-WiFi/ETH, Elfin EW-11, USR-W630 lub podobne). Twój Homey Pro musi mieć dostęp do bramy w lokalnej sieci LAN.
+
+Obsługuje jednostki hydro serii R410A 4 WM, R410A 5 WM i R32 1 (WM i AIO) Estia. Instalacje jedno- lub dwustrefowe, z lub bez zbiornika na ciepłą wodę użytkową — wybierz opcję w ustawieniach urządzenia, a tylko odpowiednie funkcje będą widoczne.
+Toshiba i Estia są znakami towarowymi Toshiba Corporation. To jest aplikacja społecznościowa, niepowiązana z Toshiba ani niepopierana przez Toshiba.

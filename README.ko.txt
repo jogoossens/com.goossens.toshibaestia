@@ -1,0 +1,6 @@
+Toshiba Estia 공기-물 열펌프를 Homey에 통합하세요. 집 네트워크 내에서 Modbus를 통해 직접 장치와 소통하며, 클라우드를 거치지 않아 지연이 없습니다. 모든 온도 센서를 읽고, 펌프 고장을 확인하며, 플로우에서 켜기/끄기, 모드, 설정 온도, DHW 부스트, 동결 방지, 야간 온도저하, 기후 보상 모드를 제어하세요.
+
+Toshiba BMS-IFMB0UEW-E (또는 유사한 제품) Modbus RTU 인터페이스가 열펌프의 AB 버스에 연결되어 있어야 하고, 인터페이스에 연결된 Modbus TCP 게이트웨이(Waveshare RS485-to-WiFi/ETH, Elfin EW-11, USR-W630 또는 유사한 제품)가 필요합니다. Homey Pro는 로컬 LAN에서 게이트웨이에 도달할 수 있어야 합니다.
+
+R410A 4 시리즈 WM, R410A 5 시리즈 WM, R32 1 시리즈(WM 및 AIO) Estia 하이드로 유닛을 지원합니다. 단일 영역 또는 두 개의 영역 설치, 가정용 온수 탱크 포함 여부 — 장치 설정에서 각각 조정하면 관련 기능만 표시됩니다.
+Toshiba와 Estia는 Toshiba Corporation의 상표입니다. 이 앱은 커뮤니티에서 개발한 앱이며 Toshiba와 무관하고 Toshiba의 후원을 받지 않습니다.

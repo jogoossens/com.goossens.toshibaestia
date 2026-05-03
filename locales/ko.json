@@ -1,0 +1,5 @@
+{
+  "error": {
+    "poll_failed": "Modbus 폴링에 실패했습니다: {{reason}}"
+  }
+}

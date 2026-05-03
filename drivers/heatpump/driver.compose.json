@@ -1,0 +1,392 @@
+{
+  "name": {
+    "en": "Estia Heat Pump",
+    "nl": "Estia Warmtepomp",
+    "da": "Estia varmepumpe",
+    "de": "Estia-Wärmepumpe",
+    "es": "Bomba de Calor Estia",
+    "fr": "Pompe à chaleur Estia",
+    "it": "Pompa di Calore Estia",
+    "no": "Estia varmepumpe",
+    "sv": "Estia värmepump",
+    "pl": "Pompa ciepła Estia",
+    "ru": "Тепловой насос Estia",
+    "ko": "에스티아 히트 펌프",
+    "ar": "مضخة حرارة Estia"
+  },
+  "class": "heatpump",
+  "capabilities": [
+    "onoff",
+    "thermostat_mode",
+    "target_temperature",
+    "measure_temperature",
+    "measure_temperature.outdoor",
+    "measure_temperature.water_inlet",
+    "measure_temperature.water_outlet",
+    "alarm_generic",
+    "fault_code",
+    "frost_protection",
+    "night_setback",
+    "auto_temp",
+    "onoff.hotwater",
+    "target_temperature.tank_water",
+    "measure_temperature.tank_water",
+    "measure_temperature.water_heater_outlet",
+    "boost_hotwater",
+    "antibacteria",
+    "measure_power",
+    "meter_power"
+  ],
+  "capabilitiesOptions": {
+    "onoff": {
+      "title": {
+        "en": "Heat pump",
+        "nl": "Warmtepomp",
+        "da": "Varmepumpe",
+        "de": "Wärmepumpe",
+        "es": "Bomba de calor",
+        "fr": "Pompe à chaleur",
+        "it": "Pompa di calore",
+        "no": "Varmepumpe",
+        "sv": "Värmepump",
+        "pl": "Pompa ciepła",
+        "ru": "Тепловой насос",
+        "ko": "히트 펌프",
+        "ar": "مضخة حرارية"
+      }
+    },
+    "thermostat_mode": {
+      "title": {
+        "en": "Mode",
+        "nl": "Modus",
+        "da": "Tilstand",
+        "de": "Modus",
+        "es": "Modo",
+        "fr": "Mode",
+        "it": "Modalità",
+        "no": "Modus",
+        "sv": "Läge",
+        "pl": "Tryb",
+        "ru": "Режим",
+        "ko": "모드",
+        "ar": "الوضع"
+      },
+      "values": [
+        {
+          "id": "off",
+          "title": {
+            "en": "Off",
+            "nl": "Uit",
+            "da": "Slukket",
+            "de": "Aus",
+            "es": "Apagado",
+            "fr": "Éteint",
+            "it": "Spento",
+            "no": "Av",
+            "sv": "Av",
+            "pl": "Wyłączone",
+            "ru": "Выкл.",
+            "ko": "꺼짐",
+            "ar": "إيقاف"
+          }
+        },
+        {
+          "id": "heat",
+          "title": {
+            "en": "Heat",
+            "nl": "Verwarmen",
+            "da": "Varme",
+            "de": "Heizen",
+            "es": "Calor",
+            "fr": "Chaleur",
+            "it": "Riscaldamento",
+            "no": "Varme",
+            "sv": "Värme",
+            "pl": "Ciepło",
+            "ru": "Тепло",
+            "ko": "난방",
+            "ar": "حرارة"
+          }
+        },
+        {
+          "id": "cool",
+          "title": {
+            "en": "Cool",
+            "nl": "Koelen",
+            "da": "Sejt",
+            "de": "Cool",
+            "es": "Genial",
+            "fr": "Génial",
+            "it": "Fantastico",
+            "no": "Kult",
+            "sv": "Cool",
+            "pl": "Fajnie",
+            "ru": "Круто",
+            "ko": "멋져요",
+            "ar": "رائع"
+          }
+        }
+      ]
+    },
+    "target_temperature": {
+      "title": {
+        "en": "Zone 1 target",
+        "nl": "Zone 1 instelpunt",
+        "da": "Zone 1 sætpunkt",
+        "de": "Zone 1 Sollwert",
+        "es": "Punto de ajuste Zona 1",
+        "fr": "Consigne zone 1",
+        "it": "Setpoint Zona 1",
+        "no": "Sone 1 settpunkt",
+        "sv": "Zon 1 börvärde",
+        "pl": "Nastawa strefy 1",
+        "ru": "Уставка зоны 1",
+        "ko": "영역 1 목표",
+        "ar": "نقطة ضبط المنطقة 1"
+      },
+      "min": 5,
+      "max": 60,
+      "step": 0.5
+    },
+    "measure_temperature": {
+      "title": {
+        "en": "Zone 1 temperature",
+        "nl": "Zone 1 temperatuur",
+        "da": "Zone 1 temperatur",
+        "de": "Temperatur Zone 1",
+        "es": "Temperatura de la Zona 1",
+        "fr": "Température de la zone 1",
+        "it": "Temperatura Zona 1",
+        "no": "Sone 1 temperatur",
+        "sv": "Zon 1 temperatur",
+        "pl": "Temperatura strefy 1",
+        "ru": "Температура зоны 1",
+        "ko": "존 1 온도",
+        "ar": "درجة حرارة المنطقة 1"
+      }
+    },
+    "measure_temperature.outdoor": {
+      "title": {
+        "en": "Outdoor temperature",
+        "nl": "Buitentemperatuur",
+        "da": "Udendørstemperatur",
+        "de": "Außentemperatur",
+        "es": "Temperatura exterior",
+        "fr": "Température extérieure",
+        "it": "Temperatura esterna",
+        "no": "Utetemperatur",
+        "sv": "Utomhustemperatur",
+        "pl": "Temperatura zewnętrzna",
+        "ru": "Температура на улице",
+        "ko": "실외 온도",
+        "ar": "درجة الحرارة الخارجية"
+      }
+    },
+    "measure_temperature.water_inlet": {
+      "title": {
+        "en": "Water inlet (TWI)",
+        "nl": "Aanvoertemperatuur",
+        "da": "Vandindløb (TWI)",
+        "de": "Wassereinlass (TWI)",
+        "es": "Entrada de agua (TWI)",
+        "fr": "Entrée d'eau (TWI)",
+        "it": "Ingresso acqua (TWI)",
+        "no": "Vanninntak (TWI)",
+        "sv": "Vatteninlopp (TWI)",
+        "pl": "Dopływ wody (TWI)",
+        "ru": "Вход воды (TWI)",
+        "ko": "물 유입구 (TWI)",
+        "ar": "مدخل المياه (TWI)"
+      }
+    },
+    "measure_temperature.water_outlet": {
+      "title": {
+        "en": "Water outlet (TWO)",
+        "nl": "Retourtemperatuur",
+        "da": "Vandudløb (TWO)",
+        "de": "Wasserauslass (TWO)",
+        "es": "Salida de agua (TWO)",
+        "fr": "Sortie d'eau (TWO)",
+        "it": "Uscita acqua (TWO)",
+        "no": "Vannutløp (TWO)",
+        "sv": "Vattenutlopp (TWO)",
+        "pl": "Wylot wody (TWO)",
+        "ru": "Выход воды (TWO)",
+        "ko": "물 배출구 (TWO)",
+        "ar": "مخرج الماء (TWO)"
+      }
+    },
+    "alarm_generic": {
+      "title": {
+        "en": "Heat pump alarm",
+        "nl": "Warmtepomp alarm",
+        "da": "Varmepumpealarm",
+        "de": "Wärmepumpenalarm",
+        "es": "Alarma de bomba de calor",
+        "fr": "Alarme de la pompe à chaleur",
+        "it": "Allarme pompa di calore",
+        "no": "Varmepumpealarm",
+        "sv": "Värmepumpslarm",
+        "pl": "Alarm pompy ciepła",
+        "ru": "Сигнализация теплового насоса",
+        "ko": "히트 펌프 경고",
+        "ar": "إنذار مضخة الحرارة"
+      }
+    },
+    "target_temperature.tank_water": {
+      "title": {
+        "en": "Hot water target",
+        "nl": "Warmwater instelpunt",
+        "da": "Varmtvandsindstilling",
+        "de": "Warmwasser-Sollwert",
+        "es": "Temperatura objetivo de ACS",
+        "fr": "Consigne d'eau chaude",
+        "it": "Temperatura ACS impostata",
+        "no": "Varmtvannsinnstilling",
+        "sv": "Varmvatteninställning",
+        "pl": "Zadana temperatura CWU",
+        "ru": "Уставка горячей воды",
+        "ko": "온수 설정 온도",
+        "ar": "درجة حرارة الماء الساخن المستهدفة"
+      },
+      "min": 30,
+      "max": 75,
+      "step": 0.5
+    },
+    "target_temperature.zone2": {
+      "title": {
+        "en": "Zone 2 target",
+        "nl": "Zone 2 instelpunt",
+        "da": "Zone 2 mål",
+        "de": "Ziel für Zone 2",
+        "es": "Objetivo de la Zona 2",
+        "fr": "Cible de la zone 2",
+        "it": "Obiettivo zona 2",
+        "no": "Sone 2 måltemperatur",
+        "sv": "Zon 2 mål",
+        "pl": "Cel strefy 2",
+        "ru": "Целевая температура зоны 2",
+        "ko": "존 2 목표",
+        "ar": "الهدف من المنطقة 2"
+      },
+      "min": 5,
+      "max": 60,
+      "step": 0.5
+    },
+    "measure_temperature.zone2": {
+      "title": {
+        "en": "Zone 2 temperature",
+        "nl": "Zone 2 temperatuur",
+        "da": "Zone 2 temperatur",
+        "de": "Zone 2 Temperatur",
+        "es": "Temperatura Zona 2",
+        "fr": "Température zone 2",
+        "it": "Temperatura Zona 2",
+        "no": "Sone 2 temperatur",
+        "sv": "Zon 2 temperatur",
+        "pl": "Temperatura strefy 2",
+        "ru": "Температура зоны 2",
+        "ko": "영역 2 온도",
+        "ar": "درجة حرارة المنطقة 2"
+      }
+    },
+    "measure_temperature.tank_water": {
+      "title": {
+        "en": "Hot water tank",
+        "nl": "Warmwatertank",
+        "da": "Varmtvandsbeholder",
+        "de": "Warmwasserspeicher",
+        "es": "Tanque ACS",
+        "fr": "Ballon ECS",
+        "it": "Serbatoio ACS",
+        "no": "Varmtvannstank",
+        "sv": "Varmvattentank",
+        "pl": "Zbiornik CWU",
+        "ru": "Бак ГВС",
+        "ko": "온수 탱크",
+        "ar": "خزان الماء الساخن"
+      }
+    },
+    "measure_temperature.water_heater_outlet": {
+      "title": {
+        "en": "Heater outlet",
+        "nl": "Verwarmingsuitgang",
+        "da": "Varmeudløb",
+        "de": "Heizungsausgang",
+        "es": "Salida del calentador",
+        "fr": "Sortie chauffage",
+        "it": "Uscita riscaldatore",
+        "no": "Varmeuttak",
+        "sv": "Värmeutlopp",
+        "pl": "Wylot grzałki",
+        "ru": "Выход нагревателя",
+        "ko": "히터 출구",
+        "ar": "مخرج السخان"
+      }
+    },
+    "measure_power": {
+      "title": {
+        "en": "Estimated power",
+        "nl": "Geschat vermogen",
+        "da": "Anslået strømforbrug",
+        "de": "Geschätzte Leistung",
+        "es": "Potencia estimada",
+        "fr": "Puissance estimée",
+        "it": "Potenza stimata",
+        "no": "Estimert strømforbruk",
+        "sv": "Uppskattad effekt",
+        "pl": "Szacowana moc",
+        "ru": "Оценочная мощность",
+        "ko": "예상 전력",
+        "ar": "الطاقة المقدرة"
+      }
+    },
+    "meter_power": {
+      "title": {
+        "en": "Estimated total energy",
+        "nl": "Geschatte totale energie",
+        "da": "Anslået samlet energi",
+        "de": "Geschätzter Gesamtenergieverbrauch",
+        "es": "Energía total estimada",
+        "fr": "Énergie totale estimée",
+        "it": "Energia totale stimata",
+        "no": "Estimert total energi",
+        "sv": "Uppskattad total energi",
+        "pl": "Szacowana całkowita energia",
+        "ru": "Оценочная общая энергия",
+        "ko": "예상 총 에너지",
+        "ar": "إجمالي الطاقة المقدرة"
+      }
+    },
+    "onoff.hotwater": {
+      "title": {
+        "en": "Hot water",
+        "nl": "Warm water",
+        "da": "Varmt vand",
+        "de": "Warmwasser",
+        "es": "Agua caliente",
+        "fr": "Eau chaude",
+        "it": "Acqua calda",
+        "no": "Varmtvann",
+        "sv": "Varmvatten",
+        "pl": "Ciepła woda",
+        "ru": "Горячая вода",
+        "ko": "온수",
+        "ar": "الماء الساخن"
+      }
+    }
+  },
+  "images": {
+    "small": "/drivers/heatpump/assets/images/small.png",
+    "large": "/drivers/heatpump/assets/images/large.png",
+    "xlarge": "/drivers/heatpump/assets/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "configure"
+    },
+    {
+      "id": "features"
+    }
+  ]
+}

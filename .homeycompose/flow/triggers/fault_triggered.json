@@ -1,0 +1,114 @@
+{
+  "id": "fault_triggered",
+  "title": {
+    "en": "Heat pump faulted",
+    "nl": "Warmtepomp heeft een storing",
+    "da": "Varmepumpe fejlbehæftet",
+    "de": "Wärmepumpe gestört",
+    "es": "Falla en la bomba de calor",
+    "fr": "Pompe à chaleur en panne",
+    "it": "Pompa di calore guasta",
+    "no": "Varmepumpe feilet",
+    "sv": "Värmepumpen har fel",
+    "pl": "Pompa ciepła uszkodzona",
+    "ru": "Неисправность теплового насоса",
+    "ko": "히트 펌프에 문제가 발생했습니다.",
+    "ar": "عطل في المضخة الحرارية"
+  },
+  "titleFormatted": {
+    "en": "Heat pump faulted",
+    "nl": "Warmtepomp heeft een storing gekregen.",
+    "da": "Varmepumpe fejlbehæftet",
+    "de": "Wärmepumpe gestört",
+    "es": "Falla en la bomba de calor",
+    "fr": "Pompe à chaleur en panne",
+    "it": "Pompa di calore guasta",
+    "no": "Varmepumpefeil",
+    "sv": "Värmepumpen har fel",
+    "pl": "Pompa ciepła uległa awarii",
+    "ru": "Неисправность теплового насоса",
+    "ko": "히트 펌프에 문제가 발생했습니다.",
+    "ar": "عطل في المضخة الحرارية"
+  },
+  "hint": {
+    "en": "Fires once when the heat pump's alarm flag transitions from inactive to active. Tokens carry the fault code and origin so you can branch logic.",
+    "nl": "Wordt één keer geactiveerd wanneer de alarmvlag van de warmtepomp overgaat van inactief naar actief. Tokens dragen de foutcode en oorsprong, zodat je de logica kunt vertakken.",
+    "da": "Udløses én gang, når varmepumpens alarmflag skifter fra inaktiv til aktiv. Tokens bærer fejlkoden og oprindelsen, så du kan forgrene logikken.",
+    "de": "Wird einmal ausgelöst, wenn das Alarmflag der Wärmepumpe von inaktiv zu aktiv wechselt. Tokens enthalten den Fehlercode und die Herkunft, sodass Sie die Logik verzweigen können.",
+    "es": "Se activa una vez cuando la bandera de alarma de la bomba de calor pasa de inactiva a activa. Los tokens llevan el código de falla y el origen para que puedas ramificar la lógica.",
+    "fr": "Déclenchement unique lorsque le drapeau d'alarme de la pompe à chaleur passe de inactif à actif. Les jetons transportent le code de défaut et l'origine pour que vous puissiez adapter la logique.",
+    "it": "Si attiva una volta quando il flag di allarme della pompa di calore passa da inattivo ad attivo. I token trasportano il codice di errore e l'origine, così puoi ramificare la logica.",
+    "no": "Utløses én gang når varmepumpens alarmflagg går fra inaktiv til aktiv. Tokens bærer feilkoden og opprinnelsen slik at du kan forgrene logikken.",
+    "sv": "Aktiveras en gång när värmepumpens larmflagga övergår från inaktiv till aktiv. Tokens bär med sig felkoden och ursprunget så att du kan förgrena logiken.",
+    "pl": "Uruchamia się raz, gdy flaga alarmu pompy ciepła przechodzi z nieaktywnej na aktywną. Tokeny przenoszą kod błędu i pochodzenie, dzięki czemu możesz rozgałęziać logikę.",
+    "ru": "Срабатывает один раз, когда флаг тревоги теплового насоса переходит из неактивного состояния в активное. Токены содержат код ошибки и источник, чтобы вы могли разветвлять логику.",
+    "ko": "열 펌프의 알람 플래그가 비활성에서 활성으로 전환될 때 한 번 실행됩니다. 토큰은 오류 코드와 출처를 포함하고 있어 논리를 분기할 수 있습니다.",
+    "ar": "يتم تشغيله مرة واحدة عندما ينتقل علم إنذار المضخة الحرارية من غير نشط إلى نشط. تحمل الرموز رمز الخطأ والمصدر حتى تتمكن من تفريع المنطق."
+  },
+  "args": [
+    {
+      "name": "device",
+      "type": "device",
+      "filter": "driver_id=heatpump"
+    }
+  ],
+  "tokens": [
+    {
+      "name": "code",
+      "type": "string",
+      "title": {
+        "en": "Fault code",
+        "nl": "Foutcode",
+        "da": "Fejlkode",
+        "de": "Fehlercode",
+        "es": "Código de error",
+        "fr": "Code d'erreur",
+        "it": "Codice di errore",
+        "no": "Feilkode",
+        "sv": "Felkod",
+        "pl": "Kod błędu",
+        "ru": "Код ошибки",
+        "ko": "오류 코드",
+        "ar": "رمز الخطأ"
+      }
+    },
+    {
+      "name": "unit",
+      "type": "string",
+      "title": {
+        "en": "Origin",
+        "nl": "Oorsprong",
+        "da": "Oprindelse",
+        "de": "Ursprung",
+        "es": "Origen",
+        "fr": "Origine",
+        "it": "Origine",
+        "no": "Opprinnelse",
+        "sv": "Ursprung",
+        "pl": "Pochodzenie",
+        "ru": "Происхождение",
+        "ko": "기원",
+        "ar": "الأصل"
+      }
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "title": {
+        "en": "Description",
+        "nl": "Beschrijving",
+        "da": "Beskrivelse",
+        "de": "Beschreibung",
+        "es": "Descripción",
+        "fr": "Description",
+        "it": "Descrizione",
+        "no": "Beskrivelse",
+        "sv": "Beskrivning",
+        "pl": "Opis",
+        "ru": "Описание",
+        "ko": "설명",
+        "ar": "الوصف"
+      }
+    }
+  ]
+}

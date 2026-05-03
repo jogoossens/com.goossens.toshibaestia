@@ -1,0 +1,960 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Connection",
+      "nl": "Verbinding",
+      "da": "Forbindelse",
+      "de": "Verbindung",
+      "es": "Conexión",
+      "fr": "Connexion",
+      "it": "Connessione",
+      "no": "Tilkobling",
+      "sv": "Anslutning",
+      "pl": "Połączenie",
+      "ru": "Подключение",
+      "ko": "연결",
+      "ar": "اتصال"
+    },
+    "children": [
+      {
+        "id": "host",
+        "type": "text",
+        "label": {
+          "en": "Gateway host or IP",
+          "nl": "Gateway-host of IP-adres",
+          "da": "Gateway-vært eller IP",
+          "de": "Gateway-Host oder IP-Adresse",
+          "es": "Host o IP del gateway",
+          "fr": "Hôte de passerelle ou IP",
+          "it": "Host o IP del gateway",
+          "no": "Gateway-vert eller IP-adresse",
+          "sv": "Gateway-värd eller IP",
+          "pl": "Host lub IP bramy",
+          "ru": "Хост или IP шлюза",
+          "ko": "게이트웨이 호스트 또는 IP",
+          "ar": "المضيف أو عنوان IP للبوابة"
+        },
+        "hint": {
+          "en": "IP address or hostname of the Modbus TCP gateway (Waveshare RS485 to WiFi/ETH or similar).",
+          "nl": "IP-adres of hostnaam van de Modbus TCP-gateway (Waveshare RS485 naar WiFi/ETH of vergelijkbaar).",
+          "da": "IP-adresse eller værtsnavn for Modbus TCP-gatewayen (Waveshare RS485 til WiFi/ETH eller lignende).",
+          "de": "IP-Adresse oder Hostname des Modbus TCP-Gateways (Waveshare RS485 zu WiFi/ETH oder ähnlich).",
+          "es": "Dirección IP o nombre de host del gateway Modbus TCP (Waveshare RS485 a WiFi/ETH o similar).",
+          "fr": "Adresse IP ou nom d'hôte de la passerelle Modbus TCP (Waveshare RS485 vers WiFi/ETH ou similaire).",
+          "it": "Indirizzo IP o nome host del gateway Modbus TCP (Waveshare RS485 a WiFi/ETH o simile).",
+          "no": "IP-adresse eller vertsnavn til Modbus TCP-gatewayen (Waveshare RS485 til WiFi/ETH eller lignende).",
+          "sv": "IP-adress eller värdnamn för Modbus TCP-gatewayen (Waveshare RS485 till WiFi/ETH eller liknande).",
+          "pl": "Adres IP lub nazwa hosta bramy Modbus TCP (Waveshare RS485 do WiFi/ETH lub podobnej).",
+          "ru": "IP-адрес или имя хоста шлюза Modbus TCP (Waveshare RS485 в WiFi/ETH или аналогичного).",
+          "ko": "Modbus TCP 게이트웨이(Waveshare RS485 to WiFi/ETH 또는 유사)의 IP 주소 또는 호스트 이름.",
+          "ar": "عنوان IP أو اسم المضيف لبوابة Modbus TCP (Waveshare RS485 إلى WiFi/ETH أو ما شابه)."
+        },
+        "value": "192.168.1.30"
+      },
+      {
+        "id": "port",
+        "type": "number",
+        "label": {
+          "en": "TCP port",
+          "nl": "TCP-poort",
+          "da": "TCP-port",
+          "de": "TCP-Port",
+          "es": "Puerto TCP",
+          "fr": "Port TCP",
+          "it": "Porta TCP",
+          "no": "TCP-port",
+          "sv": "TCP-port",
+          "pl": "Port TCP",
+          "ru": "TCP порт",
+          "ko": "TCP 포트",
+          "ar": "منفذ TCP"
+        },
+        "hint": {
+          "en": "Modbus TCP port. Waveshare default is 502.",
+          "nl": "Modbus TCP-poort. Waveshare standaard is 502.",
+          "da": "Modbus TCP-port. Waveshare standard er 502.",
+          "de": "Modbus TCP-Port. Der Standardwert von Waveshare ist 502.",
+          "es": "Puerto Modbus TCP. El valor predeterminado de Waveshare es 502.",
+          "fr": "Port Modbus TCP. La valeur par défaut de Waveshare est 502.",
+          "it": "Porta Modbus TCP. Il valore predefinito di Waveshare è 502.",
+          "no": "Modbus TCP-port. Waveshare standard er 502.",
+          "sv": "Modbus TCP-port. Waveshares standard är 502.",
+          "pl": "Port Modbus TCP. Domyślny port Waveshare to 502.",
+          "ru": "Порт Modbus TCP. По умолчанию для Waveshare - 502.",
+          "ko": "Modbus TCP 포트. Waveshare 기본값은 502입니다.",
+          "ar": "منفذ Modbus TCP. الافتراضي لـ Waveshare هو 502."
+        },
+        "value": 502,
+        "min": 1,
+        "max": 65535
+      },
+      {
+        "id": "unitId",
+        "type": "number",
+        "label": {
+          "en": "Modbus unit ID",
+          "nl": "Modbus-eenheid-ID",
+          "da": "Modbus enheds-ID",
+          "de": "Modbus-Geräte-ID",
+          "es": "ID de unidad Modbus",
+          "fr": "ID d'unité Modbus",
+          "it": "ID unità Modbus",
+          "no": "Modbus-enhets-ID",
+          "sv": "Modbus-enhets-ID",
+          "pl": "ID jednostki Modbus",
+          "ru": "Идентификатор устройства Modbus",
+          "ko": "Modbus 장치 ID",
+          "ar": "معرّف وحدة Modbus"
+        },
+        "hint": {
+          "en": "Slave address of the Toshiba BMS-IFMB0UEW-E interface (register 40042, DIP S3 bits 1-6). Range 1-63, default 1.",
+          "nl": "Slave-adres van de Toshiba BMS-IFMB0UEW-E interface (register 40042, DIP S3 bits 1-6). Bereik 1-63, standaard 1.",
+          "da": "Slave-adresse for Toshiba BMS-IFMB0UEW-E interface (register 40042, DIP S3 bits 1-6). Område 1-63, standard 1.",
+          "de": "Slave-Adresse der Toshiba BMS-IFMB0UEW-E Schnittstelle (Register 40042, DIP S3 Bits 1-6). Bereich 1-63, Standard 1.",
+          "es": "Dirección esclava de la interfaz Toshiba BMS-IFMB0UEW-E (registro 40042, bits 1-6 del DIP S3). Rango 1-63, por defecto 1.",
+          "fr": "Adresse esclave de l'interface Toshiba BMS-IFMB0UEW-E (registre 40042, bits 1-6 du DIP S3). Plage 1-63, par défaut 1.",
+          "it": "Indirizzo slave dell'interfaccia Toshiba BMS-IFMB0UEW-E (registro 40042, DIP S3 bit 1-6). Intervallo 1-63, predefinito 1.",
+          "no": "Slave-adresse for Toshiba BMS-IFMB0UEW-E-grensesnittet (register 40042, DIP S3 biter 1-6). Område 1-63, standard 1.",
+          "sv": "Slave-adress för Toshiba BMS-IFMB0UEW-E-gränssnittet (register 40042, DIP S3 bitar 1-6). Område 1-63, standard 1.",
+          "pl": "Adres podrzędny interfejsu Toshiba BMS-IFMB0UEW-E (rejestr 40042, bity 1-6 DIP S3). Zakres 1-63, domyślnie 1.",
+          "ru": "Адрес ведомого интерфейса Toshiba BMS-IFMB0UEW-E (регистр 40042, DIP S3 биты 1-6). Диапазон 1-63, по умолчанию 1.",
+          "ko": "도시바 BMS-IFMB0UEW-E 인터페이스의 슬레이브 주소 (레지스터 40042, DIP S3 비트 1-6). 범위 1-63, 기본값 1.",
+          "ar": "عنوان العبد لواجهة Toshiba BMS-IFMB0UEW-E (السجل 40042، مفاتيح DIP S3 من 1 إلى 6). النطاق من 1 إلى 63، الافتراضي 1."
+        },
+        "value": 1,
+        "min": 1,
+        "max": 63
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Polling",
+      "nl": "Polling (opvragen)",
+      "da": "Afstemning",
+      "de": "Abfrage",
+      "es": "Sondeo",
+      "fr": "Sondage",
+      "it": "Sondaggio",
+      "no": "Polling",
+      "sv": "Omröstning",
+      "pl": "Ankietowanie",
+      "ru": "Опрос",
+      "ko": "폴링",
+      "ar": "استطلاع"
+    },
+    "children": [
+      {
+        "id": "pollInterval",
+        "type": "number",
+        "label": {
+          "en": "Poll interval (seconds)",
+          "nl": "Poll-interval (seconden)",
+          "da": "Pollingsinterval (sekunder)",
+          "de": "Abfrageintervall (Sekunden)",
+          "es": "Intervalo de sondeo (segundos)",
+          "fr": "Intervalle de sondage (secondes)",
+          "it": "Intervallo di polling (secondi)",
+          "no": "Spørringsintervall (sekunder)",
+          "sv": "Pollningsintervall (sekunder)",
+          "pl": "Interwał odpytywania (sekundy)",
+          "ru": "Интервал опроса (в секундах)",
+          "ko": "폴링 간격 (초)",
+          "ar": "فترة الاستطلاع (بالثواني)"
+        },
+        "hint": {
+          "en": "How often to read registers from the heat pump. Heat pump state changes over minutes, not seconds, so 60s is plenty for live tiles and Flow triggers. The app reconnects automatically each poll; the small TCP-handshake overhead is negligible. Lower this (e.g. to 20s) only if you want snappier UI updates.",
+          "nl": "Hoe vaak registers van de warmtepomp gelezen worden. De toestand verandert in minuten, niet seconden — 60s is ruim voldoende voor tegels en Flow-triggers. De app verbindt automatisch opnieuw bij elke poll; de TCP-overhead is verwaarloosbaar. Verlaag dit alleen (bv. naar 20s) als je snellere updates wilt.",
+          "da": "Hvor ofte registre læses fra varmepumpen. Tilstanden ændrer sig i minutter, ikke sekunder — 60s er rigeligt. Appen genforbinder automatisk ved hver poll. Sænk kun (f.eks. til 20s) hvis du vil have hurtigere opdateringer.",
+          "de": "Wie oft die Register der Wärmepumpe ausgelesen werden. Der Zustand ändert sich in Minuten, nicht Sekunden — 60s reicht völlig. Die App verbindet bei jeder Abfrage automatisch neu. Senken Sie diesen Wert nur (z.B. auf 20s), wenn Sie schnellere Aktualisierungen wünschen.",
+          "es": "Con qué frecuencia se leen los registros de la bomba de calor. El estado cambia en minutos, no en segundos — 60s es de sobra. La app se reconecta automáticamente en cada sondeo. Reduce esto (p. ej. a 20s) solo si quieres actualizaciones más rápidas.",
+          "fr": "À quelle fréquence lire les registres de la pompe à chaleur. L'état évolue en minutes, pas en secondes — 60s suffit largement. L'app se reconnecte automatiquement à chaque sondage. Baissez cette valeur (p. ex. à 20s) uniquement si vous voulez des mises à jour plus rapides.",
+          "it": "Con quale frequenza leggere i registri della pompa di calore. Lo stato cambia in minuti, non secondi — 60s è più che sufficiente. L'app si riconnette automaticamente ad ogni polling. Abbassare (es. a 20s) solo per aggiornamenti più rapidi.",
+          "no": "Hvor ofte registre leses fra varmepumpen. Tilstanden endrer seg i minutter, ikke sekunder — 60s er mer enn nok. Appen kobler til på nytt ved hver polling. Senk kun (f.eks. til 20s) hvis du vil ha raskere oppdateringer.",
+          "sv": "Hur ofta register läses från värmepumpen. Tillståndet ändras i minuter, inte sekunder — 60s räcker gott. Appen återansluter automatiskt vid varje pollning. Sänk endast (t.ex. till 20s) om du vill ha snabbare uppdateringar.",
+          "pl": "Jak często odczytywać rejestry pompy ciepła. Stan zmienia się w minutach, nie sekundach — 60s jest w zupełności wystarczające. Aplikacja łączy się ponownie przy każdym odpytaniu. Zmniejsz wartość (np. do 20s) tylko dla szybszych aktualizacji.",
+          "ru": "Как часто читать регистры теплового насоса. Состояние меняется в минутах, не секундах — 60 с более чем достаточно. Приложение переподключается автоматически при каждом опросе. Снижайте значение (например, до 20 с) только для более частых обновлений.",
+          "ko": "히트펌프에서 레지스터를 얼마나 자주 읽을지. 상태는 초가 아닌 분 단위로 변하므로 60초로 충분합니다. 앱은 매 폴링마다 자동으로 재연결합니다. 더 빠른 업데이트가 필요한 경우에만 (예: 20초로) 낮추세요.",
+          "ar": "كم مرة تتم قراءة السجلات من المضخة الحرارية. تتغير الحالة بالدقائق وليس الثواني — 60 ثانية أكثر من كافية. يعيد التطبيق الاتصال تلقائيًا في كل استطلاع. خفض القيمة (مثلاً إلى 20 ثانية) فقط إذا أردت تحديثات أسرع."
+        },
+        "value": 60,
+        "min": 5,
+        "max": 600
+      },
+      {
+        "id": "requestTimeout",
+        "type": "number",
+        "label": {
+          "en": "Request timeout (ms)",
+          "nl": "Verzoek time-out (ms)",
+          "da": "Anmodning timeout (ms)",
+          "de": "Anforderungszeitüberschreitung (ms)",
+          "es": "Tiempo de espera de la solicitud (ms)",
+          "fr": "Délai d'attente de la requête (ms)",
+          "it": "Timeout richiesta (ms)",
+          "no": "Tidsavbrudd for forespørsel (ms)",
+          "sv": "Begär tidsgräns (ms)",
+          "pl": "Limit czasu żądania (ms)",
+          "ru": "Тайм-аут запроса (мс)",
+          "ko": "요청 시간 초과 (ms)",
+          "ar": "مهلة الطلب (مللي ثانية)"
+        },
+        "hint": {
+          "en": "Per-request Modbus timeout. Increase if you see frequent timeouts on a busy or long RS-485 bus.",
+          "nl": "Modbus-time-out per verzoek. Verhoog dit als je vaak time-outs ziet op een drukke of lange RS-485-bus.",
+          "da": "Modbus-timeout pr. anmodning. Forøg, hvis du oplever hyppige timeouts på en travl eller lang RS-485 bus.",
+          "de": "Modbus-Timeout pro Anfrage. Erhöhen Sie diesen Wert, wenn Sie häufige Timeouts auf einem stark ausgelasteten oder langen RS-485-Bus feststellen.",
+          "es": "Tiempo de espera por solicitud de Modbus. Aumenta este valor si ves que hay frecuentes tiempos de espera en un bus RS-485 ocupado o largo.",
+          "fr": "Délai d'attente Modbus par demande. Augmentez-le si vous constatez des délais d'attente fréquents sur un bus RS-485 occupé ou long.",
+          "it": "Timeout Modbus per richiesta. Aumenta se noti frequenti timeout su un bus RS-485 occupato o lungo.",
+          "no": "Modbus-timeout per forespørsel. Øk denne hvis du opplever hyppige timeouts på en travel eller lang RS-485-buss.",
+          "sv": "Timeout för Modbus per förfrågan. Öka om du upplever frekventa timeout på en upptagen eller lång RS-485-buss.",
+          "pl": "Limit czasu Modbus na żądanie. Zwiększ, jeśli zauważysz częste przekroczenia czasu na zatłoczonej lub długiej magistrali RS-485.",
+          "ru": "Тайм-аут Modbus для каждого запроса. Увеличьте, если вы часто видите тайм-ауты на загруженной или длинной шине RS-485.",
+          "ko": "요청당 Modbus 타임아웃. RS-485 버스가 바쁘거나 길어서 자주 타임아웃이 발생하면 이 값을 늘리세요.",
+          "ar": "مهلة Modbus لكل طلب. قم بزيادتها إذا لاحظت حدوث مهلات متكررة على ناقل RS-485 مزدحم أو طويل."
+        },
+        "value": 2000,
+        "min": 200,
+        "max": 10000
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Hydro unit",
+      "nl": "Hydro-unit",
+      "da": "Hydroenhed",
+      "de": "Hydroeinheit",
+      "es": "Unidad hidroeléctrica",
+      "fr": "Unité hydro",
+      "it": "Unità idronica",
+      "no": "Hydroenhet",
+      "sv": "Hydroenhet",
+      "pl": "Jednostka hydro",
+      "ru": "Гидроблок",
+      "ko": "하이드로 유닛",
+      "ar": "الوحدة الهيدروليكية"
+    },
+    "children": [
+      {
+        "id": "tempScaling",
+        "type": "dropdown",
+        "label": {
+          "en": "Temperature scaling",
+          "nl": "Temperatuurschaal aanpassen",
+          "da": "Temperaturskalering",
+          "de": "Temperaturskalierung",
+          "es": "Escalado de temperatura",
+          "fr": "Échelonnage de la température",
+          "it": "Scalatura della temperatura",
+          "no": "Temperaturskalering",
+          "sv": "Temperaturskalning",
+          "pl": "Skalowanie temperatury",
+          "ru": "Масштабирование температуры",
+          "ko": "온도 조정",
+          "ar": "تعديل درجة الحرارة"
+        },
+        "hint": {
+          "en": "Must match Toshiba DIP S4 bit 1. x1 = whole degrees (0x0011 = 17 C). x10 = tenths (0x00AA = 17.0 C). Factory default is x1.",
+          "nl": "Moet overeenkomen met Toshiba DIP S4 bit 1. x1 = hele graden (0x0011 = 17 C). x10 = tienden (0x00AA = 17,0 C). Fabrieksinstelling is x1.",
+          "da": "Skal matche Toshiba DIP S4 bit 1. x1 = hele grader (0x0011 = 17 C). x10 = tiendedele (0x00AA = 17,0 C). Fabriksindstillingen er x1.",
+          "de": "Muss mit Toshiba DIP S4 Bit 1 übereinstimmen. x1 = ganze Grad (0x0011 = 17 C). x10 = Zehntel (0x00AA = 17,0 C). Werkseinstellung ist x1.",
+          "es": "Debe coincidir con Toshiba DIP S4 bit 1. x1 = grados enteros (0x0011 = 17 C). x10 = décimas (0x00AA = 17.0 C). El valor predeterminado de fábrica es x1.",
+          "fr": "Doit correspondre au bit 1 de Toshiba DIP S4. x1 = degrés entiers (0x0011 = 17 C). x10 = dixièmes (0x00AA = 17,0 C). La valeur par défaut d'usine est x1.",
+          "it": "Deve corrispondere al bit 1 di Toshiba DIP S4. x1 = gradi interi (0x0011 = 17 C). x10 = decimi (0x00AA = 17,0 C). L'impostazione predefinita di fabbrica è x1.",
+          "no": "Må samsvare med Toshiba DIP S4 bit 1. x1 = hele grader (0x0011 = 17 C). x10 = tideler (0x00AA = 17,0 C). Fabrikkinnstillingen er x1.",
+          "sv": "Måste matcha Toshiba DIP S4 bit 1. x1 = hela grader (0x0011 = 17 C). x10 = tiondelar (0x00AA = 17,0 C). Fabriksinställningen är x1.",
+          "pl": "Musi pasować do Toshiba DIP S4 bit 1. x1 = całe stopnie (0x0011 = 17 C). x10 = dziesiąte części (0x00AA = 17,0 C). Ustawienie fabryczne to x1.",
+          "ru": "Должно соответствовать Toshiba DIP S4 бит 1. x1 = целые градусы (0x0011 = 17 C). x10 = десятые доли (0x00AA = 17.0 C). Заводская настройка - x1.",
+          "ko": "Toshiba DIP S4 비트 1과 일치해야 합니다. x1 = 정수 온도 (0x0011 = 17 C). x10 = 소수 첫째 자리 (0x00AA = 17.0 C). 공장 기본값은 x1입니다.",
+          "ar": "يجب أن يتطابق مع Toshiba DIP S4 بت 1. x1 = درجات كاملة (0x0011 = 17 درجة مئوية). x10 = أعشار (0x00AA = 17.0 درجة مئوية). الإعداد الافتراضي للمصنع هو x1."
+        },
+        "value": "x1",
+        "values": [
+          {
+            "id": "x1",
+            "label": {
+              "en": "°C × 1 (DIP S4.1 OFF)",
+              "nl": "°C × 1 (DIP S4.1 UIT)",
+              "da": "°C × 1 (DIP S4.1 OFF)",
+              "de": "°C × 1 (DIP S4.1 AUS)",
+              "es": "°C × 1 (DIP S4.1 APAGADO)",
+              "fr": "°C × 1 (DIP S4.1 OFF)",
+              "it": "°C × 1 (DIP S4.1 OFF)",
+              "no": "°C × 1 (DIP S4.1 AV)",
+              "sv": "°C × 1 (DIP S4.1 AV)",
+              "pl": "°C × 1 (DIP S4.1 WYŁ.)",
+              "ru": "°C × 1 (DIP S4.1 ВЫКЛ)",
+              "ko": "°C × 1 (DIP S4.1 OFF)",
+              "ar": "°C × 1 (DIP S4.1 إيقاف)"
+            }
+          },
+          {
+            "id": "x10",
+            "label": {
+              "en": "°C × 10 (DIP S4.1 ON)",
+              "nl": "°C × 10 (DIP S4.1 AAN)",
+              "da": "°C × 10 (DIP S4.1 TIL)",
+              "de": "°C × 10 (DIP S4.1 EIN)",
+              "es": "°C × 10 (DIP S4.1 ON)",
+              "fr": "°C × 10 (DIP S4.1 ON)",
+              "it": "°C × 10 (DIP S4.1 ON)",
+              "no": "°C × 10 (DIP S4.1 PÅ)",
+              "sv": "°C × 10 (DIP S4.1 PÅ)",
+              "pl": "°C × 10 (DIP S4.1 WŁĄCZONY)",
+              "ru": "°C × 10 (DIP S4.1 ВКЛ)",
+              "ko": "°C × 10 (DIP S4.1 ON)",
+              "ar": "°C × 10 (DIP S4.1 تشغيل)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "enableZone2",
+        "type": "checkbox",
+        "label": {
+          "en": "Second heating zone installed",
+          "nl": "Tweede verwarmingszone geïnstalleerd",
+          "da": "Anden varmekreds installeret",
+          "de": "Zweite Heizungszone installiert",
+          "es": "Segunda zona de calefacción instalada",
+          "fr": "Deuxième zone de chauffage installée",
+          "it": "Seconda zona di riscaldamento installata",
+          "no": "Andre varmesone installert",
+          "sv": "Andra värmezonen installerad",
+          "pl": "Zainstalowano drugą strefę grzewczą",
+          "ru": "Установлена вторая зона отопления",
+          "ko": "두 번째 난방 구역 설치됨",
+          "ar": "تم تركيب منطقة التدفئة الثانية"
+        },
+        "hint": {
+          "en": "Check only for dual-zone installations. Shows Zone 2 capabilities, flow cards and actions.",
+          "nl": "Controleer alleen voor installaties met twee zones. Toont Zone 2-mogelijkheden, flowkaarten en acties.",
+          "da": "Kontroller kun for installationer med to zoner. Viser Zone 2-funktioner, flowkort og handlinger.",
+          "de": "Nur für Dual-Zonen-Installationen prüfen. Zeigt die Fähigkeiten von Zone 2, Flow-Karten und Aktionen.",
+          "es": "Verifica solo para instalaciones de doble zona. Muestra las capacidades de la Zona 2, tarjetas de flujo y acciones.",
+          "fr": "Vérifiez uniquement pour les installations à double zone. Affiche les capacités de la Zone 2, les cartes de flux et les actions.",
+          "it": "Controlla solo per installazioni a doppia zona. Mostra le capacità della Zona 2, le schede di flusso e le azioni.",
+          "no": "Sjekk kun for installasjoner med to soner. Viser sone 2-funksjoner, flytkort og handlinger.",
+          "sv": "Kontrollera endast för installationer med två zoner. Visar funktioner, flödeskort och åtgärder för Zon 2.",
+          "pl": "Sprawdź tylko dla instalacji dwustrefowych. Pokazuje możliwości Strefy 2, karty przepływu i akcje.",
+          "ru": "Проверяйте только для установок с двумя зонами. Показывает возможности Зоны 2, карточки потоков и действия.",
+          "ko": "듀얼 존 설치에만 해당됩니다. 존 2의 기능, 흐름 카드 및 작업을 표시합니다.",
+          "ar": "تحقق فقط من التركيبات ذات المنطقة المزدوجة. يعرض إمكانيات المنطقة 2، بطاقات التدفق والإجراءات."
+        },
+        "value": false
+      },
+      {
+        "id": "enableDhw",
+        "type": "checkbox",
+        "label": {
+          "en": "Hot water tank installed (All-in-One or external DHW)",
+          "nl": "Warmwaterboiler geïnstalleerd (All-in-One of externe DHW)",
+          "da": "Varmtvandstank installeret (Alt-i-en eller ekstern brugsvand)",
+          "de": "Warmwasserspeicher installiert (All-in-One oder externer DHW)",
+          "es": "Tanque de agua caliente instalado (Todo en Uno o DHW externo)",
+          "fr": "Réservoir d'eau chaude installé (tout-en-un ou ECS externe)",
+          "it": "Serbatoio dell'acqua calda installato (All-in-One o DHW esterno)",
+          "no": "Varmtvannstank installert (Alt-i-ett eller ekstern VVB)",
+          "sv": "Varmvattentank installerad (All-in-One eller extern VVB)",
+          "pl": "Zainstalowany zbiornik na ciepłą wodę (All-in-One lub zewnętrzny DHW)",
+          "ru": "Установлен бак для горячей воды (встроенный или внешний ГВС)",
+          "ko": "온수 탱크 설치됨 (일체형 또는 외부 DHW)",
+          "ar": "خزان الماء الساخن مثبت (الكل في واحد أو DHW خارجي)"
+        },
+        "hint": {
+          "en": "Turn OFF if the heat pump is heating-only (no domestic hot water). When off, every DHW capability, flow card and action (tank temperature, heater outlet, boost, anti-bacteria, DHW setpoint/on-off) is hidden.",
+          "nl": "Schakel UIT als de warmtepomp alleen verwarmt (geen warm tapwater). Wanneer uitgeschakeld, worden alle functies voor warm tapwater, flowkaarten en acties (tanktemperatuur, verwarming uitlaat, boost, anti-bacterie, warm tapwater setpoint/aan-uit) verborgen.",
+          "da": "Sluk, hvis varmepumpen kun opvarmer (ingen brugsvand). Når den er slukket, skjules alle funktioner for brugsvand, flowkort og handlinger (tanktemperatur, varmeudløb, boost, anti-bakterie, brugsvandsindstilling/til-fra).",
+          "de": "Ausschalten, wenn die Wärmepumpe nur heizt (kein Warmwasser). Wenn ausgeschaltet, werden alle Warmwasserfunktionen, Flow-Karten und Aktionen (Tanktemperatur, Heizungsauslass, Boost, Anti-Bakterien, Warmwassersollwert/Ein-Aus) ausgeblendet.",
+          "es": "Apaga si la bomba de calor es solo para calefacción (sin agua caliente sanitaria). Cuando está apagada, se oculta toda capacidad de ACS, tarjeta de flujo y acción (temperatura del tanque, salida del calentador, impulso, anti-bacterias, punto de ajuste de ACS/encendido-apagado).",
+          "fr": "Désactivez si la pompe à chaleur est uniquement en mode chauffage (sans eau chaude sanitaire). Lorsqu'elle est désactivée, toutes les fonctionnalités ECS, les cartes de flux et les actions (température du réservoir, sortie du chauffage, boost, anti-bactéries, consigne ECS/marche-arrêt) sont masquées.",
+          "it": "Spegni se la pompa di calore è solo per il riscaldamento (senza acqua calda sanitaria). Quando è spenta, tutte le funzionalità ACS, le schede di flusso e le azioni (temperatura del serbatoio, uscita del riscaldatore, boost, anti-batterico, setpoint ACS/on-off) sono nascoste.",
+          "no": "Slå AV hvis varmepumpen kun varmer (ingen varmtvann). Når den er av, skjules alle varmtvannsfunksjoner, flytkort og handlinger (tanktemperatur, varmeutløp, boost, anti-bakterie, varmtvannssettpunkt/på-av).",
+          "sv": "Stäng AV om värmepumpen endast värmer (ingen tappvarmvatten). När den är avstängd döljs alla funktioner för tappvarmvatten, flödeskort och åtgärder (tanktemperatur, värmeutlopp, boost, antibakteriell, tappvarmvatten setpunkt/på-av).",
+          "pl": "Wyłącz, jeśli pompa ciepła działa tylko na ogrzewanie (bez ciepłej wody użytkowej). Po wyłączeniu wszystkie funkcje CWU, karty przepływu i działania (temperatura zbiornika, wylot grzałki, boost, antybakteryjne, punkt nastawy CWU/włącz-wyłącz) są ukryte.",
+          "ru": "Выключите, если тепловой насос работает только на отопление (без горячей воды). Когда выключено, все функции ГВС, карточки потока и действия (температура бака, выход нагревателя, усиление, антибактериальная функция, установка/включение-выключение ГВС) скрыты.",
+          "ko": "열펌프가 난방 전용(온수 없음)일 경우 꺼주세요. 꺼져 있을 때는 모든 온수 기능, 흐름 카드 및 동작(탱크 온도, 히터 출구, 부스트, 항균, 온수 설정값/켜기-끄기)이 숨겨집니다.",
+          "ar": "قم بإيقاف التشغيل إذا كانت المضخة الحرارية للتدفئة فقط (بدون مياه ساخنة منزلية). عند الإيقاف، يتم إخفاء كل قدرات المياه الساخنة المنزلية، بطاقة التدفق والإجراءات (درجة حرارة الخزان، مخرج السخان، التعزيز، مضاد البكتيريا، نقطة ضبط المياه الساخنة المنزلية/تشغيل-إيقاف)."
+        },
+        "value": true
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Energy estimation",
+      "nl": "Energie-inschatting",
+      "da": "Energiberegning",
+      "de": "Energieabschätzung",
+      "es": "Estimación de energía",
+      "fr": "Estimation de l'énergie",
+      "it": "Stima dell'energia",
+      "no": "Energiberegning",
+      "sv": "Energiberäkning",
+      "pl": "Szacowanie zużycia energii",
+      "ru": "Оценка энергии",
+      "ko": "에너지 추정",
+      "ar": "تقدير الطاقة"
+    },
+    "children": [
+      {
+        "id": "modelKey",
+        "type": "dropdown",
+        "label": {
+          "en": "Heat pump model",
+          "nl": "Warmtepomp model",
+          "da": "Varmepumpemodel",
+          "de": "Wärmepumpenmodell",
+          "es": "Modelo de bomba de calor",
+          "fr": "Modèle de pompe à chaleur",
+          "it": "Modello di pompa di calore",
+          "no": "Varmepumpemodell",
+          "sv": "Värmepumpsmodell",
+          "pl": "Model pompy ciepła",
+          "ru": "Модель теплового насоса",
+          "ko": "히트 펌프 모델",
+          "ar": "نموذج مضخة الحرارة"
+        },
+        "hint": {
+          "en": "Select your Estia model — the rated compressor input power for heating, cooling and DHW is taken from Toshiba's datasheet for that model. If your exact variant isn't listed, pick the closest capacity in the same series.",
+          "nl": "Selecteer je Estia-model — het nominale compressorvermogen voor verwarming, koeling en SWW is afkomstig uit Toshiba's datasheet voor dat model. Als jouw exacte variant niet wordt vermeld, kies dan de dichtstbijzijnde capaciteit in dezelfde serie.",
+          "da": "Vælg din Estia-model — den nominelle kompressorindgangseffekt til opvarmning, køling og brugsvand er taget fra Toshibas datablad for den model. Hvis din præcise variant ikke er angivet, skal du vælge den nærmeste kapacitet i samme serie.",
+          "de": "Wählen Sie Ihr Estia-Modell aus — die Nennleistung des Kompressors für Heizung, Kühlung und Warmwasser wird aus dem Toshiba-Datenblatt für dieses Modell entnommen. Wenn Ihre genaue Variante nicht aufgeführt ist, wählen Sie die nächstgelegene Kapazität in derselben Serie.",
+          "es": "Selecciona tu modelo Estia: la potencia de entrada del compresor para calefacción, refrigeración y ACS se toma de la hoja de datos de Toshiba para ese modelo. Si tu variante exacta no está en la lista, elige la capacidad más cercana de la misma serie.",
+          "fr": "Sélectionnez votre modèle Estia — la puissance d'entrée nominale du compresseur pour le chauffage, le refroidissement et l'ECS est tirée de la fiche technique de Toshiba pour ce modèle. Si votre variante exacte n'est pas répertoriée, choisissez la capacité la plus proche dans la même série.",
+          "it": "Seleziona il tuo modello Estia: la potenza nominale di ingresso del compressore per riscaldamento, raffreddamento e ACS è presa dalla scheda tecnica di Toshiba per quel modello. Se la tua variante esatta non è elencata, scegli la capacità più vicina nella stessa serie.",
+          "no": "Velg din Estia-modell — den nominelle kompressorens inngangseffekt for oppvarming, kjøling og varmtvann er hentet fra Toshibas datablad for den modellen. Hvis din eksakte variant ikke er oppført, velg den nærmeste kapasiteten i samme serie.",
+          "sv": "Välj din Estia-modell — den angivna kompressoreffektförbrukningen för uppvärmning, kylning och tappvarmvatten är hämtad från Toshibas datablad för den modellen. Om din exakta variant inte finns med, välj den närmaste kapaciteten i samma serie.",
+          "pl": "Wybierz swój model Estia — znamionowa moc wejściowa sprężarki dla ogrzewania, chłodzenia i CWU jest zaczerpnięta z karty katalogowej Toshiba dla tego modelu. Jeśli Twój dokładny wariant nie jest wymieniony, wybierz najbliższą pojemność w tej samej serii.",
+          "ru": "Выберите свою модель Estia — номинальная мощность компрессора для отопления, охлаждения и ГВС взята из технической документации Toshiba для этой модели. Если ваша точная версия не указана, выберите ближайшую по мощности в той же серии.",
+          "ko": "귀하의 Estia 모델을 선택하세요 — 난방, 냉방 및 DHW에 대한 정격 압축기 입력 전력은 해당 모델의 Toshiba 데이터 시트에서 가져옵니다. 정확한 변형이 목록에 없으면 동일한 시리즈에서 가장 가까운 용량을 선택하세요.",
+          "ar": "اختر طراز Estia الخاص بك — يتم أخذ قدرة الإدخال المقدرة للضاغط للتدفئة والتبريد والمياه الساخنة المنزلية من ورقة بيانات Toshiba لهذا الطراز. إذا لم يكن الطراز الخاص بك مدرجًا بالضبط، اختر السعة الأقرب في نفس السلسلة."
+        },
+        "value": "r32-s1-1101",
+        "values": [
+          {
+            "id": "r32-s1-401",
+            "label": {
+              "en": "R32 Series 1/S2 — 4 kW (HWT-401HW-E)",
+              "nl": "R32 Serie 1/S2 — 4 kW (HWT-401HW-E)",
+              "da": "R32 Serie 1/S2 — 4 kW (HWT-401HW-E)",
+              "de": "R32 Serie 1/S2 — 4 kW (HWT-401HW-E)",
+              "es": "Serie R32 1/S2 — 4 kW (HWT-401HW-E)",
+              "fr": "Série R32 1/S2 — 4 kW (HWT-401HW-E)",
+              "it": "Serie R32 1/S2 — 4 kW (HWT-401HW-E)",
+              "no": "R32 Series 1/S2 — 4 kW (HWT-401HW-E)",
+              "sv": "R32 Series 1/S2 — 4 kW (HWT-401HW-E)",
+              "pl": "Seria R32 1/S2 — 4 kW (HWT-401HW-E)",
+              "ru": "Серия R32 1/S2 — 4 кВт (HWT-401HW-E)",
+              "ko": "R32 시리즈 1/S2 — 4 kW (HWT-401HW-E)",
+              "ar": "سلسلة R32 1/S2 — 4 كيلوواط (HWT-401HW-E)"
+            }
+          },
+          {
+            "id": "r32-s1-601",
+            "label": {
+              "en": "R32 Series 1/S2 — 6 kW (HWT-601HW-E)",
+              "nl": "R32 Serie 1/S2 — 6 kW (HWT-601HW-E)",
+              "da": "R32 Series 1/S2 — 6 kW (HWT-601HW-E)",
+              "de": "R32 Serie 1/S2 — 6 kW (HWT-601HW-E)",
+              "es": "Serie R32 1/S2 — 6 kW (HWT-601HW-E)",
+              "fr": "Série R32 1/S2 — 6 kW (HWT-601HW-E)",
+              "it": "Serie R32 1/S2 — 6 kW (HWT-601HW-E)",
+              "no": "R32 Series 1/S2 — 6 kW (HWT-601HW-E)",
+              "sv": "R32 Series 1/S2 — 6 kW (HWT-601HW-E)",
+              "pl": "Seria R32 1/S2 — 6 kW (HWT-601HW-E)",
+              "ru": "Серия R32 1/S2 — 6 кВт (HWT-601HW-E)",
+              "ko": "R32 시리즈 1/S2 — 6 kW (HWT-601HW-E)",
+              "ar": "سلسلة R32 1/S2 — 6 كيلو واط (HWT-601HW-E)"
+            }
+          },
+          {
+            "id": "r32-s1-801",
+            "label": {
+              "en": "R32 Series 1/S2 — 8 kW (HWT-801HW-E)",
+              "nl": "R32 Serie 1/S2 — 8 kW (HWT-801HW-E)",
+              "da": "R32 Serie 1/S2 — 8 kW (HWT-801HW-E)",
+              "de": "R32 Serie 1/S2 — 8 kW (HWT-801HW-E)",
+              "es": "Serie R32 1/S2 — 8 kW (HWT-801HW-E)",
+              "fr": "Série R32 1/S2 — 8 kW (HWT-801HW-E)",
+              "it": "Serie R32 1/S2 — 8 kW (HWT-801HW-E)",
+              "no": "R32 Series 1/S2 — 8 kW (HWT-801HW-E)",
+              "sv": "R32 Series 1/S2 — 8 kW (HWT-801HW-E)",
+              "pl": "Seria R32 1/S2 — 8 kW (HWT-801HW-E)",
+              "ru": "Серия R32 1/S2 — 8 кВт (HWT-801HW-E)",
+              "ko": "R32 시리즈 1/S2 — 8 kW (HWT-801HW-E)",
+              "ar": "سلسلة R32 1/S2 — 8 كيلو واط (HWT-801HW-E)"
+            }
+          },
+          {
+            "id": "r32-s1-1101",
+            "label": {
+              "en": "R32 Series 1/S2 — 11 kW (HWT-1101HW-E)",
+              "nl": "R32 Serie 1/S2 — 11 kW (HWT-1101HW-E)",
+              "da": "R32 Serie 1/S2 — 11 kW (HWT-1101HW-E)",
+              "de": "R32 Serie 1/S2 — 11 kW (HWT-1101HW-E)",
+              "es": "Serie R32 1/S2 — 11 kW (HWT-1101HW-E)",
+              "fr": "Série R32 1/S2 — 11 kW (HWT-1101HW-E)",
+              "it": "Serie R32 1/S2 — 11 kW (HWT-1101HW-E)",
+              "no": "R32 Series 1/S2 — 11 kW (HWT-1101HW-E)",
+              "sv": "R32 Series 1/S2 — 11 kW (HWT-1101HW-E)",
+              "pl": "Seria R32 1/S2 — 11 kW (HWT-1101HW-E)",
+              "ru": "Серия R32 1/S2 — 11 кВт (HWT-1101HW-E)",
+              "ko": "R32 시리즈 1/S2 — 11 kW (HWT-1101HW-E)",
+              "ar": "سلسلة R32 1/S2 — 11 كيلوواط (HWT-1101HW-E)"
+            }
+          },
+          {
+            "id": "r32-s1-1401",
+            "label": {
+              "en": "R32 Series 1/S2 — 14 kW (HWT-1401H8W-E)",
+              "nl": "R32 Serie 1/S2 — 14 kW (HWT-1401H8W-E)",
+              "da": "R32 Serie 1/S2 — 14 kW (HWT-1401H8W-E)",
+              "de": "R32 Serie 1/S2 — 14 kW (HWT-1401H8W-E)",
+              "es": "Serie R32 1/S2 — 14 kW (HWT-1401H8W-E)",
+              "fr": "Série R32 1/S2 — 14 kW (HWT-1401H8W-E)",
+              "it": "Serie R32 1/S2 — 14 kW (HWT-1401H8W-E)",
+              "no": "R32 Series 1/S2 — 14 kW (HWT-1401H8W-E)",
+              "sv": "R32 Series 1/S2 — 14 kW (HWT-1401H8W-E)",
+              "pl": "Seria R32 1/S2 — 14 kW (HWT-1401H8W-E)",
+              "ru": "Серия R32 1/S2 — 14 кВт (HWT-1401H8W-E)",
+              "ko": "R32 시리즈 1/S2 — 14 kW (HWT-1401H8W-E)",
+              "ar": "سلسلة R32 1/S2 — 14 كيلو واط (HWT-1401H8W-E)"
+            }
+          },
+          {
+            "id": "r410a-s5-455",
+            "label": {
+              "en": "R410A Series 5 — 4.5 kW (HWS-455H-E)",
+              "nl": "R410A Serie 5 — 4.5 kW (HWS-455H-E)",
+              "da": "R410A Serie 5 — 4,5 kW (HWS-455H-E)",
+              "de": "R410A Serie 5 — 4,5 kW (HWS-455H-E)",
+              "es": "Serie R410A 5 — 4.5 kW (HWS-455H-E)",
+              "fr": "R410A Série 5 — 4,5 kW (HWS-455H-E)",
+              "it": "Serie R410A 5 — 4,5 kW (HWS-455H-E)",
+              "no": "R410A Series 5 — 4,5 kW (HWS-455H-E)",
+              "sv": "R410A Series 5 — 4,5 kW (HWS-455H-E)",
+              "pl": "Seria R410A 5 — 4,5 kW (HWS-455H-E)",
+              "ru": "Серия R410A 5 — 4,5 кВт (HWS-455H-E)",
+              "ko": "R410A 시리즈 5 — 4.5 kW (HWS-455H-E)",
+              "ar": "سلسلة R410A 5 — 4.5 كيلو واط (HWS-455H-E)"
+            }
+          },
+          {
+            "id": "r410a-s5-805",
+            "label": {
+              "en": "R410A Series 5 — 8 kW (HWS-805H-E)",
+              "nl": "R410A Serie 5 — 8 kW (HWS-805H-E)",
+              "da": "R410A Serie 5 — 8 kW (HWS-805H-E)",
+              "de": "R410A Serie 5 — 8 kW (HWS-805H-E)",
+              "es": "Serie R410A 5 — 8 kW (HWS-805H-E)",
+              "fr": "Série R410A 5 — 8 kW (HWS-805H-E)",
+              "it": "Serie R410A 5 — 8 kW (HWS-805H-E)",
+              "no": "R410A Serie 5 — 8 kW (HWS-805H-E)",
+              "sv": "R410A Serie 5 — 8 kW (HWS-805H-E)",
+              "pl": "Seria R410A 5 — 8 kW (HWS-805H-E)",
+              "ru": "Серия R410A 5 — 8 кВт (HWS-805H-E)",
+              "ko": "R410A 시리즈 5 — 8 kW (HWS-805H-E)",
+              "ar": "سلسلة R410A 5 — 8 كيلوواط (HWS-805H-E)"
+            }
+          },
+          {
+            "id": "r410a-s5-1105",
+            "label": {
+              "en": "R410A Series 5 — 11 kW (HWS-1105H-E)",
+              "nl": "R410A Serie 5 — 11 kW (HWS-1105H-E)",
+              "da": "R410A Serie 5 — 11 kW (HWS-1105H-E)",
+              "de": "R410A Serie 5 — 11 kW (HWS-1105H-E)",
+              "es": "Serie R410A 5 — 11 kW (HWS-1105H-E)",
+              "fr": "Série R410A 5 — 11 kW (HWS-1105H-E)",
+              "it": "Serie R410A 5 — 11 kW (HWS-1105H-E)",
+              "no": "R410A Serie 5 — 11 kW (HWS-1105H-E)",
+              "sv": "R410A Serie 5 — 11 kW (HWS-1105H-E)",
+              "pl": "Seria R410A 5 — 11 kW (HWS-1105H-E)",
+              "ru": "Серия R410A 5 — 11 кВт (HWS-1105H-E)",
+              "ko": "R410A 시리즈 5 — 11 kW (HWS-1105H-E)",
+              "ar": "سلسلة R410A 5 — 11 كيلوواط (HWS-1105H-E)"
+            }
+          },
+          {
+            "id": "r410a-s5-1405",
+            "label": {
+              "en": "R410A Series 5 — 14 kW (HWS-1405H8(R)-E)",
+              "nl": "R410A Serie 5 — 14 kW (HWS-1405H8(R)-E)",
+              "da": "R410A Serie 5 — 14 kW (HWS-1405H8(R)-E)",
+              "de": "R410A Serie 5 — 14 kW (HWS-1405H8(R)-E)",
+              "es": "Serie R410A 5 — 14 kW (HWS-1405H8(R)-E)",
+              "fr": "Série R410A 5 — 14 kW (HWS-1405H8(R)-E)",
+              "it": "Serie R410A 5 — 14 kW (HWS-1405H8(R)-E)",
+              "no": "R410A-serien 5 — 14 kW (HWS-1405H8(R)-E)",
+              "sv": "R410A Serie 5 — 14 kW (HWS-1405H8(R)-E)",
+              "pl": "Seria R410A 5 — 14 kW (HWS-1405H8(R)-E)",
+              "ru": "Серия R410A 5 — 14 кВт (HWS-1405H8(R)-E)",
+              "ko": "R410A 시리즈 5 — 14 kW (HWS-1405H8(R)-E)",
+              "ar": "سلسلة R410A 5 — 14 كيلوواط (HWS-1405H8(R)-E)"
+            }
+          },
+          {
+            "id": "r410a-s5-1605",
+            "label": {
+              "en": "R410A Series 5 — 16 kW (HWS-1605H8(R)-E)",
+              "nl": "R410A Serie 5 — 16 kW (HWS-1605H8(R)-E)",
+              "da": "R410A Serie 5 — 16 kW (HWS-1605H8(R)-E)",
+              "de": "R410A Serie 5 — 16 kW (HWS-1605H8(R)-E)",
+              "es": "Serie R410A 5 — 16 kW (HWS-1605H8(R)-E)",
+              "fr": "Série R410A 5 — 16 kW (HWS-1605H8(R)-E)",
+              "it": "Serie R410A 5 — 16 kW (HWS-1605H8(R)-E)",
+              "no": "R410A Serie 5 — 16 kW (HWS-1605H8(R)-E)",
+              "sv": "R410A-serien 5 — 16 kW (HWS-1605H8(R)-E)",
+              "pl": "Seria R410A 5 — 16 kW (HWS-1605H8(R)-E)",
+              "ru": "Серия R410A 5 — 16 кВт (HWS-1605H8(R)-E)",
+              "ko": "R410A 시리즈 5 — 16 kW (HWS-1605H8(R)-E)",
+              "ar": "سلسلة R410A 5 — 16 كيلوواط (HWS-1605H8(R)-E)"
+            }
+          },
+          {
+            "id": "r410a-hp-805",
+            "label": {
+              "en": "R410A Hi Power — 8 kW (HWS-P805HR-E)",
+              "nl": "R410A Hi Power — 8 kW (HWS-P805HR-E)",
+              "da": "R410A Hi Power — 8 kW (HWS-P805HR-E)",
+              "de": "R410A Hi Power — 8 kW (HWS-P805HR-E)",
+              "es": "R410A Hi Power — 8 kW (HWS-P805HR-E)",
+              "fr": "R410A Hi Power — 8 kW (HWS-P805HR-E)",
+              "it": "R410A Hi Power — 8 kW (HWS-P805HR-E)",
+              "no": "R410A Hi Power — 8 kW (HWS-P805HR-E)",
+              "sv": "R410A Hi Power — 8 kW (HWS-P805HR-E)",
+              "pl": "R410A Hi Power — 8 kW (HWS-P805HR-E)",
+              "ru": "R410A Hi Power — 8 кВт (HWS-P805HR-E)",
+              "ko": "R410A 하이 파워 — 8 kW (HWS-P805HR-E)",
+              "ar": "R410A هاي باور — 8 كيلو واط (HWS-P805HR-E)"
+            }
+          },
+          {
+            "id": "r410a-hp-1105",
+            "label": {
+              "en": "R410A Hi Power — 11 kW (HWS-P1105HR-E)",
+              "nl": "R410A Hi Power — 11 kW (HWS-P1105HR-E)",
+              "da": "R410A Hi Power — 11 kW (HWS-P1105HR-E)",
+              "de": "R410A Hi Power — 11 kW (HWS-P1105HR-E)",
+              "es": "R410A Hi Power — 11 kW (HWS-P1105HR-E)",
+              "fr": "R410A Hi Power — 11 kW (HWS-P1105HR-E)",
+              "it": "R410A Hi Power — 11 kW (HWS-P1105HR-E)",
+              "no": "R410A Hi Power — 11 kW (HWS-P1105HR-E)",
+              "sv": "R410A Hi Power — 11 kW (HWS-P1105HR-E)",
+              "pl": "R410A Hi Power — 11 kW (HWS-P1105HR-E)",
+              "ru": "R410A Hi Power — 11 кВт (HWS-P1105HR-E)",
+              "ko": "R410A 하이 파워 — 11 kW (HWS-P1105HR-E)",
+              "ar": "R410A هاي باور — 11 كيلو واط (HWS-P1105HR-E)"
+            }
+          },
+          {
+            "id": "r410a-hp-1405",
+            "label": {
+              "en": "R410A Hi Power — 14 kW (HWS-P1405H8R-E)",
+              "nl": "R410A Hi Power — 14 kW (HWS-P1405H8R-E)",
+              "da": "R410A Hi Power — 14 kW (HWS-P1405H8R-E)",
+              "de": "R410A Hi Power — 14 kW (HWS-P1405H8R-E)",
+              "es": "R410A Hi Power — 14 kW (HWS-P1405H8R-E)",
+              "fr": "R410A Hi Power — 14 kW (HWS-P1405H8R-E)",
+              "it": "R410A Hi Power — 14 kW (HWS-P1405H8R-E)",
+              "no": "R410A Hi Power — 14 kW (HWS-P1405H8R-E)",
+              "sv": "R410A Hi Power — 14 kW (HWS-P1405H8R-E)",
+              "pl": "R410A Hi Power — 14 kW (HWS-P1405H8R-E)",
+              "ru": "R410A Hi Power — 14 кВт (HWS-P1405H8R-E)",
+              "ko": "R410A 하이 파워 — 14 kW (HWS-P1405H8R-E)",
+              "ar": "R410A هاي باور — 14 كيلو واط (HWS-P1405H8R-E)"
+            }
+          },
+          {
+            "id": "r410a-s4-803",
+            "label": {
+              "en": "R410A Series 4 — 8 kW (HWS-803H-E, legacy)",
+              "nl": "R410A Serie 4 — 8 kW (HWS-803H-E, legacy)",
+              "da": "R410A Serie 4 — 8 kW (HWS-803H-E, legacy)",
+              "de": "R410A Serie 4 — 8 kW (HWS-803H-E, legacy)",
+              "es": "Serie R410A 4 — 8 kW (HWS-803H-E, legado)",
+              "fr": "Série R410A 4 — 8 kW (HWS-803H-E, ancien modèle)",
+              "it": "Serie R410A 4 — 8 kW (HWS-803H-E, legacy)",
+              "no": "R410A-serien 4 — 8 kW (HWS-803H-E, legacy)",
+              "sv": "R410A-serien 4 — 8 kW (HWS-803H-E, legacy)",
+              "pl": "Seria R410A 4 — 8 kW (HWS-803H-E, starsza wersja)",
+              "ru": "Серия R410A 4 — 8 кВт (HWS-803H-E, устаревшая)",
+              "ko": "R410A 시리즈 4 — 8 kW (HWS-803H-E, 구형)",
+              "ar": "سلسلة R410A 4 — 8 كيلوواط (HWS-803H-E، قديم)"
+            }
+          },
+          {
+            "id": "r410a-s4-1103",
+            "label": {
+              "en": "R410A Series 4 — 11 kW (HWS-1103H-E, legacy)",
+              "nl": "R410A Serie 4 — 11 kW (HWS-1103H-E, legacy)",
+              "da": "R410A Serie 4 — 11 kW (HWS-1103H-E, legacy)",
+              "de": "R410A Serie 4 — 11 kW (HWS-1103H-E, legacy)",
+              "es": "Serie R410A 4 — 11 kW (HWS-1103H-E, legado)",
+              "fr": "Série R410A 4 — 11 kW (HWS-1103H-E, legacy)",
+              "it": "Serie R410A 4 — 11 kW (HWS-1103H-E, legacy)",
+              "no": "R410A-serien 4 — 11 kW (HWS-1103H-E, legacy)",
+              "sv": "R410A-serien 4 — 11 kW (HWS-1103H-E, legacy)",
+              "pl": "Seria R410A 4 — 11 kW (HWS-1103H-E, legacy)",
+              "ru": "Серия R410A 4 — 11 кВт (HWS-1103H-E, устаревшая)",
+              "ko": "R410A 시리즈 4 — 11 kW (HWS-1103H-E, 구형)",
+              "ar": "سلسلة R410A 4 — 11 كيلوواط (HWS-1103H-E، قديم)"
+            }
+          },
+          {
+            "id": "r410a-s4-1403",
+            "label": {
+              "en": "R410A Series 4 — 14 kW (HWS-1403H8(R)-E, legacy)",
+              "nl": "R410A Serie 4 — 14 kW (HWS-1403H8(R)-E, legacy)",
+              "da": "R410A Serie 4 — 14 kW (HWS-1403H8(R)-E, legacy)",
+              "de": "R410A Serie 4 — 14 kW (HWS-1403H8(R)-E, legacy)",
+              "es": "Serie R410A 4 — 14 kW (HWS-1403H8(R)-E, legado)",
+              "fr": "Série R410A 4 — 14 kW (HWS-1403H8(R)-E, ancien modèle)",
+              "it": "Serie R410A 4 — 14 kW (HWS-1403H8(R)-E, legacy)",
+              "no": "R410A-serien 4 — 14 kW (HWS-1403H8(R)-E, legacy)",
+              "sv": "R410A-serien 4 — 14 kW (HWS-1403H8(R)-E, äldre modell)",
+              "pl": "Seria R410A 4 — 14 kW (HWS-1403H8(R)-E, starsza wersja)",
+              "ru": "Серия R410A 4 — 14 кВт (HWS-1403H8(R)-E, устаревшая)",
+              "ko": "R410A 시리즈 4 — 14 kW (HWS-1403H8(R)-E, 구형)",
+              "ar": "سلسلة R410A 4 — 14 كيلوواط (HWS-1403H8(R)-E، قديم)"
+            }
+          },
+          {
+            "id": "r410a-s4-1603",
+            "label": {
+              "en": "R410A Series 4 — 16 kW (HWS-1603H8(R)-E, legacy)",
+              "nl": "R410A Serie 4 — 16 kW (HWS-1603H8(R)-E, legacy)",
+              "da": "R410A Serie 4 — 16 kW (HWS-1603H8(R)-E, legacy)",
+              "de": "R410A Serie 4 — 16 kW (HWS-1603H8(R)-E, legacy)",
+              "es": "Serie R410A 4 — 16 kW (HWS-1603H8(R)-E, legado)",
+              "fr": "Série R410A 4 — 16 kW (HWS-1603H8(R)-E, ancien modèle)",
+              "it": "Serie R410A 4 — 16 kW (HWS-1603H8(R)-E, legacy)",
+              "no": "R410A-serien 4 — 16 kW (HWS-1603H8(R)-E, legacy)",
+              "sv": "R410A-serien 4 — 16 kW (HWS-1603H8(R)-E, äldre modell)",
+              "pl": "Seria R410A 4 — 16 kW (HWS-1603H8(R)-E, starsza wersja)",
+              "ru": "Серия R410A 4 — 16 кВт (HWS-1603H8(R)-E, устаревшая)",
+              "ko": "R410A 시리즈 4 — 16 kW (HWS-1603H8(R)-E, 구형)",
+              "ar": "سلسلة R410A 4 — 16 كيلوواط (HWS-1603H8(R)-E، قديم)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "backupHeaterKW",
+        "type": "dropdown",
+        "label": {
+          "en": "Back-up heater rating",
+          "nl": "Back-up verwarmer vermogen",
+          "da": "Reservevarmerens effekt",
+          "de": "Leistung des Zusatzheizers",
+          "es": "Calificación del calentador de respaldo",
+          "fr": "Puissance du chauffage de secours",
+          "it": "Valutazione del riscaldatore di riserva",
+          "no": "Reservevarmerens effekt",
+          "sv": "Effekt för reservvärmare",
+          "pl": "Moc grzałki zapasowej",
+          "ru": "Мощность резервного обогревателя",
+          "ko": "백업 히터 등급",
+          "ar": "قدرة السخان الاحتياطي"
+        },
+        "hint": {
+          "en": "The resistive heater INSIDE the hydro unit, before the 3-way valve. It assists the heat pump in cold weather AND during DHW production (Toshiba's design). Pick the rating wired by your installer — single-phase models are 3 kW (M3) or 6 kW (M6); three-phase are 6 kW (T6/D6) or 9 kW (T9). Register 40040 tracks its runtime hours.",
+          "nl": "De weerstandverwarmer BINNEN de hydro-unit, vóór de 3-wegklep. Het ondersteunt de warmtepomp bij koud weer EN tijdens de productie van sanitair warm water (Toshiba's ontwerp). Kies de capaciteit die door je installateur is aangesloten — eenfasemodellen zijn 3 kW (M3) of 6 kW (M6); driefasemodellen zijn 6 kW (T6/D6) of 9 kW (T9). Register 40040 houdt de draaiuren bij.",
+          "da": "Den resistive varmelegeme INDE i hydroenheden, før 3-vejs ventilen. Den hjælper varmepumpen i koldt vejr OG under produktion af brugsvand (Toshibas design). Vælg den effekt, som din installatør har tilsluttet — enfasede modeller er 3 kW (M3) eller 6 kW (M6); trefasede er 6 kW (T6/D6) eller 9 kW (T9). Register 40040 sporer dens driftstimer.",
+          "de": "Der Widerstandsheizer befindet sich INNEN in der Hydro-Einheit, vor dem 3-Wege-Ventil. Er unterstützt die Wärmepumpe bei kaltem Wetter UND während der Warmwasserbereitung (Toshibas Design). Wählen Sie die von Ihrem Installateur verdrahtete Leistung — Einphasenmodelle sind 3 kW (M3) oder 6 kW (M6); Dreiphasenmodelle sind 6 kW (T6/D6) oder 9 kW (T9). Register 40040 zeichnet die Betriebsstunden auf.",
+          "es": "El calentador resistivo DENTRO de la unidad hidro, antes de la válvula de 3 vías. Ayuda a la bomba de calor en clima frío Y durante la producción de ACS (diseño de Toshiba). Elige la potencia conectada por tu instalador: los modelos monofásicos son de 3 kW (M3) o 6 kW (M6); los trifásicos son de 6 kW (T6/D6) o 9 kW (T9). El registro 40040 rastrea sus horas de funcionamiento.",
+          "fr": "Le radiateur résistif À L'INTÉRIEUR de l'unité hydro, avant la vanne 3 voies. Il assiste la pompe à chaleur par temps froid ET pendant la production d'ECS (conception de Toshiba). Choisissez la puissance câblée par votre installateur — les modèles monophasés sont de 3 kW (M3) ou 6 kW (M6) ; les modèles triphasés sont de 6 kW (T6/D6) ou 9 kW (T9). Le registre 40040 suit ses heures de fonctionnement.",
+          "it": "Il riscaldatore resistivo ALL'INTERNO dell'unità idronica, prima della valvola a 3 vie. Assiste la pompa di calore in caso di freddo E durante la produzione di ACS (design di Toshiba). Scegli la potenza cablata dal tuo installatore — i modelli monofase sono da 3 kW (M3) o 6 kW (M6); i modelli trifase sono da 6 kW (T6/D6) o 9 kW (T9). Il registro 40040 tiene traccia delle ore di funzionamento.",
+          "no": "Den resistive varmeovnen INNE i hydroenheten, før 3-veisventilen. Den hjelper varmepumpen i kaldt vær OG under produksjon av varmtvann (Toshibas design). Velg effekten som er koblet av installatøren din — enfasemodeller er 3 kW (M3) eller 6 kW (M6); trefasemodeller er 6 kW (T6/D6) eller 9 kW (T9). Register 40040 sporer driftstimene.",
+          "sv": "Den resistiva värmaren INUTI hydroenheten, före 3-vägsventilen. Den hjälper värmepumpen i kallt väder OCH under produktion av tappvarmvatten (Toshibas design). Välj den effekt som din installatör har kopplat — enfasmodeller är 3 kW (M3) eller 6 kW (M6); trefas är 6 kW (T6/D6) eller 9 kW (T9). Register 40040 spårar dess drifttimmar.",
+          "pl": "Grzałka rezystancyjna WEWNĄTRZ jednostki hydro, przed zaworem trójdrożnym. Wspomaga pompę ciepła w zimne dni ORAZ podczas produkcji CWU (projekt Toshiba). Wybierz moc podłączoną przez instalatora — modele jednofazowe to 3 kW (M3) lub 6 kW (M6); trójfazowe to 6 kW (T6/D6) lub 9 kW (T9). Rejestr 40040 śledzi godziny pracy.",
+          "ru": "Резистивный нагреватель ВНУТРИ гидроблока, перед трехходовым клапаном. Он помогает тепловому насосу в холодную погоду И во время производства ГВС (дизайн Toshiba). Выберите мощность, подключенную вашим установщиком — однофазные модели имеют мощность 3 кВт (M3) или 6 кВт (M6); трехфазные — 6 кВт (T6/D6) или 9 кВт (T9). Регистр 40040 отслеживает его рабочие часы.",
+          "ko": "히트 펌프가 추운 날씨와 온수 생산 중에 도움을 주는 하이드로 유닛 내부의 저항 히터는 3방 밸브 앞에 위치해 있습니다 (Toshiba의 설계). 설치자가 연결한 용량을 선택하세요 — 단상 모델은 3 kW (M3) 또는 6 kW (M6); 삼상 모델은 6 kW (T6/D6) 또는 9 kW (T9)입니다. 레지스터 40040은 작동 시간을 추적합니다.",
+          "ar": "السخان المقاوم داخل وحدة الهيدرو، قبل الصمام الثلاثي الاتجاه. يساعد المضخة الحرارية في الطقس البارد وأثناء إنتاج المياه الساخنة (تصميم Toshiba). اختر التصنيف الذي قام بتركيبه الفني الخاص بك - النماذج أحادية الطور هي 3 كيلوواط (M3) أو 6 كيلوواط (M6)؛ النماذج ثلاثية الطور هي 6 كيلوواط (T6/D6) أو 9 كيلوواط (T9). السجل 40040 يتتبع ساعات تشغيله."
+        },
+        "value": "3",
+        "values": [
+          {
+            "id": "0",
+            "label": {
+              "en": "Not installed (0 kW)",
+              "nl": "Niet geïnstalleerd (0 kW)",
+              "da": "Ikke installeret (0 kW)",
+              "de": "Nicht installiert (0 kW)",
+              "es": "No instalado (0 kW)",
+              "fr": "Non installé (0 kW)",
+              "it": "Non installato (0 kW)",
+              "no": "Ikke installert (0 kW)",
+              "sv": "Inte installerad (0 kW)",
+              "pl": "Nie zainstalowano (0 kW)",
+              "ru": "Не установлено (0 кВт)",
+              "ko": "설치되지 않음 (0 kW)",
+              "ar": "غير مثبت (0 كيلوواط)"
+            }
+          },
+          {
+            "id": "3",
+            "label": {
+              "en": "3 kW — 1-phase, M3 suffix",
+              "nl": "3 kW — 1-fase, M3 achtervoegsel",
+              "da": "3 kW — 1-fase, M3 suffiks",
+              "de": "3 kW — 1-phasig, M3-Suffix",
+              "es": "3 kW — 1 fase, sufijo M3",
+              "fr": "3 kW — 1-phase, suffixe M3",
+              "it": "3 kW — 1 fase, suffisso M3",
+              "no": "3 kW — 1-fase, M3-suffiks",
+              "sv": "3 kW — 1-fas, M3-suffix",
+              "pl": "3 kW — 1-fazowy, M3 przyrostek",
+              "ru": "3 кВт — 1-фазный, суффикс M3",
+              "ko": "3 kW — 단상, M3 접미사",
+              "ar": "٣ كيلوواط — مرحلة واحدة، اللاحقة M3"
+            }
+          },
+          {
+            "id": "6",
+            "label": {
+              "en": "6 kW — 1-phase M6, or 3-phase T6/D6",
+              "nl": "6 kW — 1-fase M6, of 3-fase T6/D6",
+              "da": "6 kW — 1-faset M6, eller 3-faset T6/D6",
+              "de": "6 kW — 1-phasig M6 oder 3-phasig T6/D6",
+              "es": "6 kW — Monofásico M6, o Trifásico T6/D6",
+              "fr": "6 kW — 1-phase M6, ou 3-phase T6/D6",
+              "it": "6 kW — 1 fase M6, o 3 fasi T6/D6",
+              "no": "6 kW — 1-fase M6, eller 3-fase T6/D6",
+              "sv": "6 kW — 1-fas M6, eller 3-fas T6/D6",
+              "pl": "6 kW — 1-fazowy M6 lub 3-fazowy T6/D6",
+              "ru": "6 кВт — 1-фазный M6 или 3-фазный T6/D6",
+              "ko": "6 kW — 1상 M6, 또는 3상 T6/D6",
+              "ar": "٦ كيلوواط — 1-فاز M6، أو 3-فاز T6/D6"
+            }
+          },
+          {
+            "id": "9",
+            "label": {
+              "en": "9 kW — 3-phase T9",
+              "nl": "9 kW — 3-fase T9",
+              "da": "9 kW — 3-faset T9",
+              "de": "9 kW — 3-phasig T9",
+              "es": "9 kW — 3 fases T9",
+              "fr": "9 kW — Triphasé T9",
+              "it": "9 kW — 3 fasi T9",
+              "no": "9 kW — 3-fase T9",
+              "sv": "9 kW — 3-fas T9",
+              "pl": "9 kW — 3-fazowy T9",
+              "ru": "9 кВт — 3-фазный T9",
+              "ko": "9 kW — 3상 T9",
+              "ar": "9 كيلو واط — 3 مراحل T9"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Detected (read-only)",
+      "nl": "Gedetecteerd (alleen-lezen)",
+      "da": "Registreret (skrivebeskyttet)",
+      "de": "Erkannt (nur lesen)",
+      "es": "Detectado (solo lectura)",
+      "fr": "Détecté (lecture seule)",
+      "it": "Rilevato (solo lettura)",
+      "no": "Oppdaget (kun lesing)",
+      "sv": "Upptäckt (endast läsbar)",
+      "pl": "Wykryto (tylko do odczytu)",
+      "ru": "Обнаружено (только для чтения)",
+      "ko": "감지됨 (읽기 전용)",
+      "ar": "تم الكشف (للقراءة فقط)"
+    },
+    "children": [
+      {
+        "id": "detectedSeries",
+        "type": "label",
+        "label": {
+          "en": "Hydro unit series",
+          "nl": "Hydro-unit serie",
+          "da": "Hydroenhedsserie",
+          "de": "Hydroeinheiten-Serie",
+          "es": "Serie de unidades hidro",
+          "fr": "Série d'unités hydro",
+          "it": "Serie unità idronica",
+          "no": "Hydroenhet-serien",
+          "sv": "Hydroenhetsserie",
+          "pl": "Seria jednostek hydro",
+          "ru": "Серия гидроблоков",
+          "ko": "하이드로 유닛 시리즈",
+          "ar": "سلسلة وحدة الهيدرو"
+        },
+        "value": "—"
+      },
+      {
+        "id": "detectedSlaveAddress",
+        "type": "label",
+        "label": {
+          "en": "Slave address on interface",
+          "nl": "Slave-adres op interface",
+          "da": "Slave-adresse på interface",
+          "de": "Slave-Adresse auf Schnittstelle",
+          "es": "Dirección esclava en la interfaz",
+          "fr": "Adresse esclave sur l'interface",
+          "it": "Indirizzo slave sull'interfaccia",
+          "no": "Slave-adresse på grensesnittet",
+          "sv": "Slave-adress på gränssnittet",
+          "pl": "Adres podrzędny na interfejsie",
+          "ru": "Адрес ведомого на интерфейсе",
+          "ko": "인터페이스의 슬레이브 주소",
+          "ar": "عنوان العبد على الواجهة"
+        },
+        "value": "—"
+      },
+      {
+        "id": "detectedBaudRate",
+        "type": "label",
+        "label": {
+          "en": "Interface baud rate",
+          "nl": "Interface baudrate",
+          "da": "Grænseflade baudrate",
+          "de": "Schnittstellen-Baudrate",
+          "es": "Velocidad de transmisión de la interfaz",
+          "fr": "Débit en bauds de l'interface",
+          "it": "Velocità di trasmissione dell'interfaccia",
+          "no": "Grensesnittets baudrate",
+          "sv": "Gränssnittets baudhastighet",
+          "pl": "Szybkość transmisji interfejsu",
+          "ru": "Скорость передачи интерфейса",
+          "ko": "인터페이스 보드 속도",
+          "ar": "معدل البود للواجهة"
+        },
+        "value": "—"
+      },
+      {
+        "id": "lastSeen",
+        "type": "label",
+        "label": {
+          "en": "Last successful poll",
+          "nl": "Laatste succesvolle peiling",
+          "da": "Sidste vellykkede forespørgsel",
+          "de": "Letzte erfolgreiche Abfrage",
+          "es": "Última encuesta exitosa",
+          "fr": "Dernier sondage réussi",
+          "it": "Ultimo sondaggio riuscito",
+          "no": "Siste vellykkede forespørsel",
+          "sv": "Senaste lyckade avstämning",
+          "pl": "Ostatnie udane odpytywanie",
+          "ru": "Последний успешный опрос",
+          "ko": "마지막 성공적인 폴",
+          "ar": "آخر استبيان ناجح"
+        },
+        "value": "—"
+      }
+    ]
+  }
+]

@@ -1,0 +1,6 @@
+Breng je Toshiba Estia lucht-naar-water warmtepomp naar Homey. Praat rechtstreeks met de unit via Modbus op je thuisnetwerk — geen cloud, geen vertragingen. Lees elke temperatuursensor uit, zie wanneer de pomp fouten meldt en bedien aan/uit, modus, instelpunten, DHW-boost, anti-vries, nachtverlaging en weersgecompenseerde modus vanuit flows.
+
+Vereist een Toshiba BMS-IFMB0UEW-E (of vergelijkbaar) Modbus RTU-interface die is verbonden met de AB-bus van de warmtepomp, plus een Modbus TCP-gateway die is verbonden met de interface (Waveshare RS485-to-WiFi/ETH, Elfin EW-11, USR-W630 of vergelijkbaar). Je Homey Pro moet toegang hebben tot de gateway op het lokale netwerk (LAN).
+
+Ondersteunt R410A 4 Series WM, R410A 5 Series WM en R32 1 Series (WM en AIO) Estia hydro-eenheden. Enkelvoudige of dubbele zone-installaties, met of zonder een boiler voor huishoudelijk warm water — schakel elke optie in de apparaatinstellingen en alleen de relevante mogelijkheden worden weergegeven.
+Toshiba en Estia zijn handelsmerken van Toshiba Corporation. Dit is een door de community ontwikkelde app en is niet gelieerd aan of goedgekeurd door Toshiba.

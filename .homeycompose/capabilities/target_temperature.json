@@ -1,0 +1,28 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Setpoint",
+    "nl": "Instelpunt",
+    "da": "Sætpunkt",
+    "de": "Sollwert",
+    "es": "Punto de ajuste",
+    "fr": "Consigne",
+    "it": "Setpoint",
+    "no": "Settpunkt",
+    "sv": "Börvärde",
+    "pl": "Nastawa",
+    "ru": "Уставка",
+    "ko": "설정값",
+    "ar": "نقطة الضبط"
+  },
+  "uiComponent": "thermostat",
+  "getable": true,
+  "setable": true,
+  "insights": true,
+  "chartType": "stepLine",
+  "decimals": 1,
+  "units": "°C",
+  "min": 5,
+  "max": 60,
+  "step": 0.5
+}

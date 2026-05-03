@@ -1,0 +1,6 @@
+Lleva tu bomba de calor aire-agua Toshiba Estia a Homey. Habla directamente con la unidad a través de Modbus en tu red doméstica: sin nube, sin retrasos. Lee cada sensor de temperatura, observa cuando la bomba falla y controla encendido/apagado, modo, puntos de ajuste, impulso de ACS, anti-congelante, ajuste nocturno y modo compensado por el clima desde los flujos.
+
+Requiere una interfaz Toshiba BMS-IFMB0UEW-E (o similar) Modbus RTU conectada al bus AB de la bomba de calor, además de cualquier puerta de enlace Modbus TCP conectada a la interfaz (Waveshare RS485-a-WiFi/ETH, Elfin EW-11, USR-W630 o similar). Tu Homey Pro debe llegar a la puerta de enlace en la LAN local.
+
+Compatibilidad con las unidades hidro Estia Serie 4 WM R410A, Serie 5 WM R410A y Serie 1 R32 (WM y AIO). Instalaciones de una o dos zonas, con o sin un tanque de agua caliente doméstica; activa cada uno en la configuración del dispositivo y solo se muestran las capacidades relevantes.
+Toshiba y Estia son marcas registradas de Toshiba Corporation. Esta es una aplicación desarrollada por la comunidad y no está afiliada ni respaldada por Toshiba.
