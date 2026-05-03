@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-  <!-- Solid-silhouette outdoor heat pump cabinet with fan rotor.
-       Solid-fill renders reliably under platform icon-masking
-       (thin strokes can wash out). currentColor lets the platform
-       re-tint to match the theme. -->
-  <!-- Cabinet, solid filled -->
-  <rect x="80" y="160" width="864" height="704" rx="80" ry="80" fill="currentColor"/>
-  <!-- Fan area cutout (transparent so the cabinet shows the brand card behind) -->
-  <circle cx="512" cy="512" r="280" fill="#ffffff"/>
-  <circle cx="512" cy="512" r="280" fill="none" stroke="currentColor" stroke-width="32"/>
-  <!-- Three swept fan blades, solid filled -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Outdoor heat pump cabinet with fan + air-flow chevrons.
+       Strokes are bumped from the original 10 → 14 (5.5% of viewBox)
+       to survive small-thumbnail rendering and any masking the Athom
+       dashboard does. currentColor lets the platform re-tint to match
+       the theme (light/dark, brand-card, etc.). -->
+  <g fill="none" stroke="currentColor" stroke-width="14" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Cabinet -->
+    <rect x="32" y="48" width="192" height="160" rx="12" ry="12"/>
+    <!-- Fan grille -->
+    <circle cx="128" cy="128" r="54"/>
+    <!-- Air-direction chevrons at bottom (V shapes pointing down) -->
+    <path d="M56 232 l14 -18 l14 18"/>
+    <path d="M114 232 l14 -18 l14 18"/>
+    <path d="M172 232 l14 -18 l14 18"/>
+  </g>
+  <!-- Fan hub + three swept blades, solid currentColor -->
   <g fill="currentColor">
-    <path d="M512 280 Q620 340 600 480 Q540 510 480 380 Z"/>
-    <path d="M512 280 Q620 340 600 480 Q540 510 480 380 Z" transform="rotate(120 512 512)"/>
-    <path d="M512 280 Q620 340 600 480 Q540 510 480 380 Z" transform="rotate(240 512 512)"/>
-    <!-- Fan hub -->
-    <circle cx="512" cy="512" r="44"/>
+    <circle cx="128" cy="128" r="10"/>
+    <path d="M128 78 Q156 96 148 130 Q132 132 120 108 Z"/>
+    <path d="M128 78 Q156 96 148 130 Q132 132 120 108 Z" transform="rotate(120 128 128)"/>
+    <path d="M128 78 Q156 96 148 130 Q132 132 120 108 Z" transform="rotate(240 128 128)"/>
   </g>
 </svg>
