@@ -34,5 +34,20 @@
     "ru": "Исправлена иконка приложения/драйвера — заменён фиксированный чёрный цвет на currentColor, чтобы иконка адаптировалась к теме UI Homey и панели Athom.",
     "ko": "앱/드라이버 아이콘 수정 — 고정된 검은색에서 currentColor로 전환하여 아이콘이 Homey UI 및 Athom 대시보드 테마에 맞게 조정되도록 했습니다.",
     "ar": "تصحيح أيقونة التطبيق/المشغل — تم التحويل من الأسود الثابت إلى currentColor حتى تتكيّف الأيقونة مع سمة واجهة Homey ولوحة تحكم Athom."
+  },
+  "1.0.3": {
+    "en": "Redesign app/driver icons as bold filled silhouettes so they render reliably in the Athom dashboard and Homey UI (thin-stroke icons could wash out under brand-color masking).",
+    "nl": "App-/driver-pictogrammen herontworpen als duidelijk gevulde silhouetten zodat ze betrouwbaar weergegeven worden in het Athom-dashboard en de Homey-UI (dunne lijn-pictogrammen konden vervagen onder merkkleur-masking).",
+    "da": "Designede app-/driver-ikoner om som markante udfyldte silhuetter, så de gengives pålideligt i Athom-dashboardet og Homey UI (tynd-streg-ikoner kunne forsvinde under brand-farve-masking).",
+    "de": "App- und Treibersymbole als kräftig gefüllte Silhouetten neu gestaltet, damit sie im Athom-Dashboard und in der Homey-UI zuverlässig dargestellt werden (dünne Strichsymbole konnten unter dem Markenfarben-Masking verschwinden).",
+    "es": "Se rediseñaron los iconos de la app/driver como siluetas rellenas en negrita para que se rendericen de forma fiable en el panel de Athom y la UI de Homey (los iconos con trazos finos podían desaparecer bajo el enmascarado del color de marca).",
+    "fr": "Icônes app/pilote redessinées en silhouettes pleines marquées pour un rendu fiable dans le tableau de bord Athom et l'UI Homey (les icônes en trait fin pouvaient disparaître sous le masquage de la couleur de marque).",
+    "it": "Icone app/driver ridisegnate come silhouette piene e marcate per un rendering affidabile nella dashboard Athom e nell'UI Homey (le icone a tratto sottile potevano sbiadire sotto il mascheramento del colore del marchio).",
+    "no": "Designet app-/driver-ikoner på nytt som markerte fylte silhuetter slik at de gjengis pålitelig i Athom-dashbordet og Homey UI (ikoner med tynne streker kunne forsvinne under merkefarge-maskering).",
+    "sv": "Designade om app-/driver-ikonerna som tydliga fyllda siluetter så att de renderas tillförlitligt i Athom-dashboarden och Homey UI (tunnstrecksikoner kunde tvättas bort under varumärkesfärg-maskering).",
+    "pl": "Przeprojektowano ikony aplikacji/sterownika jako wyraźne wypełnione sylwetki, aby były niezawodnie renderowane w panelu Athom i UI Homey (cienkokreskowe ikony mogły zanikać pod maskowaniem koloru marki).",
+    "ru": "Иконки приложения/драйвера переработаны в виде ярких сплошных силуэтов для надёжного отображения в панели Athom и UI Homey (тонкоштриховые иконки могли пропадать при маскировании цветом бренда).",
+    "ko": "앱/드라이버 아이콘을 굵은 채워진 실루엣으로 재설계하여 Athom 대시보드와 Homey UI에서 안정적으로 렌더링되도록 했습니다 (얇은 선 아이콘은 브랜드 색상 마스킹에서 사라질 수 있었습니다).",
+    "ar": "إعادة تصميم أيقونات التطبيق/المشغل كصور ظلية ممتلئة وواضحة لضمان عرضها بشكل موثوق في لوحة Athom وواجهة Homey (الأيقونات ذات الخطوط الرفيعة قد تتلاشى تحت قناع لون العلامة التجارية)."
   }
 }
