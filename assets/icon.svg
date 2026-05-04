@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-  <!-- App icon: bold capital "T" in white on Toshiba red. Evokes the brand
-       (the red is the first thing you see, the T comes from the Toshiba
-       wordmark) without reproducing the corporate logo file itself. -->
+  <!-- App icon: bold capital "T" composed from two simple <rect> primitives
+       (horizontal bar + vertical stem). A previous attempt drew the T as a
+       single multi-vertex <path> using H/V commands; the Athom dashboard
+       thumbnail rendered it as just the bounding square instead of the T
+       cutout. Switching to <rect> elements eliminates the path-interpretation
+       step entirely. -->
 
   <!-- Toshiba-red rounded square card -->
   <rect x="0" y="0" width="256" height="256" rx="40" ry="40" fill="#E60012"/>
 
-  <!-- Bold geometric "T" letterform, white -->
-  <!-- Top bar: x 40→216, y 56→112 (width 176, height 56)
-       Stem:    x 100→156, y 112→216 (width 56, height 104) -->
-  <path fill="#FFFFFF"
-        d="M 40 56 H 216 V 112 H 156 V 216 H 100 V 112 H 40 Z"/>
+  <!-- Horizontal bar of the T -->
+  <rect x="40" y="56" width="176" height="56" fill="#FFFFFF"/>
+
+  <!-- Vertical stem of the T -->
+  <rect x="100" y="112" width="56" height="104" fill="#FFFFFF"/>
 </svg>
