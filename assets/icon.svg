@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-  <!-- App icon: refined "T" silhouette, opaque on transparent canvas, for
-       Homey's CSS mask-image rendering against the brand-red card.
-
-       Proportions tuned closer to the Toshiba corporate T:
-         · Stroke weight 40 (uniform: bar height = stem width)
-         · Bar 160 wide → 4× the stroke weight, gives the T proper shoulders
-         · Stem 160 tall → matches the bar width for a balanced cap height
-         · Letter is 200 tall, vertically centred in the 256 viewBox
-         · No background — only the silhouette is opaque -->
+  <!-- App icon: bold "T" silhouette tuned to match the Toshiba corporate
+       T (companieslogo.com 6502.T).
+       Real-logo proportions:
+         · Bar height  / total height ≈ 25 %
+         · Stem width  / bar width    ≈ 32 %  (so bar is ~3.1× stem)
+         · Stem is *slightly* thicker than the bar height (not uniform)
+       Translated into the 256 viewBox:
+         · Bar 224 × 60 (nearly full width)
+         · Stem 72 × 180 (slightly fatter than bar height)
+         · 8 px margin top + bottom
+       Opaque-on-transparent — the platform's CSS mask reveals brand red
+       in the T shape (no SVG background needed). -->
 
   <!-- Horizontal bar of the T -->
-  <rect x="48" y="28" width="160" height="40" fill="#000000"/>
+  <rect x="16" y="8" width="224" height="60" fill="#000000"/>
 
   <!-- Vertical stem of the T -->
-  <rect x="108" y="68" width="40" height="160" fill="#000000"/>
+  <rect x="92" y="68" width="72" height="180" fill="#000000"/>
 </svg>
