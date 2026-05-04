@@ -1,40 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-  <!-- App icon = the heat-pump silhouette (same shape as the driver icon).
-       Single-driver apps reusing the device icon are accepted by Athom
-       (see e.g. the published WhatsApp Homey app). Athom's 1.5 guideline
-       about distinct driver icons targets multi-driver apps so users can
-       tell drivers apart; we have one driver, so the same mark works.
+  <!-- App icon: bold capital "T" in white on Toshiba red. Evokes the brand
+       (the red is the first thing you see, the T comes from the Toshiba
+       wordmark) without reproducing the corporate logo file itself. -->
 
-       Fills are hardcoded #000000 (not currentColor) — the dashboard's
-       app-icon thumbnail has, in some builds, resolved currentColor →
-       brandColor (red) and rendered the icon red-on-red against the
-       brand-coloured card → invisible. Black always contrasts. -->
+  <!-- Toshiba-red rounded square card -->
+  <rect x="0" y="0" width="256" height="256" rx="40" ry="40" fill="#E60012"/>
 
-  <!-- Cabinet frame -->
-  <path fill="#000000" fill-rule="evenodd"
-        d="M 44 40 a 12 12 0 0 0 -12 12 v 124 a 12 12 0 0 0 12 12 h 168 a 12 12 0 0 0 12 -12 v -124 a 12 12 0 0 0 -12 -12 z
-           M 54 54 a 8 8 0 0 0 -8 8 v 112 a 8 8 0 0 0 8 8 h 148 a 8 8 0 0 0 8 -8 v -112 a 8 8 0 0 0 -8 -8 z"/>
-
-  <!-- Fan grille ring (centre 128,114; outer r=52, inner r=36) -->
-  <path fill="#000000" fill-rule="evenodd"
-        d="M 128 62 A 52 52 0 0 1 128 166 A 52 52 0 0 1 128 62 z
-           M 128 78 A 36 36 0 0 1 128 150 A 36 36 0 0 1 128 78 z"/>
-
-  <!-- Fan hub -->
-  <circle fill="#000000" cx="128" cy="114" r="8"/>
-
-  <!-- Three fan blades — rotated polygons pre-computed at 0°, 120°, 240° -->
-  <g fill="#000000">
-    <polygon points="125,78 131,78 131,110 125,110"/>
-    <polygon points="160.68,129.4 157.68,134.6 129.96,118.6 132.96,113.4"/>
-    <polygon points="98.32,134.6 95.32,129.4 123.04,113.4 126.04,118.6"/>
-  </g>
-
-  <!-- Air-flow chevrons below cabinet (down-pointing triangles) -->
-  <g fill="#000000">
-    <polygon points="50,200 90,200 70,222"/>
-    <polygon points="108,200 148,200 128,222"/>
-    <polygon points="166,200 206,200 186,222"/>
-  </g>
+  <!-- Bold geometric "T" letterform, white -->
+  <!-- Top bar: x 40→216, y 56→112 (width 176, height 56)
+       Stem:    x 100→156, y 112→216 (width 56, height 104) -->
+  <path fill="#FFFFFF"
+        d="M 40 56 H 216 V 112 H 156 V 216 H 100 V 112 H 40 Z"/>
 </svg>

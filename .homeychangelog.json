@@ -154,5 +154,20 @@
     "ru": "Заменяет иконку приложения с термометра на тот же силуэт теплового насоса, что и драйвер устройства. Для приложения с одним драйвером принято использовать один и тот же узнаваемый знак для приложения и устройства (см., например, WhatsApp в Homey App Store) — рекомендация Athom об отличающихся иконках драйверов ориентирована на приложения с несколькими драйверами, чтобы пользователи могли их различать.",
     "ko": "앱의 온도계 아이콘을 장치 드라이버에서 사용하는 것과 동일한 히트펌프 실루엣으로 교체합니다. 단일 드라이버 앱의 경우, 앱과 장치에 동일한 인식 가능한 마크를 재사용하는 것이 관례입니다(예: Homey 앱 스토어의 WhatsApp). 드라이버 아이콘을 구별해야 한다는 Athom 가이드라인은 사용자가 드라이버를 구분할 수 있도록 다중 드라이버 앱을 대상으로 합니다.",
     "ar": "يستبدل أيقونة الترمومتر للتطبيق بنفس الشكل الظلّي للمضخة الحرارية الذي يستخدمه مشغّل الجهاز. في التطبيق ذي المشغّل الواحد، من المعتاد إعادة استخدام نفس العلامة المميّزة للتطبيق والجهاز (انظر مثلاً WhatsApp في متجر تطبيقات Homey) — يستهدف توجيه Athom بشأن أيقونات المشغّلات المختلفة التطبيقات متعددة المشغّلات حتى يتمكن المستخدمون من التمييز بينها."
+  },
+  "1.0.11": {
+    "en": "App icon redesigned as a bold capital 'T' in white on Toshiba red — brand-recognisable at a glance and visually distinct from the device driver's heat-pump silhouette. The driver icon is unchanged.",
+    "nl": "App-pictogram opnieuw ontworpen als een vette hoofdletter 'T' in wit op Toshiba-rood — meteen herkenbaar als merk en visueel onderscheidend van het warmtepomp-silhouet van de apparaatdriver. Het driver-pictogram is ongewijzigd.",
+    "da": "App-ikonet er redesignet som et fed stort 'T' i hvidt på Toshiba-rødt — straks genkendeligt som brand og visuelt forskelligt fra varmepumpe-silhuetten i enhedsdriveren. Driver-ikonet er uændret.",
+    "de": "App-Symbol als fettes Versal-T in Weiß auf Toshiba-Rot neu gestaltet — sofort als Marke erkennbar und visuell unterscheidbar von der Wärmepumpen-Silhouette des Gerätetreibers. Das Treiber-Symbol bleibt unverändert.",
+    "es": "Icono de la app rediseñado como una 'T' mayúscula en negrita en blanco sobre rojo Toshiba — reconocible al instante como marca y visualmente distinto de la silueta de la bomba de calor del driver. El icono del driver no cambia.",
+    "fr": "Icône de l'app redessinée en « T » majuscule gras blanc sur rouge Toshiba — reconnaissable comme marque au premier coup d'œil et visuellement distincte de la silhouette de pompe à chaleur du pilote. L'icône du pilote est inchangée.",
+    "it": "Icona dell'app ridisegnata come una 'T' maiuscola in grassetto bianca su rosso Toshiba — immediatamente riconoscibile come marchio e visivamente distinta dalla silhouette della pompa di calore del driver. L'icona del driver è invariata.",
+    "no": "App-ikonet er redesignet som en fet stor 'T' i hvitt på Toshiba-rødt — umiddelbart gjenkjennelig som merke og visuelt forskjellig fra varmepumpe-silhuetten til enhetsdriveren. Driver-ikonet er uendret.",
+    "sv": "App-ikonen är omdesignad som ett fett versalt 'T' i vitt på Toshiba-rött — omedelbart igenkännlig som varumärke och visuellt distinkt från enhetsdrivrutinens värmepumpssiluett. Drivrutinsikonen är oförändrad.",
+    "pl": "Ikona aplikacji przeprojektowana jako pogrubiona wielka litera 'T' w bieli na czerwieni Toshiba — od razu rozpoznawalna jako marka i wizualnie odróżnialna od sylwetki pompy ciepła sterownika urządzenia. Ikona sterownika bez zmian.",
+    "ru": "Иконка приложения переработана как жирная заглавная «T» белого цвета на красном фоне Toshiba — мгновенно узнаваема как бренд и визуально отличается от силуэта теплового насоса драйвера устройства. Иконка драйвера не изменилась.",
+    "ko": "앱 아이콘을 Toshiba 레드 위에 흰색 굵은 대문자 'T'로 재디자인 — 한눈에 브랜드를 알아볼 수 있고 장치 드라이버의 히트펌프 실루엣과 시각적으로 구별됩니다. 드라이버 아이콘은 변경되지 않았습니다.",
+    "ar": "أُعيد تصميم أيقونة التطبيق كحرف 'T' كبير عريض باللون الأبيض على خلفية حمراء بلون Toshiba — يمكن التعرف على العلامة من النظرة الأولى ومتمايز بصريًا عن شكل المضخة الحرارية لمشغّل الجهاز. أيقونة المشغّل دون تغيير."
   }
 }
