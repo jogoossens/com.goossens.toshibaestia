@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
   <!-- Thermometer silhouette — represents the heating/climate-control nature
-       of the app at a glance, and is visually distinct from the outdoor-unit
-       icon used for the device driver (Athom store guideline 1.5: each driver
-       must have its own icon). All-filled, currentColor. -->
+       of the app, visually distinct from the outdoor-unit driver icon
+       (Athom store guideline 1.5).
+
+       Fills are HARDCODED to #000000 instead of currentColor. Reason: the
+       Athom developer dashboard's app-icon thumbnail has, in some builds,
+       resolved currentColor → brandColor (red) and rendered the icon
+       red-on-red against the brand-coloured card → invisible. Black always
+       contrasts against the red card. -->
 
   <!-- Thermometer body: rounded-top tube with bulb at the bottom -->
-  <path fill="currentColor"
+  <path fill="#000000"
         d="M 128 24 a 36 36 0 0 1 36 36 v 80 a 44 44 0 1 1 -72 0 v -80 a 36 36 0 0 1 36 -36 z"/>
 
   <!-- Three tick marks beside the tube -->
-  <g fill="currentColor">
+  <g fill="#000000">
     <rect x="174" y="64" width="14" height="6" rx="2"/>
     <rect x="174" y="92" width="10" height="6" rx="2"/>
     <rect x="174" y="120" width="14" height="6" rx="2"/>
