@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-  <!-- App icon: bare bold "T" shape, opaque on otherwise transparent canvas.
-       Homey renders icons with CSS `mask-image: url(icon.svg)` against the
-       app's brandColor (red) — opaque mask pixels reveal the colour, and a
-       white inner element (or transparent context) shows through where the
-       mask is transparent. So an SVG with a red background rect of its own
-       turns the whole icon into a solid red mask block; only the silhouette
-       must be opaque, the rest must be transparent.
+  <!-- App icon: refined "T" silhouette, opaque on transparent canvas, for
+       Homey's CSS mask-image rendering against the brand-red card.
 
-       Result on Homey: a white T on the red brand-card. Same pattern as
-       the heat-pump silhouette used by the device driver. -->
+       Proportions tuned closer to the Toshiba corporate T:
+         · Stroke weight 40 (uniform: bar height = stem width)
+         · Bar 160 wide → 4× the stroke weight, gives the T proper shoulders
+         · Stem 160 tall → matches the bar width for a balanced cap height
+         · Letter is 200 tall, vertically centred in the 256 viewBox
+         · No background — only the silhouette is opaque -->
 
   <!-- Horizontal bar of the T -->
-  <rect x="40" y="56" width="176" height="56" fill="#000000"/>
+  <rect x="48" y="28" width="160" height="40" fill="#000000"/>
 
   <!-- Vertical stem of the T -->
-  <rect x="100" y="112" width="56" height="104" fill="#000000"/>
+  <rect x="108" y="68" width="40" height="160" fill="#000000"/>
 </svg>
