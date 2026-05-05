@@ -13,5 +13,20 @@
     "ru": "Первый публичный релиз. Чтение каждого датчика Estia (температуры зон, вход/выход воды, выход нагревателя, бак ГВС, наружная) и кодов ошибок. Управление вкл/выкл, режимом, уставками, ГВС-бустом, анти-легионеллой, защитой от замерзания, ночным режимом и погодозависимым режимом из Flows. Оценки мгновенной мощности и накопленной энергии. Устойчивое Modbus-соединение автоматически восстанавливается после таймаутов шлюза. Поддерживает гидравлические блоки Estia R32 Серии 1/2 и R410A Серии 4/5, одно- или двухзонные, с ГВС или без.",
     "ko": "첫 공개 릴리스. 모든 Estia 센서(구역 온도, 물 입구/출구, 히터 출구, 온수 탱크, 실외)와 고장 코드를 읽습니다. Flow에서 켜기/끄기, 모드, 설정점, 온수 부스트, 항레지오넬라, 동결 방지, 야간 감온, 날씨 보상 모드를 제어합니다. 실시간 전력 및 누적 에너지 추정치. 게이트웨이 시간 초과로부터 자동으로 복구되는 견고한 Modbus 연결. R32 시리즈 1/2 및 R410A 시리즈 4/5 Estia 수력 유닛을 지원하며, 단일/이중 구역, 온수 유무 모두 지원합니다.",
     "ar": "أول إصدار عام. اقرأ كل مستشعر Estia (درجات حرارة المناطق، مدخل/مخرج الماء، مخرج السخان، خزان الماء الساخن المنزلي، الخارجي) واطلع على رموز الأعطال. تحكم في التشغيل/الإيقاف، الوضع، نقاط التعيين، تعزيز الماء الساخن، مضاد الليجيونيلا، الحماية من الصقيع، التخفيض الليلي، والوضع المعتمد على الطقس من Flows. تقديرات الطاقة الفورية والطاقة التراكمية. اتصال Modbus مرن يستعيد عمله تلقائيًا من انتهاء مهلة البوابة. يدعم وحدات Estia الهيدروليكية R32 Series 1/2 و R410A Series 4/5، أحادية أو ثنائية المنطقة، مع أو بدون ماء ساخن منزلي."
+  },
+  "1.0.17": {
+    "en": "Address Athom certification feedback: shorter app description focused on user value, and a real outdoor-unit photo for the driver image instead of an icon.",
+    "nl": "Verwerkt feedback uit Athom-certificering: kortere app-beschrijving gericht op gebruikerswaarde en een echte foto van de buitenunit als apparaat-afbeelding in plaats van een pictogram.",
+    "da": "Imødekommer feedback fra Athom-certificeringen: kortere app-beskrivelse med fokus på brugerværdi og et rigtigt billede af udendørsenheden som enhedsbillede i stedet for et ikon.",
+    "de": "Berücksichtigt Feedback aus der Athom-Zertifizierung: kürzere App-Beschreibung mit Fokus auf den Nutzwert und ein echtes Foto der Außeneinheit als Geräte-Bild statt eines Symbols.",
+    "es": "Responde a los comentarios de certificación de Athom: descripción de la app más corta y orientada al valor para el usuario, y una foto real de la unidad exterior como imagen del driver en lugar de un icono.",
+    "fr": "Répond aux retours de certification Athom : description de l'app plus courte et centrée sur la valeur utilisateur, et une vraie photo de l'unité extérieure comme image du pilote au lieu d'une icône.",
+    "it": "Risponde al feedback di certificazione Athom: descrizione dell'app più breve e orientata al valore per l'utente e una foto reale dell'unità esterna come immagine del driver al posto di un'icona.",
+    "no": "Adresserer tilbakemelding fra Athom-sertifiseringen: kortere app-beskrivelse med fokus på brukerverdi, og et ekte bilde av utendørsenheten som enhetsbilde i stedet for et ikon.",
+    "sv": "Svarar på återkopplingen från Athom-certifieringen: kortare app-beskrivning med fokus på användarvärde och ett riktigt foto av utomhusenheten som enhetsbild istället för en ikon.",
+    "pl": "Reaguje na uwagi certyfikacji Athom: krótszy opis aplikacji skoncentrowany na wartości dla użytkownika i prawdziwe zdjęcie jednostki zewnętrznej jako obraz urządzenia zamiast ikony.",
+    "ru": "Учитывает замечания сертификации Athom: более короткое описание приложения, ориентированное на пользу для пользователя, и реальная фотография наружного блока в качестве изображения устройства вместо иконки.",
+    "ko": "Athom 인증 피드백 반영: 사용자 가치에 초점을 맞춘 짧아진 앱 설명, 그리고 아이콘 대신 실외기 실제 사진을 장치 이미지로 사용합니다.",
+    "ar": "تتعامل مع ملاحظات اعتماد Athom: وصف أقصر للتطبيق يركّز على قيمة المستخدم، وصورة حقيقية للوحدة الخارجية كصورة للجهاز بدلًا من أيقونة."
   }
 }
