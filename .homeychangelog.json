@@ -44,7 +44,7 @@
     "ko": "알람: 새 영구 '마지막 오류' 타일이 알람이 해제된 후에도 가장 최근 고장과 그 발생 시간을 계속 표시합니다(라이브 '오류 코드' 타일은 여전히 현재 상태를 추적합니다). 오류 코드 텍스트가 짧아져서 작은 센서 타일에서도 코드 접두사가 잘 보입니다. 내부적으로 최근 10건의 고장 기록이 앱 재시작 사이에도 보존됩니다. Flow 트리거 '히트 펌프에 문제가 발생했습니다'에 타임스탬프 토큰이 추가되었습니다.",
     "ar": "الإنذارات: مربع جديد دائم 'آخر خطأ' يُبقي أحدث عطل مع طابعه الزمني مرئيًا حتى بعد زوال الإنذار (يظل المربع المباشر 'رمز الخطأ' يتتبع الحالة الراهنة). أصبح نص رمز الخطأ أقصر بحيث تبقى بادئة الرمز ظاهرة في مربعات الاستشعار الصغيرة. يتم الآن تخزين سجل داخلي لآخر 10 أعطال يستمر عبر إعادات تشغيل التطبيق. اكتسب مُطلِق Flow 'عطل في المضخة الحرارية' رمز الطابع الزمني."
   },
-  "1.0.20": {
+  "1.0.21": {
     "en": "Fault notifications in the Homey timeline now include a plain-language explanation of what the fault is about and what to check, sourced from the Toshiba service manual. Around 65 alarm codes (A/E/F/H/L/P series) have detailed descriptions; codes without specific guidance fall back to the bare label.",
     "nl": "Foutmeldingen in de Homey-tijdlijn bevatten nu een toelichting in gewone taal over wat de fout inhoudt en wat te controleren, gebaseerd op de Toshiba servicehandleiding. Circa 65 alarmcodes (A/E/F/H/L/P-reeks) hebben gedetailleerde beschrijvingen; codes zonder specifieke uitleg vallen terug op alleen het label.",
     "da": "Fejlmeddelelser i Homey-tidslinjen indeholder nu en almindelig forklaring af, hvad fejlen drejer sig om, og hvad man skal tjekke, baseret på Toshibas servicemanual. Omkring 65 alarmkoder (A/E/F/H/L/P-serier) har detaljerede beskrivelser; koder uden specifik vejledning falder tilbage til den bare etiket.",
