@@ -1,6 +1,6 @@
 {
   "id": "com.goossens.toshibaestia",
-  "version": "1.0.21",
+  "version": "1.0.23",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
