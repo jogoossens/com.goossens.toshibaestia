@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.goossens.toshibaestia",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -168,48 +168,25 @@
               "ko": "설명",
               "ar": "الوصف"
             }
-          }
-        ]
-      }
-    ],
-    "conditions": [
-      {
-        "id": "alarm_is_active",
-        "title": {
-          "en": "Heat pump alarm !{{is|is not}} active",
-          "nl": "Warmtepompalarm !{{is|is niet}} actief",
-          "da": "Varmepumpealarm !{{er|er ikke}} aktiv",
-          "de": "Wärmepumpenalarm !{{ist|ist nicht}} aktiv",
-          "es": "¡Alarma de la bomba de calor! {{está|no está}} activa",
-          "fr": "Alarme de la pompe à chaleur !{{est|n'est pas}} active",
-          "it": "Allarme pompa di calore !{{è|non è}} attivo",
-          "no": "Varmepumpealarm !{{er|er ikke}} aktiv",
-          "sv": "Värmepumpslarmet {{är|är inte}} aktivt",
-          "pl": "Alarm pompy ciepła !{{jest|nie jest}} aktywny",
-          "ru": "Тревога теплового насоса {{активна|не активна}}!",
-          "ko": "열펌프 경고가 {{활성화되었습니다|활성화되지 않았습니다}}!",
-          "ar": "مضخة الحرارة {{نشطة|غير نشطة}}!"
-        },
-        "titleFormatted": {
-          "en": "Heat pump alarm !{{is|is not}} active",
-          "nl": "Warmtepompalarm !{{is|is niet}} actief",
-          "da": "Varmepumpealarm !{{er|er ikke}} aktiv",
-          "de": "Wärmepumpenalarm !{{ist|ist nicht}} aktiv",
-          "es": "¡La alarma de la bomba de calor {{está|no está}} activa!",
-          "fr": "Alarme de la pompe à chaleur !{{est|n'est pas}} active",
-          "it": "Allarme pompa di calore !{{è|non è}} attivo",
-          "no": "Varmepumpealarm !{{er|er ikke}} aktiv",
-          "sv": "Värmepumpslarmet {{är|är inte}} aktivt",
-          "pl": "Alarm pompy ciepła !{{jest|nie jest}} aktywny",
-          "ru": "Тревога теплового насоса {{активна|не активна}}!",
-          "ko": "열펌프 경고가 {{활성화되었습니다|활성화되지 않았습니다}}!",
-          "ar": "إنذار مضخة الحرارة !{{نشط|غير نشط}}"
-        },
-        "args": [
+          },
           {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=heatpump"
+            "name": "timestamp",
+            "type": "string",
+            "title": {
+              "en": "Timestamp",
+              "nl": "Tijdstempel",
+              "da": "Tidsstempel",
+              "de": "Zeitstempel",
+              "es": "Marca de tiempo",
+              "fr": "Horodatage",
+              "it": "Timestamp",
+              "no": "Tidsstempel",
+              "sv": "Tidsstämpel",
+              "pl": "Znacznik czasu",
+              "ru": "Отметка времени",
+              "ko": "타임스탬프",
+              "ar": "الطابع الزمني"
+            }
           }
         ]
       }
@@ -337,6 +314,7 @@
         "measure_temperature.water_outlet",
         "alarm_generic",
         "fault_code",
+        "last_fault",
         "frost_protection",
         "night_setback",
         "auto_temp",
@@ -1965,6 +1943,43 @@
         "ko": "서리 방지 비활성화됨",
         "ar": "تم تعطيل حماية الصقيع"
       }
+    },
+    "last_fault": {
+      "type": "string",
+      "title": {
+        "en": "Last fault",
+        "nl": "Laatste fout",
+        "da": "Sidste fejl",
+        "de": "Letzter Fehler",
+        "es": "Último error",
+        "fr": "Dernier défaut",
+        "it": "Ultimo guasto",
+        "no": "Siste feil",
+        "sv": "Senaste fel",
+        "pl": "Ostatnia usterka",
+        "ru": "Последняя ошибка",
+        "ko": "마지막 오류",
+        "ar": "آخر خطأ"
+      },
+      "desc": {
+        "en": "Most recent Toshiba alarm with timestamp. Persists across app restarts and stays visible after the alarm clears.",
+        "nl": "Meest recente Toshiba-alarm met tijdstempel. Blijft bewaard na herstart van de app en blijft zichtbaar nadat het alarm is opgelost.",
+        "da": "Seneste Toshiba-alarm med tidsstempel. Bevares på tværs af genstart af appen og forbliver synlig, efter alarmen er ophævet.",
+        "de": "Letzter Toshiba-Alarm mit Zeitstempel. Bleibt über App-Neustarts erhalten und sichtbar, nachdem der Alarm verschwunden ist.",
+        "es": "Última alarma de Toshiba con marca de tiempo. Persiste tras reiniciar la app y sigue visible después de que la alarma se borra.",
+        "fr": "Dernier défaut Toshiba avec horodatage. Persiste après redémarrage de l'app et reste visible une fois l'alarme effacée.",
+        "it": "Ultimo allarme Toshiba con timestamp. Persiste tra i riavvii dell'app e resta visibile dopo che l'allarme si è azzerato.",
+        "no": "Siste Toshiba-alarm med tidsstempel. Beholdes på tvers av app-omstarter og forblir synlig etter at alarmen er fjernet.",
+        "sv": "Senaste Toshiba-larm med tidsstämpel. Behålls vid omstart av appen och syns även efter att larmet är borta.",
+        "pl": "Najnowsza usterka Toshiba ze znacznikiem czasu. Zachowana po restartach aplikacji i pozostaje widoczna po skasowaniu alarmu.",
+        "ru": "Последняя ошибка Toshiba с отметкой времени. Сохраняется между перезапусками приложения и остаётся видимой после сброса аварии.",
+        "ko": "가장 최근 Toshiba 알람과 발생 시간. 앱을 재시작해도 유지되며, 알람이 해제된 뒤에도 계속 표시됩니다.",
+        "ar": "آخر إنذار من Toshiba مع طابع زمني. يبقى محفوظًا عبر إعادة تشغيل التطبيق ويظل مرئيًا بعد زوال الإنذار."
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "preventInsights": true
     },
     "night_setback": {
       "type": "boolean",

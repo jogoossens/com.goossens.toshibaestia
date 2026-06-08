@@ -25,6 +25,7 @@
     "measure_temperature.water_outlet",
     "alarm_generic",
     "fault_code",
+    "last_fault",
     "frost_protection",
     "night_setback",
     "auto_temp",

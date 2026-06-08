@@ -109,6 +109,25 @@
         "ko": "설명",
         "ar": "الوصف"
       }
+    },
+    {
+      "name": "timestamp",
+      "type": "string",
+      "title": {
+        "en": "Timestamp",
+        "nl": "Tijdstempel",
+        "da": "Tidsstempel",
+        "de": "Zeitstempel",
+        "es": "Marca de tiempo",
+        "fr": "Horodatage",
+        "it": "Timestamp",
+        "no": "Tidsstempel",
+        "sv": "Tidsstämpel",
+        "pl": "Znacznik czasu",
+        "ru": "Отметка времени",
+        "ko": "타임스탬프",
+        "ar": "الطابع الزمني"
+      }
     }
   ]
 }

@@ -13,6 +13,17 @@ import {
 type TempScaling = 'x1' | 'x10';
 type ThermostatMode = 'off' | 'heat' | 'cool';
 
+interface FaultEvent {
+  /** ISO-8601 UTC timestamp captured at the rising edge of the alarm. */
+  timestamp: string;
+  /** Decoded hex string of the raw alarm-code register, e.g. "0x0003". */
+  code: string;
+  /** Decoded hydro-unit label from the alarm-unit register. */
+  unit: string;
+  /** Human-readable alarm description (e.g. "A03 — Temperature increase error (hot water)"). */
+  description: string;
+}
+
 interface DeviceSettings {
   host: string;
   port: number;
@@ -160,6 +171,7 @@ const ALWAYS_ON_CAPABILITIES: Array<[string, Record<string, unknown>?]> = [
   ] }],
   ['target_temperature',{ title: { en: 'Zone 1 target', nl: 'Zone 1 instelpunt' }, min: 5, max: 60, step: 0.5 }],
   ['fault_code',       { title: { en: 'Fault code',     nl: 'Foutcode' } }],
+  ['last_fault',       { title: { en: 'Last fault',     nl: 'Laatste fout' } }],
   ['frost_protection', { title: { en: 'Frost protection', nl: 'Vorstbeveiliging' } }],
   ['night_setback',    { title: { en: 'Night setback',    nl: 'Nachtverlaging' } }],
   ['auto_temp',        { title: { en: 'Auto temperature', nl: 'Auto-temperatuur' } }],
@@ -250,6 +262,22 @@ export default class HeatpumpDevice extends Homey.Device {
 
     await this.syncOptionalCapabilities(settings);
     this.registerCapabilityListeners();
+
+    // Restore the last-fault display from persistent store so users see the
+    // most recent alarm even after Homey or the app restarts.
+    if (this.hasCapability('last_fault')) {
+      try {
+        const history = this.getStoreValue('faultHistory') as FaultEvent[] | null;
+        if (history && history.length > 0) {
+          const latest = history[0];
+          const display = `${latest.timestamp.slice(0, 16).replace('T', ' ')} · ${latest.description}`;
+          await this.setCapabilityValue('last_fault', display).catch(() => undefined);
+        } else {
+          await this.setCapabilityValue('last_fault', 'No faults recorded yet').catch(() => undefined);
+        }
+      } catch (err) { this.error('restore last_fault', err); }
+    }
+
     this.schedulePolling(settings.pollInterval);
     // First poll immediately
     this.homey.setTimeout(() => this.pollOnce(), 250);
@@ -753,24 +781,45 @@ export default class HeatpumpDevice extends Homey.Device {
 
     const codeRaw = snapshot[REGISTERS.alarmCode.number];
     const unitRaw = snapshot[REGISTERS.alarmUnit.number];
+    // Active display: just the decoded code+description (no unit suffix — the
+    // suffix added ~20 chars and pushed the visible part past Homey's
+    // sensor-tile truncation, hiding the "A01" prefix from users).
     if (this.hasCapability('fault_code')) {
       const codeStr = codeRaw === undefined
         ? '—'
         : alarmActive
-          ? `${decodeAlarmCode(codeRaw)} [${decodeAlarmUnit(unitRaw ?? 0)}]`
+          ? decodeAlarmCode(codeRaw)
           : 'No fault';
       await this.setCapabilityValue('fault_code', codeStr).catch(() => undefined);
     }
 
-    // Fire flow trigger on rising edge (inactive → active)
+    // Fire flow trigger on rising edge (inactive → active), record the event
+    // in the persistent last-fault history, and populate the last_fault cap
+    // so users can see what happened even after the alarm self-clears.
     if (alarmActive && !this.lastAlarmActive) {
+      const code = codeRaw ?? 0;
+      const description = decodeAlarmCode(code);
+      const unit = decodeAlarmUnit(unitRaw ?? 0);
+      const codeHex = `0x${(code & 0xFFFF).toString(16).padStart(4, '0').toUpperCase()}`;
+      const timestamp = new Date().toISOString();
+      const display = `${timestamp.slice(0, 16).replace('T', ' ')} · ${description}`;
+
+      // Update the persistent last-fault capability + store the event in a
+      // rolling history of the last 10 faults (for future Flow-tag exposure).
+      if (this.hasCapability('last_fault')) {
+        await this.setCapabilityValue('last_fault', display).catch(() => undefined);
+      }
       try {
-        const code = codeRaw ?? 0;
-        const description = decodeAlarmCode(code);
-        const unit = decodeAlarmUnit(unitRaw ?? 0);
-        const codeHex = `0x${(code & 0xFFFF).toString(16).padStart(4, '0').toUpperCase()}`;
+        const history = (this.getStoreValue('faultHistory') as FaultEvent[] | null) ?? [];
+        history.unshift({ timestamp, code: codeHex, unit, description });
+        await this.setStoreValue('faultHistory', history.slice(0, 10));
+      } catch (err) {
+        this.error('faultHistory store failed', err);
+      }
+
+      try {
         await this.homey.flow.getDeviceTriggerCard('fault_triggered')
-          .trigger(this, { code: codeHex, unit, description }, {})
+          .trigger(this, { code: codeHex, unit, description, timestamp }, {})
           .catch((err) => this.error('fault_triggered trigger failed', err));
       } catch (err) {
         this.error('fault_triggered dispatch', err);
