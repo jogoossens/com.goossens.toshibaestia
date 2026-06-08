@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.goossens.toshibaestia",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -187,6 +187,48 @@
               "ko": "타임스탬프",
               "ar": "الطابع الزمني"
             }
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "alarm_is_active",
+        "title": {
+          "en": "Heat pump alarm !{{is|is not}} active",
+          "nl": "Warmtepompalarm !{{is|is niet}} actief",
+          "da": "Varmepumpealarm !{{er|er ikke}} aktiv",
+          "de": "Wärmepumpenalarm !{{ist|ist nicht}} aktiv",
+          "es": "¡Alarma de la bomba de calor! {{está|no está}} activa",
+          "fr": "Alarme de la pompe à chaleur !{{est|n'est pas}} active",
+          "it": "Allarme pompa di calore !{{è|non è}} attivo",
+          "no": "Varmepumpealarm !{{er|er ikke}} aktiv",
+          "sv": "Värmepumpslarmet {{är|är inte}} aktivt",
+          "pl": "Alarm pompy ciepła !{{jest|nie jest}} aktywny",
+          "ru": "Тревога теплового насоса {{активна|не активна}}!",
+          "ko": "열펌프 경고가 {{활성화되었습니다|활성화되지 않았습니다}}!",
+          "ar": "مضخة الحرارة {{نشطة|غير نشطة}}!"
+        },
+        "titleFormatted": {
+          "en": "Heat pump alarm !{{is|is not}} active",
+          "nl": "Warmtepompalarm !{{is|is niet}} actief",
+          "da": "Varmepumpealarm !{{er|er ikke}} aktiv",
+          "de": "Wärmepumpenalarm !{{ist|ist nicht}} aktiv",
+          "es": "¡La alarma de la bomba de calor {{está|no está}} activa!",
+          "fr": "Alarme de la pompe à chaleur !{{est|n'est pas}} active",
+          "it": "Allarme pompa di calore !{{è|non è}} attivo",
+          "no": "Varmepumpealarm !{{er|er ikke}} aktiv",
+          "sv": "Värmepumpslarmet {{är|är inte}} aktivt",
+          "pl": "Alarm pompy ciepła !{{jest|nie jest}} aktywny",
+          "ru": "Тревога теплового насоса {{активна|не активна}}!",
+          "ko": "열펌프 경고가 {{활성화되었습니다|활성화되지 않았습니다}}!",
+          "ar": "إنذار مضخة الحرارة !{{نشط|غير نشط}}"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=heatpump"
           }
         ]
       }

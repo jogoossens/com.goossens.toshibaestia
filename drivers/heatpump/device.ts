@@ -5,6 +5,7 @@ import {
   REGISTERS,
   NO_SENSOR_VALUE,
   decodeAlarmCode,
+  decodeAlarmDetail,
   decodeAlarmUnit,
   decodeBaudRate,
   decodeHydroUnitType,
@@ -823,6 +824,22 @@ export default class HeatpumpDevice extends Homey.Device {
           .catch((err) => this.error('fault_triggered trigger failed', err));
       } catch (err) {
         this.error('fault_triggered dispatch', err);
+      }
+
+      // Push a rich notification to the Homey timeline. Homey's built-in
+      // alarm-capability transition message ("Alarm ging af") doesn't
+      // include the code, so users see no specifics in their history.
+      // This call adds a second timeline entry with the decoded details
+      // *and* the plain-language explanation of what the fault is about.
+      try {
+        const name = this.getName();
+        const detail = decodeAlarmDetail(code);
+        const head = `**${name}** — ${description} (${unit})`;
+        const excerpt = detail ? `${head}\n${detail}` : head;
+        await this.homey.notifications.createNotification({ excerpt })
+          .catch((err: unknown) => this.error('notification create failed', err));
+      } catch (err) {
+        this.error('notification dispatch', err);
       }
     }
     this.lastAlarmActive = alarmActive;

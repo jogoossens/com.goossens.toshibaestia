@@ -370,6 +370,18 @@ Languages currently shipped: `en`, `nl`, `da`, `de`, `es`, `fr`, `it`, `no`, `sv
 
 ## 11. Development workflow
 
+### Iteration loop: **always install locally before publishing**
+
+Every code/asset change goes through:
+
+1. **`homey app install`** to the user's own Homey (a "development install" — survives CLI exit, runs alongside the published version).
+2. **User verifies on-device** — open the app on the phone, check the device card, trigger the relevant flow, etc.
+3. **Only then `homey app publish`** to upload a build to the Athom dashboard.
+
+Skipping step 1 and going straight to publish wastes a build slot, burns a version number (a version locks once promoted past Draft), and risks shipping cosmetic regressions the user could have caught in 30 seconds. Reserve publish for changes the user has already eyeballed.
+
+If `homey app install` errors with `ENOMEM: not enough memory, scandir …` on the WSL+OneDrive path, that's a transient OneDrive reparse-point issue — wait a few seconds and retry, or `rm -rf .homeybuild` then retry. Don't move to publish until install actually succeeds.
+
 ```bash
 npm install                         # one-time
 npm run lint                        # eslint pass

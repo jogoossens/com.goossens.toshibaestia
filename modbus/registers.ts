@@ -210,3 +210,95 @@ export function decodeAlarmCode(code: number): string {
 
   return map[code] ?? `Unknown (0x${(code & 0xFFFF).toString(16).padStart(4, '0').toUpperCase()})`;
 }
+
+/**
+ * Longer "what is it / what to check" explanation per fault code. Sourced from
+ * the Toshiba service manual (EEU-006 section 6) and service bulletins.
+ * Returns null if no detail is available — caller should fall back to just the
+ * short decoded label.
+ *
+ * Used by the device-level timeline notification on alarm rising edge, so
+ * users see causes/remedies right in the Homey timeline next to the bare
+ * Toshiba label. Keep each entry 1–3 sentences, plain language, no jargon.
+ */
+export function decodeAlarmDetail(code: number): string | null {
+  const map: Record<number, string> = {
+    // ── A-series (hydro unit) ────────────────────────────────────────────
+    0x0001: 'Water pump or flow rate fault. Check the circulation pump, an air-locked system, closed isolation valves, or a clogged filter on the heating loop.',
+    0x0002: 'Heating-water temperature rose faster or higher than the safety threshold. Common causes: backup heater (BUH) over-shoot, mixing-valve sticking, sensor stratification.',
+    0x0003: 'DHW tank temperature rose faster or higher than safety. Typical triggers: anti-bacteria cycle overshooting its 65 °C target, BUH high-limit thermostat drift, sensor stratification, or blocked DHW circulation.',
+    0x0004: 'Antifreeze protection engaged — water-side temperature near 0 °C. Check outdoor conditions and that the heating loop is not isolated.',
+    0x0005: 'Piping antifreeze protection engaged. The unit is heating the loop to prevent freeze damage; ensure flow is not blocked.',
+    0x0007: 'High-pressure refrigerant switch tripped. Check outdoor coil for blockage/snow/leaves, fan operation, and water-side flow.',
+    0x0008: 'Low-pressure sensor reports out-of-range value. Refrigerant leak suspected — call a service engineer.',
+    0x0009: 'Overheat protection on a heating element. Check BUH/immersion contactor for sticking and the in-line safety thermostat.',
+    0x000A: 'Secondary antifreeze protection engaged. Same root cause as A04 — verify water flow and outdoor temperature.',
+    0x000B: 'Pressure-release protection engaged. Refrigerant pressure exceeded safe operating envelope; service required.',
+    0x000C: 'Backup or DHW cylinder heater fault. Check the BUH contactor, its high-limit thermostat, and the immersion heater wiring if fitted.',
+    0x000D: 'Water pump under-voltage. Check the pump supply voltage and any loose connections.',
+    0x000E: 'Water pump fault (generic). Listen for pump operation, check for blockage or seized impeller.',
+    0x000F: 'Zone 2 pump fault. Same checks as the Zone 1 pump — flow, voltage, blockage.',
+    // ── E-series (communications) ────────────────────────────────────────
+    0x0041: 'No communication between the hydro unit and the wired remote controller. Check the RC cable and connections.',
+    0x0042: 'Remote-controller signal transmission defect. Inspect the AB bus wiring and termination.',
+    0x0043: 'Intermittent comms between hydro and RC. Often a wiring fault, weak crimp, or RC firmware mismatch.',
+    0x0044: 'Intermittent comms between hydro and outdoor unit. Inspect the U1/U2 bus between cabinet and outdoor unit; check for water ingress at the connector.',
+    0x0048: 'Two hydro units share the same address. Re-set the slave-address DIP on one of them.',
+    0x0049: 'Multiple master RCs detected. Configure all but one as slave.',
+    0x004E: 'Comms error with the 0-10 V interface board. Check the optional board and its cable.',
+    0x0052: 'Master ↔ slave hydro-unit comms error. Verify cabling between paired hydro units.',
+    // ── F-series (sensors) ──────────────────────────────────────────────
+    0x0063: 'Compressor-side TC sensor fault. Service required.',
+    0x0064: 'Discharge-line TD sensor fault. Service required.',
+    0x0066: 'Heat-exchanger TE sensor fault. Service required.',
+    0x0067: 'Suction-line TL sensor fault. Service required.',
+    0x0068: 'Outdoor-air TO sensor fault. Check the TO sensor on the outdoor unit; corrosion or unplugged connector is common.',
+    0x006A: 'Water-inlet (TWI) sensor fault. Disconnected or shorted — check the cable and sensor on the inlet pipe.',
+    0x006B: 'Water-outlet (TWO) sensor fault. Disconnected or shorted — check the cable and sensor on the outlet pipe.',
+    0x006C: 'TS sensor fault. Service required.',
+    0x006D: 'TH sensor fault. Service required.',
+    0x006E: 'DHW tank (TTW) sensor fault. Check the tank-temperature probe wiring; corrosion at the connector is common after years.',
+    0x006F: 'TE/TS sensor pair fault. Service required.',
+    0x0071: 'TFI sensor fault. Service required.',
+    0x0072: 'Heater-outlet (THO) sensor fault. Check the THO probe wiring near the BUH outlet.',
+    0x0073: 'THO sensor disconnected. Reseat the connector at the BUH outlet sensor.',
+    0x0074: 'TFI sensor fault. Service required.',
+    0x0077: 'Low-pressure sensor fault. Service required.',
+    0x0078: 'PD sensor fault. Service required.',
+    0x007D: 'EEPROM read error on the outdoor PCB. Service required.',
+    0x007E: 'Extended IC error. Service required.',
+    0x007F: 'EEPROM error on the indoor PCB. Service required.',
+    0x0160: 'Water flow-rate sensor fault. Check the flow sensor and the circulation pump.',
+    0x0161: 'Water flow quantity insufficient. Check for air locks, closed valves, a blocked filter, or a failing pump.',
+    // ── H-series (compressor) ───────────────────────────────────────────
+    0x0081: 'Compressor fault. Service required.',
+    0x0082: 'Compressor rotor locked. The compressor has stalled — service required.',
+    0x0083: 'Current detection circuit defect on the outdoor PCB. Service required.',
+    0x0084: 'Compressor case thermostat tripped. The compressor body is too hot — likely overload or low refrigerant charge.',
+    // ── L-series (logic/setting) ────────────────────────────────────────
+    0x00C2: 'Hydro/outdoor combination error. The hydro and outdoor units are incompatible — check model codes.',
+    0x00C3: 'Two units configured as master hydro. Re-set one to slave on the wired controller.',
+    0x00C7: 'L-series communication error. Inspect bus wiring.',
+    0x00C8: 'Hydro-unit group or address not configured. Set group/address via the wired controller service menu.',
+    0x00C9: 'L-series communication error. Inspect bus wiring.',
+    0x00CA: 'Service-PCB jumper not set. An installer setting was skipped — refer to the install manual jumper table.',
+    0x00CF: 'Combination configuration error. Verify hydro+outdoor model pairing.',
+    0x00D0: 'Setting error. A required DN code has not been configured.',
+    0x00D6: '0-10 V interface setting error. Reconfigure the 0-10 V control inputs on the wired controller.',
+    0x00DD: 'Comms error between the outdoor-unit PCB and its microcontroller. Service required.',
+    // ── P-series (outdoor unit) ─────────────────────────────────────────
+    0x00E3: 'Compressor discharge temperature too high. Likely refrigerant under-charge or restricted flow — service required.',
+    0x00E4: 'High-pressure switch tripped. Check outdoor coil airflow, fan operation, and indoor water-side flow.',
+    0x00E5: 'Power supply voltage out of range. Check the mains supply to the outdoor unit.',
+    0x00E7: 'Inverter heat-sink overheating. Check the outdoor fan, fins for dirt, and ambient temperature.',
+    0x00EF: 'Suspected refrigerant leak. The unit detected insufficient pressure — service required.',
+    0x00F3: '4-way valve failed to invert. Mechanical valve fault — service required.',
+    0x00F4: 'High-pressure protection engaged. Similar to E04/P04 — check airflow and water flow.',
+    0x00F6: 'Outdoor fan system fault. Listen for fan operation, check the fan motor and PCB.',
+    0x00FA: 'Compressor driver short-circuit detected. Service required.',
+    0x00FD: 'Compressor rotor position detection error. Service required.',
+    0x00FF: 'Slave hydro-unit error. Check the slave hydro unit and the master/slave wiring.',
+  };
+  return map[code] ?? null;
+}
+
