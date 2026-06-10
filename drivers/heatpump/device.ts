@@ -265,13 +265,21 @@ export default class HeatpumpDevice extends Homey.Device {
     this.registerCapabilityListeners();
 
     // Restore the last-fault display from persistent store so users see the
-    // most recent alarm even after Homey or the app restarts.
+    // most recent alarm even after Homey or the app restarts. Re-decode the
+    // raw hex on every restore so historical entries pick up improvements to
+    // decodeAlarmCode (e.g. the bit-mask handling added in 1.0.24).
     if (this.hasCapability('last_fault')) {
       try {
         const history = this.getStoreValue('faultHistory') as FaultEvent[] | null;
         if (history && history.length > 0) {
           const latest = history[0];
-          const display = `${latest.timestamp.slice(0, 16).replace('T', ' ')} · ${latest.description}`;
+          const rawCode = parseInt(latest.code.replace(/^0x/i, ''), 16);
+          const description = Number.isFinite(rawCode)
+            ? decodeAlarmCode(rawCode)
+            : latest.description;
+          const detail = Number.isFinite(rawCode) ? decodeAlarmDetail(rawCode) : null;
+          const headline = `${latest.timestamp.slice(0, 16).replace('T', ' ')} · ${description}`;
+          const display = detail ? `${headline}\n\n${detail}` : headline;
           await this.setCapabilityValue('last_fault', display).catch(() => undefined);
         } else {
           await this.setCapabilityValue('last_fault', 'No faults recorded yet').catch(() => undefined);
@@ -801,9 +809,15 @@ export default class HeatpumpDevice extends Homey.Device {
       const code = codeRaw ?? 0;
       const description = decodeAlarmCode(code);
       const unit = decodeAlarmUnit(unitRaw ?? 0);
+      const detail = decodeAlarmDetail(code);
       const codeHex = `0x${(code & 0xFFFF).toString(16).padStart(4, '0').toUpperCase()}`;
       const timestamp = new Date().toISOString();
-      const display = `${timestamp.slice(0, 16).replace('T', ' ')} · ${description}`;
+      // Headline = timestamp + decoded label. Append the longer explanation
+      // (sourced from the service manual) on a second line so users can read
+      // it directly from the Homey device card without having to dig into
+      // the timeline notification.
+      const headline = `${timestamp.slice(0, 16).replace('T', ' ')} · ${description}`;
+      const display = detail ? `${headline}\n\n${detail}` : headline;
 
       // Update the persistent last-fault capability + store the event in a
       // rolling history of the last 10 faults (for future Flow-tag exposure).

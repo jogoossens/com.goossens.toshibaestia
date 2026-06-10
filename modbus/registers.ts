@@ -116,18 +116,50 @@ export function decodeHydroUnitType(code: number): string {
   }
 }
 
-/** Alarm unit origin decoder (register 40014). */
+/** Alarm unit origin decoder (register 40014).
+ *
+ *  EEU-006 documents only single-byte values (0x00 / 0x60 / 0x7x). A real
+ *  unit returned 0x0800 alongside the undocumented 0x3003 alarm code — the
+ *  meaning of the high byte is unverified. We exact-match first; if the
+ *  value is unknown but the low byte matches a documented source, surface
+ *  that as an unverified hint. */
 export function decodeAlarmUnit(code: number): string {
-  if (code === 0x00) return 'Interface';
-  if (code === 0x60) return 'Remote controller';
-  if ((code & 0xF0) === 0x70) return `Hydro unit ${code & 0x0F}`;
-  return `Unknown (0x${code.toString(16).padStart(2, '0').toUpperCase()})`;
+  const tryDecode = (c: number): string | null => {
+    if (c === 0x00) return 'Interface';
+    if (c === 0x60) return 'Remote controller';
+    if ((c & 0xF0) === 0x70) return `Hydro unit ${c & 0x0F}`;
+    return null;
+  };
+  const rawHex = `0x${code.toString(16).padStart(4, '0').toUpperCase()}`;
+  const exact = tryDecode(code);
+  if (exact) return exact;
+  const low = tryDecode(code & 0x00FF);
+  if (low) return `Unknown ${rawHex} — low byte = ${low} (unverified)`;
+  return `Unknown (${rawHex})`;
 }
 
 /**
  * Human-readable alarm label for the hex code in register 40013.
- * Covers the full list from manual section 6. Falls back to raw hex for unknown codes.
- */
+ *
+ * **What we empirically confirmed (June 2026).** A real R32 1-Series Estia
+ * showed `40013 = 0x3003` and `40014 = 0x0800` during a DHW overheat. The
+ * wired-controller LCD on that same event displayed plain "A3" — Toshiba's
+ * own firmware decodes the same internal alarm as A03 and ignores the high
+ * nibble when rendering for the user. So **the high nibble of register
+ * 40013 is metadata**, not part of the code. EEU-006 doesn't document this
+ * (it just lists the low-byte codes and F32/F33's bit-8 extension), but the
+ * LCD-vs-Modbus cross-check beats any document hunt.
+ *
+ * **Decoder strategy.**
+ *   1. Exact match — preserves the F32 (0x0160) / F33 (0x0161) two-byte
+ *      codes that EEU-006 documents as part of the code space, not metadata.
+ *   2. Strip the upper nibble (`code & 0x0FFF`) — handles the metadata
+ *      high-nibble case the LCD cross-check confirmed for 0x3003.
+ *   3. Last resort: strip down to the low byte, but only if bit 8 isn't set
+ *      (so we don't accidentally collapse F32/F33).
+ *
+ * When the decode comes from a fallback (steps 2 or 3), append the raw hex
+ * to the description so the original register value stays diagnosable. */
 export function decodeAlarmCode(code: number): string {
   // Special non-physical values
   if (code === -1) return 'Communication error';
@@ -208,7 +240,29 @@ export function decodeAlarmCode(code: number): string {
     0x00FF: 'P31 — Slave hydro unit error',
   };
 
-  return map[code] ?? `Unknown (0x${(code & 0xFFFF).toString(16).padStart(4, '0').toUpperCase()})`;
+  const rawHex = `0x${(code & 0xFFFF).toString(16).padStart(4, '0').toUpperCase()}`;
+
+  // 1. Exact match — preserves F32 (0x0160) / F33 (0x0161) which EEU-006
+  //    documents as legitimate 2-byte codes using bit 8.
+  if (map[code]) return map[code];
+
+  // 2. Mask the upper nibble. Empirically confirmed (LCD = A3 / Modbus =
+  //    0x3003) that Toshiba's firmware strips the high nibble before
+  //    displaying the code. Append [raw 0xXXXX] so the original register
+  //    value stays diagnosable for future investigation.
+  const masked12 = code & 0x0FFF;
+  if (masked12 !== code && map[masked12]) {
+    return `${map[masked12]} [raw ${rawHex}]`;
+  }
+
+  // 3. Last resort: drop to the low byte, but only if bit 8 isn't set (so
+  //    we never accidentally collapse F32 → A03 or F33 → some random code).
+  const lowByte = code & 0x00FF;
+  if ((code & 0x0100) === 0 && lowByte !== code && map[lowByte]) {
+    return `${map[lowByte]} [raw ${rawHex}]`;
+  }
+
+  return `Unknown (${rawHex})`;
 }
 
 /**
