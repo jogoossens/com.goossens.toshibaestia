@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.goossens.toshibaestia",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "compatibility": ">=12.0.0",
   "sdk": 3,
   "platforms": [
@@ -56,6 +56,67 @@
   },
   "flow": {
     "triggers": [
+      {
+        "id": "activity_changed",
+        "title": {
+          "en": "The activity changed",
+          "nl": "De werking is veranderd",
+          "da": "Driften er ændret",
+          "de": "Der Betrieb hat sich geändert",
+          "es": "El funcionamiento ha cambiado",
+          "fr": "Le fonctionnement a changé",
+          "it": "Il funzionamento è cambiato",
+          "no": "Driften er endret",
+          "sv": "Driften har ändrats",
+          "pl": "Praca się zmieniła",
+          "ru": "Работа изменилась",
+          "ko": "운전이 변경됨",
+          "ar": "تغيّر التشغيل"
+        },
+        "tokens": [
+          {
+            "name": "activity",
+            "type": "string",
+            "title": {
+              "en": "Activity",
+              "nl": "Werking",
+              "da": "Drift",
+              "de": "Betrieb",
+              "es": "Funcionamiento",
+              "fr": "Fonctionnement",
+              "it": "Funzionamento",
+              "no": "Drift",
+              "sv": "Drift",
+              "pl": "Praca",
+              "ru": "Работа",
+              "ko": "운전",
+              "ar": "التشغيل"
+            },
+            "example": {
+              "en": "Heating",
+              "nl": "Verwarmen",
+              "da": "Opvarmning",
+              "de": "Heizen",
+              "es": "Calefacción",
+              "fr": "Chauffage",
+              "it": "Riscaldamento",
+              "no": "Oppvarming",
+              "sv": "Uppvärmning",
+              "pl": "Ogrzewanie",
+              "ru": "Отопление",
+              "ko": "난방",
+              "ar": "تدفئة"
+            }
+          }
+        ],
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=heatpump"
+          }
+        ]
+      },
       {
         "id": "fault_triggered",
         "title": {
@@ -267,6 +328,124 @@
       }
     ],
     "conditions": [
+      {
+        "id": "activity_is",
+        "title": {
+          "en": "Activity !{{is|is not}} …",
+          "nl": "Werking !{{is|is niet}} …",
+          "da": "Drift !{{er|er ikke}} …",
+          "de": "Betrieb !{{ist|ist nicht}} …",
+          "es": "Funcionamiento !{{es|no es}} …",
+          "fr": "Fonctionnement !{{est|n'est pas}} …",
+          "it": "Funzionamento !{{è|non è}} …",
+          "no": "Drift !{{er|er ikke}} …",
+          "sv": "Drift !{{är|är inte}} …",
+          "pl": "Praca !{{to|to nie}} …",
+          "ru": "Работа !{{—|— не}} …",
+          "ko": "운전 !{{이(가)|이(가) 아님}} …",
+          "ar": "التشغيل !{{هو|ليس}} …"
+        },
+        "titleFormatted": {
+          "en": "Activity !{{is|is not}} [[activity]]",
+          "nl": "Werking !{{is|is niet}} [[activity]]",
+          "da": "Drift !{{er|er ikke}} [[activity]]",
+          "de": "Betrieb !{{ist|ist nicht}} [[activity]]",
+          "es": "Funcionamiento !{{es|no es}} [[activity]]",
+          "fr": "Fonctionnement !{{est|n'est pas}} [[activity]]",
+          "it": "Funzionamento !{{è|non è}} [[activity]]",
+          "no": "Drift !{{er|er ikke}} [[activity]]",
+          "sv": "Drift !{{är|är inte}} [[activity]]",
+          "pl": "Praca !{{to|to nie}} [[activity]]",
+          "ru": "Работа !{{—|— не}} [[activity]]",
+          "ko": "운전 !{{이(가)|이(가) 아님}} [[activity]]",
+          "ar": "التشغيل !{{هو|ليس}} [[activity]]"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=heatpump"
+          },
+          {
+            "name": "activity",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "idle",
+                "label": {
+                  "en": "Idle",
+                  "nl": "Stil",
+                  "da": "Inaktiv",
+                  "de": "Inaktiv",
+                  "es": "Inactiva",
+                  "fr": "À l'arrêt",
+                  "it": "Inattiva",
+                  "no": "Inaktiv",
+                  "sv": "Inaktiv",
+                  "pl": "Bezczynna",
+                  "ru": "Простой",
+                  "ko": "대기",
+                  "ar": "متوقفة"
+                }
+              },
+              {
+                "id": "heating",
+                "label": {
+                  "en": "Heating",
+                  "nl": "Verwarmen",
+                  "da": "Opvarmning",
+                  "de": "Heizen",
+                  "es": "Calefacción",
+                  "fr": "Chauffage",
+                  "it": "Riscaldamento",
+                  "no": "Oppvarming",
+                  "sv": "Uppvärmning",
+                  "pl": "Ogrzewanie",
+                  "ru": "Отопление",
+                  "ko": "난방",
+                  "ar": "تدفئة"
+                }
+              },
+              {
+                "id": "dhw",
+                "label": {
+                  "en": "Hot water",
+                  "nl": "Warm water",
+                  "da": "Varmt vand",
+                  "de": "Warmwasser",
+                  "es": "Agua caliente",
+                  "fr": "Eau chaude",
+                  "it": "Acqua calda",
+                  "no": "Varmtvann",
+                  "sv": "Varmvatten",
+                  "pl": "Ciepła woda",
+                  "ru": "Горячая вода",
+                  "ko": "온수",
+                  "ar": "ماء ساخن"
+                }
+              },
+              {
+                "id": "cooling",
+                "label": {
+                  "en": "Cooling",
+                  "nl": "Koelen",
+                  "da": "Køling",
+                  "de": "Kühlen",
+                  "es": "Refrigeración",
+                  "fr": "Refroidissement",
+                  "it": "Raffrescamento",
+                  "no": "Kjøling",
+                  "sv": "Kylning",
+                  "pl": "Chłodzenie",
+                  "ru": "Охлаждение",
+                  "ko": "냉방",
+                  "ar": "تبريد"
+                }
+              }
+            ]
+          }
+        ]
+      },
       {
         "id": "alarm_is_active",
         "title": {
@@ -619,6 +798,98 @@
               "ru": "30",
               "ko": "30",
               "ar": "٣٠"
+            }
+          }
+        ]
+      },
+      {
+        "id": "dhw_temperature_set",
+        "title": {
+          "en": "Set hot water target",
+          "nl": "Warmwaterinstelpunt instellen",
+          "da": "Indstil varmtvandsindstilling",
+          "de": "Warmwasser-Sollwert einstellen",
+          "es": "Establecer la temperatura objetivo de ACS",
+          "fr": "Régler la consigne d'eau chaude",
+          "it": "Imposta la temperatura ACS",
+          "no": "Still inn varmtvannsinnstilling",
+          "sv": "Ställ in varmvatteninställning",
+          "pl": "Ustaw zadaną temperaturę CWU",
+          "ru": "Установить уставку горячей воды",
+          "ko": "온수 설정 온도 설정",
+          "ar": "ضبط درجة حرارة الماء الساخن المستهدفة"
+        },
+        "titleFormatted": {
+          "en": "Set hot water target to [[temperature]] °C",
+          "nl": "Warmwaterinstelpunt instellen op [[temperature]] °C",
+          "da": "Indstil varmtvandsindstillingen til [[temperature]] °C",
+          "de": "Warmwasser-Sollwert auf [[temperature]] °C einstellen",
+          "es": "Establecer la temperatura objetivo de ACS a [[temperature]] °C",
+          "fr": "Régler la consigne d'eau chaude à [[temperature]] °C",
+          "it": "Imposta la temperatura ACS a [[temperature]] °C",
+          "no": "Sett varmtvannsinnstillingen til [[temperature]] °C",
+          "sv": "Ställ in varmvatteninställningen till [[temperature]] °C",
+          "pl": "Ustaw zadaną temperaturę CWU na [[temperature]] °C",
+          "ru": "Установить уставку горячей воды на [[temperature]] °C",
+          "ko": "온수 설정 온도를 [[temperature]] °C로 설정",
+          "ar": "اضبط درجة حرارة الماء الساخن المستهدفة إلى [[temperature]] درجة مئوية"
+        },
+        "hint": {
+          "en": "Sets the hot water tank setpoint. A heating run only starts when the tank is below the unit's start temperature (DN 20); the unit caps the setpoint at its own maximum (DN 1E). Requires a DHW tank (device setting).",
+          "nl": "Stelt het instelpunt van de warmwatertank in. Een opwarmbeurt start pas als de tank onder de starttemperatuur van de unit zit (DN 20); de unit begrenst het instelpunt op zijn eigen maximum (DN 1E). Vereist een DHW-tank (apparaatinstelling).",
+          "da": "Indstiller setpunktet for varmtvandsbeholderen. En opvarmning starter først, når beholderen er under enhedens starttemperatur (DN 20); enheden begrænser setpunktet til sit eget maksimum (DN 1E). Kræver en DHW-tank (enhedsindstilling).",
+          "de": "Legt den Sollwert des Warmwasserspeichers fest. Ein Aufheizvorgang startet erst, wenn der Speicher unter der Starttemperatur des Geräts liegt (DN 20); das Gerät begrenzt den Sollwert auf sein eigenes Maximum (DN 1E). Erfordert einen DHW-Tank (Geräteeinstellung).",
+          "es": "Establece la consigna del depósito de ACS. Un ciclo de calentamiento solo empieza cuando el depósito está por debajo de la temperatura de arranque de la unidad (DN 20); la unidad limita la consigna a su propio máximo (DN 1E). Requiere un tanque de ACS (configuración del dispositivo).",
+          "fr": "Règle la consigne du ballon d'eau chaude. Une chauffe ne démarre que si le ballon est sous la température de démarrage de l'unité (DN 20) ; l'unité limite la consigne à son propre maximum (DN 1E). Nécessite un réservoir ECS (paramètre de l'appareil).",
+          "it": "Imposta il setpoint del serbatoio ACS. Un ciclo di riscaldamento parte solo quando il serbatoio è sotto la temperatura di avvio dell'unità (DN 20); l'unità limita il setpoint al proprio massimo (DN 1E). Richiede un serbatoio ACS (impostazione del dispositivo).",
+          "no": "Setter settpunktet for varmtvannstanken. En oppvarming starter først når tanken er under enhetens starttemperatur (DN 20); enheten begrenser settpunktet til sitt eget maksimum (DN 1E). Krever en DHW-tank (enhetsinnstilling).",
+          "sv": "Ställer in börvärdet för varmvattentanken. En uppvärmning startar först när tanken är under enhetens starttemperatur (DN 20); enheten begränsar börvärdet till sitt eget maximum (DN 1E). Kräver en DHW-tank (enhetsinställning).",
+          "pl": "Ustawia nastawę zbiornika CWU. Grzanie rusza dopiero, gdy zbiornik jest poniżej temperatury startu urządzenia (DN 20); urządzenie ogranicza nastawę do własnego maksimum (DN 1E). Wymaga zbiornika CWU (ustawienie urządzenia).",
+          "ru": "Задаёт уставку бака горячей воды. Нагрев начинается, только когда бак ниже температуры запуска агрегата (DN 20); агрегат ограничивает уставку своим максимумом (DN 1E). Требуется бак ГВС (настройка устройства).",
+          "ko": "온수 탱크 설정 온도를 설정합니다. 탱크가 유닛의 시작 온도(DN 20)보다 낮을 때만 가열이 시작되며, 유닛은 설정 온도를 자체 최대값(DN 1E)으로 제한합니다. DHW 탱크(장치 설정)가 필요합니다.",
+          "ar": "يضبط درجة حرارة خزان الماء الساخن المستهدفة. لا يبدأ التسخين إلا عندما يكون الخزان أقل من درجة بدء الوحدة (DN 20)؛ وتحدّ الوحدة القيمة بحدها الأقصى (DN 1E). يتطلب وجود خزان ماء ساخن (إعداد الجهاز)."
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=heatpump"
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "title": {
+              "en": "Temperature",
+              "nl": "Temperatuur",
+              "da": "Temperatur",
+              "de": "Temperatur",
+              "es": "Temperatura",
+              "fr": "Température",
+              "it": "Temperatura",
+              "no": "Temperatur",
+              "sv": "Temperatur",
+              "pl": "Temperatura",
+              "ru": "Температура",
+              "ko": "온도",
+              "ar": "درجة الحرارة"
+            },
+            "min": 30,
+            "max": 75,
+            "step": 0.5,
+            "placeholder": {
+              "en": "52",
+              "nl": "52",
+              "da": "52",
+              "de": "52",
+              "es": "52",
+              "fr": "52",
+              "it": "52",
+              "no": "52",
+              "sv": "52",
+              "pl": "52",
+              "ru": "52",
+              "ko": "52",
+              "ar": "٥٢"
             }
           }
         ]
@@ -1053,6 +1324,8 @@
         "measure_temperature.outdoor_avg",
         "measure_temperature.water_inlet",
         "measure_temperature.water_outlet",
+        "measure_temperature.flow_target",
+        "measure_temperature.curve_target",
         "alarm_generic",
         "fault_code",
         "last_fault",
@@ -1067,7 +1340,8 @@
         "antibacteria",
         "measure_power",
         "meter_power",
-        "season"
+        "season",
+        "heatpump_activity"
       ],
       "capabilitiesOptions": {
         "onoff": {
@@ -1263,6 +1537,40 @@
             "ru": "Выход воды (TWO)",
             "ko": "물 배출구 (TWO)",
             "ar": "مخرج الماء (TWO)"
+          }
+        },
+        "measure_temperature.flow_target": {
+          "title": {
+            "en": "Flow target in use",
+            "nl": "Aanvoerdoel nu",
+            "da": "Fremløbsmål nu",
+            "de": "Vorlauf-Sollwert aktuell",
+            "es": "Objetivo de impulsión actual",
+            "fr": "Consigne de départ actuelle",
+            "it": "Obiettivo di mandata attuale",
+            "no": "Turmål nå",
+            "sv": "Framledningsmål nu",
+            "pl": "Bieżąca docelowa temp. zasilania",
+            "ru": "Текущая цель подачи",
+            "ko": "현재 공급 목표",
+            "ar": "هدف التدفق الحالي"
+          }
+        },
+        "measure_temperature.curve_target": {
+          "title": {
+            "en": "Weather curve flow",
+            "nl": "Aanvoer volgens stooklijn",
+            "da": "Fremløb efter varmekurve",
+            "de": "Vorlauf nach Heizkurve",
+            "es": "Impulsión según curva de calefacción",
+            "fr": "Départ selon la loi d'eau",
+            "it": "Mandata secondo la curva climatica",
+            "no": "Turtemperatur etter varmekurve",
+            "sv": "Framledning enligt värmekurva",
+            "pl": "Zasilanie wg krzywej grzewczej",
+            "ru": "Подача по отопительной кривой",
+            "ko": "난방 곡선 공급 온도",
+            "ar": "التدفق حسب منحنى التدفئة"
           }
         },
         "alarm_generic": {
@@ -2941,6 +3249,41 @@
               "value": "—"
             },
             {
+              "id": "curveStatus",
+              "type": "label",
+              "value": "—",
+              "label": {
+                "en": "Weather curve",
+                "nl": "Stooklijn",
+                "da": "Varmekurve",
+                "de": "Heizkurve",
+                "es": "Curva de calefacción",
+                "fr": "Loi d'eau",
+                "it": "Curva climatica",
+                "no": "Varmekurve",
+                "sv": "Värmekurva",
+                "pl": "Krzywa grzewcza",
+                "ru": "Отопительная кривая",
+                "ko": "난방 곡선",
+                "ar": "منحنى التدفئة"
+              },
+              "hint": {
+                "en": "Where \"Weather curve flow\" comes from: live from the heat pump while heating is selected with automatic mode on (weather compensation) and no night setback or SG Ready, also with the zone off. Every outdoor degree keeps its last five hours; their median counts, so one odd hour changes nothing and a curve changed on the remote takes over after a few hours at that temperature. Between learnt temperatures the value is interpolated; outside them it stays empty.",
+                "nl": "Waar \"Aanvoer volgens stooklijn\" vandaan komt: live van de warmtepomp terwijl verwarmen gekozen is met de automatische stand (weersafhankelijk) aan en zonder nachtverlaging of SG Ready, ook met de zone uit. Elke graad buitentemperatuur onthoudt zijn laatste vijf uren; de middelste waarde telt, dus één afwijkend uur verandert niets en een op de bediening gewijzigde stooklijn neemt het over na enkele uren bij die temperatuur. Tussen geleerde temperaturen wordt geïnterpoleerd; daarbuiten blijft hij leeg.",
+                "da": "Hvor \"Fremløb efter varmekurve\" kommer fra: direkte fra varmepumpen, mens opvarmning er valgt med automatisk tilstand (vejrkompensering) slået til og uden natsænkning eller SG Ready, også med zonen slukket. Hver udegrad husker sine seneste fem timer; medianen tæller, så én afvigende time ændrer intet, og en kurve ændret på betjeningen tager over efter nogle timer ved den temperatur. Mellem lærte temperaturer interpoleres værdien; uden for dem forbliver den tom.",
+                "de": "Woher „Vorlauf nach Heizkurve“ kommt: live von der Wärmepumpe, während Heizen mit eingeschaltetem Automatikbetrieb (witterungsgeführt) und ohne Nachtabsenkung oder SG Ready gewählt ist, auch bei ausgeschalteter Zone. Jedes Grad Außentemperatur behält seine letzten fünf Stunden; der Median zählt, sodass eine abweichende Stunde nichts ändert und eine an der Fernbedienung geänderte Heizkurve nach einigen Stunden bei dieser Temperatur übernimmt. Zwischen gelernten Temperaturen wird interpoliert; außerhalb bleibt der Wert leer.",
+                "es": "De dónde viene \"Impulsión según curva de calefacción\": en directo de la bomba de calor mientras está seleccionada la calefacción con el modo automático (compensación climática) activado y sin reducción nocturna ni SG Ready, también con la zona apagada. Cada grado exterior guarda sus últimas cinco horas; cuenta la mediana, así que una hora atípica no cambia nada y una curva cambiada en el mando se impone tras unas horas a esa temperatura. Entre temperaturas aprendidas se interpola; fuera de ellas queda vacía.",
+                "fr": "D'où vient « Départ selon la loi d'eau » : en direct de la pompe à chaleur lorsque le chauffage est sélectionné avec le mode automatique (loi d'eau) activé, sans réduit de nuit ni SG Ready, même zone éteinte. Chaque degré extérieur garde ses cinq dernières heures ; la médiane compte, donc une heure atypique ne change rien et une loi d'eau modifiée sur la commande s'impose après quelques heures à cette température. Entre les températures apprises, la valeur est interpolée ; en dehors, elle reste vide.",
+                "it": "Da dove viene \"Mandata secondo la curva climatica\": in diretta dalla pompa di calore mentre è selezionato il riscaldamento con la modalità automatica (compensazione climatica) attiva e senza riduzione notturna né SG Ready, anche a zona spenta. Ogni grado esterno conserva le sue ultime cinque ore; conta la mediana, quindi un'ora anomala non cambia nulla e una curva modificata sul comando subentra dopo alcune ore a quella temperatura. Tra le temperature apprese il valore è interpolato; al di fuori resta vuoto.",
+                "no": "Hvor \"Turtemperatur etter varmekurve\" kommer fra: direkte fra varmepumpen mens oppvarming er valgt med automatisk modus (værkompensering) på og uten nattsenking eller SG Ready, også med sonen av. Hver utegrad husker sine siste fem timer; medianen teller, så én avvikende time endrer ingenting, og en kurve endret på betjeningen tar over etter noen timer ved den temperaturen. Mellom lærte temperaturer interpoleres verdien; utenfor dem forblir den tom.",
+                "sv": "Var \"Framledning enligt värmekurva\" kommer ifrån: direkt från värmepumpen medan värme är vald med automatiskt läge (väderkompensering) på och utan nattsänkning eller SG Ready, även med zonen av. Varje utomhusgrad sparar sina fem senaste timmar; medianen räknas, så en avvikande timme ändrar inget och en kurva som ändrats på manöverpanelen tar över efter några timmar vid den temperaturen. Mellan inlärda temperaturer interpoleras värdet; utanför dem förblir det tomt.",
+                "pl": "Skąd pochodzi „Zasilanie wg krzywej grzewczej”: na żywo z pompy ciepła, gdy wybrane jest grzanie z włączonym trybem automatycznym (pogodowym), bez obniżenia nocnego i SG Ready, także przy wyłączonej strefie. Każdy stopień temperatury zewnętrznej zachowuje ostatnie pięć godzin; liczy się mediana, więc jedna nietypowa godzina nic nie zmienia, a krzywa zmieniona na sterowniku przejmuje po kilku godzinach przy tej temperaturze. Między wyuczonymi temperaturami wartość jest interpolowana; poza nimi pozostaje pusta.",
+                "ru": "Откуда берётся «Подача по отопительной кривой»: напрямую от теплового насоса, пока выбран нагрев с включённым автоматическим режимом (погодозависимым) без ночного понижения и SG Ready, в том числе при выключенной зоне. Каждый градус наружной температуры хранит свои последние пять часов; учитывается медиана, поэтому один нетипичный час ничего не меняет, а кривая, изменённая на пульте, вступает в силу через несколько часов при этой температуре. Между изученными температурами значение интерполируется; вне их оно пустое.",
+                "ko": "\"난방 곡선 공급 온도\"의 출처: 야간 감온이나 SG Ready 없이 자동 모드(외기 보상)가 켜진 상태로 난방이 선택되어 있는 동안(구역이 꺼져 있어도) 히트 펌프에서 직접 가져옵니다. 외기 온도 1도마다 최근 다섯 시간을 기억하고 그 중앙값을 사용하므로, 한 시간의 이상값은 영향을 주지 않으며 리모컨에서 바꾼 곡선은 그 온도에서 몇 시간 후에 반영됩니다. 학습한 온도 사이는 보간하고, 그 범위 밖에서는 비어 있습니다.",
+                "ar": "مصدر \"التدفق حسب منحنى التدفئة\": مباشرة من المضخة الحرارية أثناء اختيار التدفئة مع تشغيل الوضع التلقائي (التعويض حسب الطقس) ودون خفض ليلي أو SG Ready، حتى مع إيقاف المنطقة. تحتفظ كل درجة حرارة خارجية بآخر خمس ساعات لها؛ ويُعتمد الوسيط، فلا تغيّر ساعة شاذة واحدة شيئاً، ويحل المنحنى المعدّل من وحدة التحكم محل القديم بعد بضع ساعات عند تلك الدرجة. بين درجات الحرارة المتعلمة تُستوفى القيمة؛ وخارجها تبقى فارغة."
+              }
+            },
+            {
               "id": "lastSeen",
               "type": "label",
               "label": {
@@ -3164,6 +3507,49 @@
         "ar": "تم إيقاف تعزيز الماء الساخن المنزلي"
       }
     },
+    "compressor_frequency": {
+      "type": "number",
+      "title": {
+        "en": "Compressor frequency",
+        "nl": "Compressorfrequentie",
+        "da": "Kompressorfrekvens",
+        "de": "Verdichterfrequenz",
+        "es": "Frecuencia del compresor",
+        "fr": "Fréquence du compresseur",
+        "it": "Frequenza del compressore",
+        "no": "Kompressorfrekvens",
+        "sv": "Kompressorfrekvens",
+        "pl": "Częstotliwość sprężarki",
+        "ru": "Частота компрессора",
+        "ko": "압축기 주파수",
+        "ar": "تردد الضاغط"
+      },
+      "desc": {
+        "en": "Compressor speed read from the heat pump; 0 = stopped. Lags a stop by about half a minute.",
+        "nl": "Toerental van de compressor, uitgelezen uit de warmtepomp; 0 = stil. Loopt bij een stop ongeveer een halve minuut achter.",
+        "da": "Kompressorens hastighed aflæst fra varmepumpen; 0 = stoppet. Halter ca. et halvt minut efter ved stop.",
+        "de": "Verdichterdrehzahl aus der Wärmepumpe; 0 = aus. Folgt einem Stopp etwa eine halbe Minute später.",
+        "es": "Velocidad del compresor leída de la bomba de calor; 0 = parado. Refleja una parada con medio minuto de retraso.",
+        "fr": "Vitesse du compresseur lue sur la pompe à chaleur ; 0 = arrêté. Suit un arrêt avec environ une demi-minute de retard.",
+        "it": "Velocità del compressore letta dalla pompa di calore; 0 = fermo. Segue un arresto con circa mezzo minuto di ritardo.",
+        "no": "Kompressorens hastighet lest fra varmepumpen; 0 = stoppet. Henger ca. et halvt minutt etter ved stopp.",
+        "sv": "Kompressorns hastighet avläst från värmepumpen; 0 = stoppad. Släpar ungefär en halv minut efter vid stopp.",
+        "pl": "Prędkość sprężarki odczytana z pompy ciepła; 0 = zatrzymana. Zatrzymanie widać z opóźnieniem ok. pół minuty.",
+        "ru": "Частота компрессора из теплового насоса; 0 = остановлен. Остановка видна примерно через полминуты.",
+        "ko": "히트펌프에서 읽은 압축기 속도, 0 = 정지. 정지는 약 30초 늦게 반영됩니다.",
+        "ar": "سرعة الضاغط المقروءة من المضخة الحرارية؛ 0 = متوقف. يظهر التوقف بتأخير نحو نصف دقيقة."
+      },
+      "units": {
+        "en": "Hz"
+      },
+      "decimals": 0,
+      "min": 0,
+      "max": 150,
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true
+    },
     "fault_code": {
       "type": "string",
       "title": {
@@ -3266,6 +3652,116 @@
         "ko": "서리 방지 비활성화됨",
         "ar": "تم تعطيل حماية الصقيع"
       }
+    },
+    "heatpump_activity": {
+      "type": "enum",
+      "title": {
+        "en": "Activity",
+        "nl": "Werking",
+        "da": "Drift",
+        "de": "Betrieb",
+        "es": "Funcionamiento",
+        "fr": "Fonctionnement",
+        "it": "Funzionamento",
+        "no": "Drift",
+        "sv": "Drift",
+        "pl": "Praca",
+        "ru": "Работа",
+        "ko": "운전",
+        "ar": "التشغيل"
+      },
+      "desc": {
+        "en": "What the heat pump is heating or cooling now: the compressor or a heater (from the compressor and the water temperatures, updated every poll).",
+        "nl": "Wat de warmtepomp nu verwarmt of koelt: de compressor of een weerstand (uit de compressor en de watertemperaturen, bij elke uitlezing).",
+        "da": "Hvad varmepumpen opvarmer eller køler nu: kompressoren eller et varmelegeme (ud fra kompressoren og vandtemperaturerne, ved hver aflæsning).",
+        "de": "Was die Wärmepumpe gerade heizt oder kühlt: Verdichter oder Heizstab (aus Verdichter und Wassertemperaturen, bei jeder Abfrage).",
+        "es": "Lo que la bomba de calor calienta o enfría ahora: el compresor o una resistencia (según el compresor y las temperaturas del agua, en cada lectura).",
+        "fr": "Ce que la pompe à chaleur chauffe ou refroidit maintenant : le compresseur ou une résistance (d'après le compresseur et les températures d'eau, à chaque lecture).",
+        "it": "Cosa sta riscaldando o raffrescando ora la pompa di calore: il compressore o una resistenza (dal compressore e dalle temperature dell'acqua, a ogni lettura).",
+        "no": "Hva varmepumpen varmer eller kjøler nå: kompressoren eller et varmeelement (ut fra kompressoren og vanntemperaturene, ved hver avlesning).",
+        "sv": "Vad värmepumpen värmer eller kyler nu: kompressorn eller en elpatron (utifrån kompressorn och vattentemperaturerna, vid varje avläsning).",
+        "pl": "Co pompa ciepła teraz grzeje lub chłodzi: sprężarka lub grzałka (na podstawie sprężarki i temperatur wody, przy każdym odczycie).",
+        "ru": "Что тепловой насос сейчас нагревает или охлаждает: компрессор или нагреватель (по компрессору и температурам воды, при каждом опросе).",
+        "ko": "히트펌프가 지금 난방 또는 냉방하는 대상: 압축기 또는 히터 (압축기와 물 온도 기준, 매 조회 시).",
+        "ar": "ما تقوم المضخة الحرارية بتدفئته أو تبريده الآن: الضاغط أو سخان (حسب الضاغط ودرجات حرارة الماء، عند كل قراءة)."
+      },
+      "values": [
+        {
+          "id": "idle",
+          "title": {
+            "en": "Idle",
+            "nl": "Stil",
+            "da": "Inaktiv",
+            "de": "Inaktiv",
+            "es": "Inactiva",
+            "fr": "À l'arrêt",
+            "it": "Inattiva",
+            "no": "Inaktiv",
+            "sv": "Inaktiv",
+            "pl": "Bezczynna",
+            "ru": "Простой",
+            "ko": "대기",
+            "ar": "متوقفة"
+          }
+        },
+        {
+          "id": "heating",
+          "title": {
+            "en": "Heating",
+            "nl": "Verwarmen",
+            "da": "Opvarmning",
+            "de": "Heizen",
+            "es": "Calefacción",
+            "fr": "Chauffage",
+            "it": "Riscaldamento",
+            "no": "Oppvarming",
+            "sv": "Uppvärmning",
+            "pl": "Ogrzewanie",
+            "ru": "Отопление",
+            "ko": "난방",
+            "ar": "تدفئة"
+          }
+        },
+        {
+          "id": "dhw",
+          "title": {
+            "en": "Hot water",
+            "nl": "Warm water",
+            "da": "Varmt vand",
+            "de": "Warmwasser",
+            "es": "Agua caliente",
+            "fr": "Eau chaude",
+            "it": "Acqua calda",
+            "no": "Varmtvann",
+            "sv": "Varmvatten",
+            "pl": "Ciepła woda",
+            "ru": "Горячая вода",
+            "ko": "온수",
+            "ar": "ماء ساخن"
+          }
+        },
+        {
+          "id": "cooling",
+          "title": {
+            "en": "Cooling",
+            "nl": "Koelen",
+            "da": "Køling",
+            "de": "Kühlen",
+            "es": "Refrigeración",
+            "fr": "Refroidissement",
+            "it": "Raffrescamento",
+            "no": "Kjøling",
+            "sv": "Kylning",
+            "pl": "Chłodzenie",
+            "ru": "Охлаждение",
+            "ko": "냉방",
+            "ar": "تبريد"
+          }
+        }
+      ],
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor"
     },
     "last_fault": {
       "type": "string",

@@ -51,5 +51,24 @@
     "status_estimate": "No meter: the estimate is used",
     "status_unavailable": "Meter __name__ is unavailable; the estimate is used",
     "repair_help": "Already measuring a heat pump with a separate energy meter in Homey (for example a Shelly EM on its circuit)? Pick it here. The heat pump then shows the measured power and energy instead of the estimate; the estimate keeps running for comparison and takes over when the meter is unavailable. Afterwards, in Homey Energy, include the heat pump and exclude the meter device, so nothing is counted twice."
+  },
+  "curve": {
+    "live": "live from the heat pump",
+    "learnt": "from the learnt curve",
+    "unknown": "unknown at this outdoor temperature",
+    "learnt_range": "learnt at __count__ outdoor temperatures (__from__ to __to__ °C)",
+    "nothing_learnt": "nothing learnt yet: the app learns the curve while heating is selected with automatic mode on, also with the zone off",
+    "blocked_auto_off": "not learning now: automatic mode is off",
+    "blocked_cooling": "not learning now: cooling is selected",
+    "blocked_night_setback": "not learning now: night setback is on",
+    "blocked_sg_ready": "not learning now: SG Ready is active",
+    "blocked_no_reading": "not learning now: no reading of register 40062",
+    "blocked_refused": "this heat pump does not provide register 40062"
+  },
+  "activity": {
+    "idle": "Idle",
+    "heating": "Heating",
+    "dhw": "Hot water",
+    "cooling": "Cooling"
   }
 }

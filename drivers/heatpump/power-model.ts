@@ -767,7 +767,14 @@ export class RefrigerantSensorCheck {
     const hz = s.compressorHz;
     this.runStreak = waterSaysOn ? this.runStreak + 1 : 0;
     const bump = (key: keyof RefrigerantCheckState) => {
-      this.state[key] = Math.min(CHECK_COUNT_CAP, this.state[key] + 1);
+      // At the cap, halve every count: the run ratio is kept and recent polls keep counting.
+      // A capped count alone would let the misses outgrow the confirms after weeks of running.
+      if (this.state[key] >= CHECK_COUNT_CAP) {
+        for (const k of Object.keys(this.state) as Array<keyof RefrigerantCheckState>) {
+          this.state[k] = Math.floor(this.state[k] / 2);
+        }
+      }
+      this.state[key] += 1;
     };
     if (this.runStreak >= 3) {
       // While heating, TC reads the liquid leaving the plate heat exchanger at the return-water

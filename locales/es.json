@@ -51,5 +51,24 @@
     "status_estimate": "Sin medidor: se usa la estimación",
     "status_unavailable": "El medidor __name__ no está disponible; se usa la estimación",
     "repair_help": "¿Ya mides una bomba de calor con un medidor de energía aparte en Homey (por ejemplo un Shelly EM en su circuito)? Elígelo aquí. La bomba de calor mostrará entonces la potencia y el consumo medidos en lugar de la estimación; la estimación sigue funcionando para comparar y toma el relevo si el medidor no está disponible. Después, en Homey Energy, incluye la bomba de calor y excluye el medidor, para que nada se cuente dos veces."
+  },
+  "curve": {
+    "live": "en directo de la bomba de calor",
+    "learnt": "de la curva aprendida",
+    "unknown": "desconocida a esta temperatura exterior",
+    "learnt_range": "aprendida a __count__ temperaturas exteriores (de __from__ a __to__ °C)",
+    "nothing_learnt": "aún no se ha aprendido nada: la app aprende la curva mientras está seleccionada la calefacción con el modo automático activado, también con la zona apagada",
+    "blocked_auto_off": "no aprende ahora: el modo automático está desactivado",
+    "blocked_cooling": "no aprende ahora: está seleccionada la refrigeración",
+    "blocked_night_setback": "no aprende ahora: la reducción nocturna está activada",
+    "blocked_sg_ready": "no aprende ahora: SG Ready está activo",
+    "blocked_no_reading": "no aprende ahora: sin lectura del registro 40062",
+    "blocked_refused": "esta bomba de calor no ofrece el registro 40062"
+  },
+  "activity": {
+    "idle": "Inactiva",
+    "heating": "Calefacción",
+    "dhw": "Agua caliente",
+    "cooling": "Refrigeración"
   }
 }

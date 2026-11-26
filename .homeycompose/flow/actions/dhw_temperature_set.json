@@ -1,0 +1,92 @@
+{
+  "id": "dhw_temperature_set",
+  "title": {
+    "en": "Set hot water target",
+    "nl": "Warmwaterinstelpunt instellen",
+    "da": "Indstil varmtvandsindstilling",
+    "de": "Warmwasser-Sollwert einstellen",
+    "es": "Establecer la temperatura objetivo de ACS",
+    "fr": "Régler la consigne d'eau chaude",
+    "it": "Imposta la temperatura ACS",
+    "no": "Still inn varmtvannsinnstilling",
+    "sv": "Ställ in varmvatteninställning",
+    "pl": "Ustaw zadaną temperaturę CWU",
+    "ru": "Установить уставку горячей воды",
+    "ko": "온수 설정 온도 설정",
+    "ar": "ضبط درجة حرارة الماء الساخن المستهدفة"
+  },
+  "titleFormatted": {
+    "en": "Set hot water target to [[temperature]] °C",
+    "nl": "Warmwaterinstelpunt instellen op [[temperature]] °C",
+    "da": "Indstil varmtvandsindstillingen til [[temperature]] °C",
+    "de": "Warmwasser-Sollwert auf [[temperature]] °C einstellen",
+    "es": "Establecer la temperatura objetivo de ACS a [[temperature]] °C",
+    "fr": "Régler la consigne d'eau chaude à [[temperature]] °C",
+    "it": "Imposta la temperatura ACS a [[temperature]] °C",
+    "no": "Sett varmtvannsinnstillingen til [[temperature]] °C",
+    "sv": "Ställ in varmvatteninställningen till [[temperature]] °C",
+    "pl": "Ustaw zadaną temperaturę CWU na [[temperature]] °C",
+    "ru": "Установить уставку горячей воды на [[temperature]] °C",
+    "ko": "온수 설정 온도를 [[temperature]] °C로 설정",
+    "ar": "اضبط درجة حرارة الماء الساخن المستهدفة إلى [[temperature]] درجة مئوية"
+  },
+  "hint": {
+    "en": "Sets the hot water tank setpoint. A heating run only starts when the tank is below the unit's start temperature (DN 20); the unit caps the setpoint at its own maximum (DN 1E). Requires a DHW tank (device setting).",
+    "nl": "Stelt het instelpunt van de warmwatertank in. Een opwarmbeurt start pas als de tank onder de starttemperatuur van de unit zit (DN 20); de unit begrenst het instelpunt op zijn eigen maximum (DN 1E). Vereist een DHW-tank (apparaatinstelling).",
+    "da": "Indstiller setpunktet for varmtvandsbeholderen. En opvarmning starter først, når beholderen er under enhedens starttemperatur (DN 20); enheden begrænser setpunktet til sit eget maksimum (DN 1E). Kræver en DHW-tank (enhedsindstilling).",
+    "de": "Legt den Sollwert des Warmwasserspeichers fest. Ein Aufheizvorgang startet erst, wenn der Speicher unter der Starttemperatur des Geräts liegt (DN 20); das Gerät begrenzt den Sollwert auf sein eigenes Maximum (DN 1E). Erfordert einen DHW-Tank (Geräteeinstellung).",
+    "es": "Establece la consigna del depósito de ACS. Un ciclo de calentamiento solo empieza cuando el depósito está por debajo de la temperatura de arranque de la unidad (DN 20); la unidad limita la consigna a su propio máximo (DN 1E). Requiere un tanque de ACS (configuración del dispositivo).",
+    "fr": "Règle la consigne du ballon d'eau chaude. Une chauffe ne démarre que si le ballon est sous la température de démarrage de l'unité (DN 20) ; l'unité limite la consigne à son propre maximum (DN 1E). Nécessite un réservoir ECS (paramètre de l'appareil).",
+    "it": "Imposta il setpoint del serbatoio ACS. Un ciclo di riscaldamento parte solo quando il serbatoio è sotto la temperatura di avvio dell'unità (DN 20); l'unità limita il setpoint al proprio massimo (DN 1E). Richiede un serbatoio ACS (impostazione del dispositivo).",
+    "no": "Setter settpunktet for varmtvannstanken. En oppvarming starter først når tanken er under enhetens starttemperatur (DN 20); enheten begrenser settpunktet til sitt eget maksimum (DN 1E). Krever en DHW-tank (enhetsinnstilling).",
+    "sv": "Ställer in börvärdet för varmvattentanken. En uppvärmning startar först när tanken är under enhetens starttemperatur (DN 20); enheten begränsar börvärdet till sitt eget maximum (DN 1E). Kräver en DHW-tank (enhetsinställning).",
+    "pl": "Ustawia nastawę zbiornika CWU. Grzanie rusza dopiero, gdy zbiornik jest poniżej temperatury startu urządzenia (DN 20); urządzenie ogranicza nastawę do własnego maksimum (DN 1E). Wymaga zbiornika CWU (ustawienie urządzenia).",
+    "ru": "Задаёт уставку бака горячей воды. Нагрев начинается, только когда бак ниже температуры запуска агрегата (DN 20); агрегат ограничивает уставку своим максимумом (DN 1E). Требуется бак ГВС (настройка устройства).",
+    "ko": "온수 탱크 설정 온도를 설정합니다. 탱크가 유닛의 시작 온도(DN 20)보다 낮을 때만 가열이 시작되며, 유닛은 설정 온도를 자체 최대값(DN 1E)으로 제한합니다. DHW 탱크(장치 설정)가 필요합니다.",
+    "ar": "يضبط درجة حرارة خزان الماء الساخن المستهدفة. لا يبدأ التسخين إلا عندما يكون الخزان أقل من درجة بدء الوحدة (DN 20)؛ وتحدّ الوحدة القيمة بحدها الأقصى (DN 1E). يتطلب وجود خزان ماء ساخن (إعداد الجهاز)."
+  },
+  "args": [
+    {
+      "name": "device",
+      "type": "device",
+      "filter": "driver_id=heatpump"
+    },
+    {
+      "name": "temperature",
+      "type": "number",
+      "title": {
+        "en": "Temperature",
+        "nl": "Temperatuur",
+        "da": "Temperatur",
+        "de": "Temperatur",
+        "es": "Temperatura",
+        "fr": "Température",
+        "it": "Temperatura",
+        "no": "Temperatur",
+        "sv": "Temperatur",
+        "pl": "Temperatura",
+        "ru": "Температура",
+        "ko": "온도",
+        "ar": "درجة الحرارة"
+      },
+      "min": 30,
+      "max": 75,
+      "step": 0.5,
+      "placeholder": {
+        "en": "52",
+        "nl": "52",
+        "da": "52",
+        "de": "52",
+        "es": "52",
+        "fr": "52",
+        "it": "52",
+        "no": "52",
+        "sv": "52",
+        "pl": "52",
+        "ru": "52",
+        "ko": "52",
+        "ar": "٥٢"
+      }
+    }
+  ]
+}

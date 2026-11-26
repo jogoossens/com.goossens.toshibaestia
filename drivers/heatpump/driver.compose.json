@@ -24,6 +24,8 @@
     "measure_temperature.outdoor_avg",
     "measure_temperature.water_inlet",
     "measure_temperature.water_outlet",
+    "measure_temperature.flow_target",
+    "measure_temperature.curve_target",
     "alarm_generic",
     "fault_code",
     "last_fault",
@@ -38,7 +40,8 @@
     "antibacteria",
     "measure_power",
     "meter_power",
-    "season"
+    "season",
+    "heatpump_activity"
   ],
   "capabilitiesOptions": {
     "onoff": {
@@ -234,6 +237,40 @@
         "ru": "Выход воды (TWO)",
         "ko": "물 배출구 (TWO)",
         "ar": "مخرج الماء (TWO)"
+      }
+    },
+    "measure_temperature.flow_target": {
+      "title": {
+        "en": "Flow target in use",
+        "nl": "Aanvoerdoel nu",
+        "da": "Fremløbsmål nu",
+        "de": "Vorlauf-Sollwert aktuell",
+        "es": "Objetivo de impulsión actual",
+        "fr": "Consigne de départ actuelle",
+        "it": "Obiettivo di mandata attuale",
+        "no": "Turmål nå",
+        "sv": "Framledningsmål nu",
+        "pl": "Bieżąca docelowa temp. zasilania",
+        "ru": "Текущая цель подачи",
+        "ko": "현재 공급 목표",
+        "ar": "هدف التدفق الحالي"
+      }
+    },
+    "measure_temperature.curve_target": {
+      "title": {
+        "en": "Weather curve flow",
+        "nl": "Aanvoer volgens stooklijn",
+        "da": "Fremløb efter varmekurve",
+        "de": "Vorlauf nach Heizkurve",
+        "es": "Impulsión según curva de calefacción",
+        "fr": "Départ selon la loi d'eau",
+        "it": "Mandata secondo la curva climatica",
+        "no": "Turtemperatur etter varmekurve",
+        "sv": "Framledning enligt värmekurva",
+        "pl": "Zasilanie wg krzywej grzewczej",
+        "ru": "Подача по отопительной кривой",
+        "ko": "난방 곡선 공급 온도",
+        "ar": "التدفق حسب منحنى التدفئة"
       }
     },
     "alarm_generic": {

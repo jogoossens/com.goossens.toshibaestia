@@ -51,5 +51,24 @@
     "status_estimate": "Ingen måler: anslaget brukes",
     "status_unavailable": "Måler __name__ er ikke tilgjengelig; anslaget brukes",
     "repair_help": "Måler du allerede en varmepumpe med en egen energimåler i Homey (for eksempel en Shelly EM på kursen)? Velg den her. Varmepumpen viser da målt effekt og forbruk i stedet for anslaget; anslaget går videre for sammenligning og tar over hvis måleren ikke er tilgjengelig. Ta deretter med varmepumpen i Homey Energy og utelat måleren, så ingenting telles to ganger."
+  },
+  "curve": {
+    "live": "direkte fra varmepumpen",
+    "learnt": "fra den lærte kurven",
+    "unknown": "ukjent ved denne utetemperaturen",
+    "learnt_range": "lært ved __count__ utetemperaturer (__from__ til __to__ °C)",
+    "nothing_learnt": "ingenting lært ennå: appen lærer kurven mens oppvarming er valgt med automatisk modus på, også med sonen av",
+    "blocked_auto_off": "lærer ikke nå: automatisk modus er av",
+    "blocked_cooling": "lærer ikke nå: kjøling er valgt",
+    "blocked_night_setback": "lærer ikke nå: nattsenking er på",
+    "blocked_sg_ready": "lærer ikke nå: SG Ready er aktiv",
+    "blocked_no_reading": "lærer ikke nå: ingen avlesning av register 40062",
+    "blocked_refused": "denne varmepumpen leverer ikke register 40062"
+  },
+  "activity": {
+    "idle": "Inaktiv",
+    "heating": "Oppvarming",
+    "dhw": "Varmtvann",
+    "cooling": "Kjøling"
   }
 }

@@ -71,6 +71,9 @@ export const REGISTERS = {
   condensingTemp:      { number: 40021, key: 'condensingTemp',      writable: false, kind: 'temperature', description: 'Condensing temperature (TC) — undocumented' },
   evaporatorTemp:      { number: 40028, key: 'evaporatorTemp',      writable: false, kind: 'temperature', description: 'Outdoor heat exchanger temperature (TE) — undocumented' },
   compressorFrequency: { number: 40032, key: 'compressorFrequency', writable: false, kind: 'uint',        description: 'Compressor frequency (Hz) — undocumented' },
+  // Not in EEU-006. Verified on an R32 1 Series 11 kW AIO (2026-10-12): the weather curve's value in
+  // automatic mode (27 °C at 24 °C outside = curve 23 + shift 4), otherwise the fixed setpoint 40004.
+  zone1FlowTarget:     { number: 40062, key: 'zone1FlowTarget',     writable: false, kind: 'temperature', description: 'Zone 1 flow target in use — undocumented' },
 
   // Zone device connection status
   zone1DeviceConnected:{ number: 40201, key: 'zone1DeviceConnected',writable: false, kind: 'boolean',     description: 'Zone 1 device connected' },

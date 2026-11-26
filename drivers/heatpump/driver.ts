@@ -79,6 +79,16 @@ export default class HeatpumpDriver extends Homey.Driver {
     } catch (err) {
       this.error('register zone1_temperature_set', err);
     }
+    // Hot water setpoint: target_temperature.tank_water is a sub-capability, which gets no auto-generated cards.
+    try {
+      this.homey.flow.getActionCard('dhw_temperature_set')
+        .registerRunListener(async (args: { device: HeatpumpDevice; temperature: number }) => {
+          if (!args.device.hasCapability('target_temperature.tank_water')) throw new Error(args.device.homey.__('error.no_hot_water'));
+          await args.device.triggerCapabilityListener('target_temperature.tank_water', Number(args.temperature));
+        });
+    } catch (err) {
+      this.error('register dhw_temperature_set', err);
+    }
     try {
       this.homey.flow.getActionCard('auto_temp_set')
         .registerRunListener(async (args: { device: HeatpumpDevice; state: 'on' | 'off' }) => {
@@ -113,6 +123,17 @@ export default class HeatpumpDriver extends Homey.Driver {
         });
     } catch (err) {
       this.error('register sg_forced_on_set', err);
+    }
+
+    // Activity: the activity_changed trigger is fired from device.ts.
+    try {
+      this.homey.flow.getConditionCard('activity_is')
+        .registerRunListener(async (args: { device: HeatpumpDevice; activity: string }) => {
+          return args.device.getCapabilityValue('heatpump_activity') === args.activity;
+        });
+      this.homey.flow.getDeviceTriggerCard('activity_changed');
+    } catch (err) {
+      this.error('register activity cards', err);
     }
 
     // Season (1.1.0): the season_changed trigger is fired from device.ts.

@@ -1,0 +1,61 @@
+{
+  "id": "activity_changed",
+  "title": {
+    "en": "The activity changed",
+    "nl": "De werking is veranderd",
+    "da": "Driften er ændret",
+    "de": "Der Betrieb hat sich geändert",
+    "es": "El funcionamiento ha cambiado",
+    "fr": "Le fonctionnement a changé",
+    "it": "Il funzionamento è cambiato",
+    "no": "Driften er endret",
+    "sv": "Driften har ändrats",
+    "pl": "Praca się zmieniła",
+    "ru": "Работа изменилась",
+    "ko": "운전이 변경됨",
+    "ar": "تغيّر التشغيل"
+  },
+  "tokens": [
+    {
+      "name": "activity",
+      "type": "string",
+      "title": {
+        "en": "Activity",
+        "nl": "Werking",
+        "da": "Drift",
+        "de": "Betrieb",
+        "es": "Funcionamiento",
+        "fr": "Fonctionnement",
+        "it": "Funzionamento",
+        "no": "Drift",
+        "sv": "Drift",
+        "pl": "Praca",
+        "ru": "Работа",
+        "ko": "운전",
+        "ar": "التشغيل"
+      },
+      "example": {
+        "en": "Heating",
+        "nl": "Verwarmen",
+        "da": "Opvarmning",
+        "de": "Heizen",
+        "es": "Calefacción",
+        "fr": "Chauffage",
+        "it": "Riscaldamento",
+        "no": "Oppvarming",
+        "sv": "Uppvärmning",
+        "pl": "Ogrzewanie",
+        "ru": "Отопление",
+        "ko": "난방",
+        "ar": "تدفئة"
+      }
+    }
+  ],
+  "args": [
+    {
+      "name": "device",
+      "type": "device",
+      "filter": "driver_id=heatpump"
+    }
+  ]
+}

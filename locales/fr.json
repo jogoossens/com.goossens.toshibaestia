@@ -51,5 +51,24 @@
     "status_estimate": "Aucun compteur : l'estimation est utilisée",
     "status_unavailable": "Le compteur __name__ est indisponible ; l'estimation est utilisée",
     "repair_help": "Vous mesurez déjà une pompe à chaleur avec un compteur d'énergie séparé dans Homey (par exemple un Shelly EM sur son circuit) ? Choisissez-le ici. La pompe à chaleur affiche alors la puissance et la consommation mesurées au lieu de l'estimation ; l'estimation continue en parallèle pour comparaison et prend le relais si le compteur est indisponible. Ensuite, dans Homey Energy, incluez la pompe à chaleur et excluez le compteur, pour que rien ne soit compté deux fois."
+  },
+  "curve": {
+    "live": "en direct de la pompe à chaleur",
+    "learnt": "de la loi d'eau apprise",
+    "unknown": "inconnu à cette température extérieure",
+    "learnt_range": "appris à __count__ températures extérieures (de __from__ à __to__ °C)",
+    "nothing_learnt": "rien d'appris pour l'instant : l'app apprend la loi d'eau lorsque le chauffage est sélectionné avec le mode automatique activé, même zone éteinte",
+    "blocked_auto_off": "n'apprend pas maintenant : le mode automatique est désactivé",
+    "blocked_cooling": "n'apprend pas maintenant : le rafraîchissement est sélectionné",
+    "blocked_night_setback": "n'apprend pas maintenant : le réduit de nuit est activé",
+    "blocked_sg_ready": "n'apprend pas maintenant : SG Ready est actif",
+    "blocked_no_reading": "n'apprend pas maintenant : pas de lecture du registre 40062",
+    "blocked_refused": "cette pompe à chaleur ne fournit pas le registre 40062"
+  },
+  "activity": {
+    "idle": "À l'arrêt",
+    "heating": "Chauffage",
+    "dhw": "Eau chaude",
+    "cooling": "Refroidissement"
   }
 }

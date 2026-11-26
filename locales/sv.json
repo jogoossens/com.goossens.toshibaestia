@@ -51,5 +51,24 @@
     "status_estimate": "Ingen mätare: uppskattningen används",
     "status_unavailable": "Mätare __name__ är inte tillgänglig; uppskattningen används",
     "repair_help": "Mäter du redan en värmepump med en separat energimätare i Homey (till exempel en Shelly EM på dess grupp)? Välj den här. Värmepumpen visar då uppmätt effekt och förbrukning i stället för uppskattningen; uppskattningen fortsätter för jämförelse och tar över om mätaren inte är tillgänglig. Ta sedan med värmepumpen i Homey Energy och uteslut mätaren, så att inget räknas dubbelt."
+  },
+  "curve": {
+    "live": "direkt från värmepumpen",
+    "learnt": "från den inlärda kurvan",
+    "unknown": "okänd vid denna utomhustemperatur",
+    "learnt_range": "inlärd vid __count__ utomhustemperaturer (__from__ till __to__ °C)",
+    "nothing_learnt": "inget inlärt ännu: appen lär sig kurvan medan värme är vald med automatiskt läge på, även med zonen av",
+    "blocked_auto_off": "lär sig inte nu: automatiskt läge är av",
+    "blocked_cooling": "lär sig inte nu: kyla är vald",
+    "blocked_night_setback": "lär sig inte nu: nattsänkning är på",
+    "blocked_sg_ready": "lär sig inte nu: SG Ready är aktiv",
+    "blocked_no_reading": "lär sig inte nu: ingen avläsning av register 40062",
+    "blocked_refused": "denna värmepump tillhandahåller inte register 40062"
+  },
+  "activity": {
+    "idle": "Inaktiv",
+    "heating": "Uppvärmning",
+    "dhw": "Varmvatten",
+    "cooling": "Kylning"
   }
 }

@@ -497,6 +497,37 @@ test('register check stays trusted through floor heating with TC under the leavi
   assert.ok(runMiss * 10 <= runConfirm, `misses ${runMiss} vs confirms ${runConfirm}`);
 });
 
+// Months of polling fill the counters: a capped confirm count let the misses around starts and
+// stops outgrow it, and the registers lost their trust for good (seen on 2026-11-25 after ~6 weeks).
+test('register check keeps its verdict for months: the counters scale down at the cap', () => {
+  const idle: PowerSample = {
+    timeMs: 0, zoneOn: true, dhwOn: false, coolMode: false, outdoorC: 10, twiC: 30, twoC: 30, thoC: 30, tankC: null,
+    evaporatorC: 10, condensingC: 30, compressorHz: 0,
+  };
+  const running = { ...idle, twoC: 34, evaporatorC: 2, condensingC: 36, compressorHz: 45 };
+  const starting = { ...running, evaporatorC: 9 }; // TE not yet away from outdoor: a miss
+  const runs = (check: RefrigerantSensorCheck, count: number) => {
+    for (let i = 0; i < count; i++) {
+      [starting, starting, starting, starting, ...Array(20).fill(running)].forEach((x) => check.update(x, true));
+      for (let k = 0; k < 10; k++) check.update(idle, false);
+    }
+  };
+  const check = new RefrigerantSensorCheck({ idleAgree: 1000, runConfirm: 1000, runMiss: 450 });
+  runs(check, 200); // 1 miss per 20 confirms
+  assert.equal(check.trusted, true, JSON.stringify(check.snapshot));
+  const { idleAgree, runConfirm, runMiss } = check.snapshot;
+  assert.ok(idleAgree <= 1000 && runConfirm <= 1000 && runMiss <= 1000, JSON.stringify(check.snapshot));
+  // A unit that already lost its trust at the cap gets it back.
+  const lost = new RefrigerantSensorCheck({ idleAgree: 1000, runConfirm: 1000, runMiss: 520 });
+  assert.equal(lost.trusted, false);
+  runs(lost, 100);
+  assert.equal(lost.trusted, true, JSON.stringify(lost.snapshot));
+  // A wrong register still never passes: misses on every running poll.
+  const wrong = new RefrigerantSensorCheck({ idleAgree: 1000, runConfirm: 1000, runMiss: 0 });
+  for (let i = 0; i < 3000; i++) wrong.update(starting, true);
+  assert.equal(wrong.trusted, false, JSON.stringify(wrong.snapshot));
+});
+
 test('condensing temperature: TC, or 3 K above the leaving water when TC reads lower; cooling reversed', () => {
   assert.deepEqual(compressionTempsC(9, 28, 32), [9, 35]); // floor heating: TC on the subcooled liquid line
   assert.deepEqual(compressionTempsC(8, 62, 58), [8, 62]); // hot water: TC above TWO + 3

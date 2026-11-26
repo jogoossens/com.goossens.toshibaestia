@@ -51,5 +51,24 @@
     "status_estimate": "Brak licznika: używany jest szacunek",
     "status_unavailable": "Licznik __name__ jest niedostępny; używany jest szacunek",
     "repair_help": "Mierzysz już pompę ciepła osobnym licznikiem energii w Homey (na przykład Shelly EM na jej obwodzie)? Wybierz go tutaj. Pompa ciepła pokaże wtedy zmierzoną moc i zużycie zamiast szacunku; szacunek działa dalej dla porównania i przejmuje, gdy licznik jest niedostępny. Następnie w Homey Energy uwzględnij pompę ciepła i wyklucz licznik, aby nic nie było liczone podwójnie."
+  },
+  "curve": {
+    "live": "na żywo z pompy ciepła",
+    "learnt": "z wyuczonej krzywej",
+    "unknown": "nieznane przy tej temperaturze zewnętrznej",
+    "learnt_range": "wyuczone przy __count__ temperaturach zewnętrznych (od __from__ do __to__ °C)",
+    "nothing_learnt": "jeszcze nic nie wyuczono: aplikacja uczy się krzywej, gdy wybrane jest grzanie z włączonym trybem automatycznym, także przy wyłączonej strefie",
+    "blocked_auto_off": "teraz się nie uczy: tryb automatyczny wyłączony",
+    "blocked_cooling": "teraz się nie uczy: wybrane chłodzenie",
+    "blocked_night_setback": "teraz się nie uczy: obniżenie nocne włączone",
+    "blocked_sg_ready": "teraz się nie uczy: SG Ready aktywne",
+    "blocked_no_reading": "teraz się nie uczy: brak odczytu rejestru 40062",
+    "blocked_refused": "ta pompa ciepła nie udostępnia rejestru 40062"
+  },
+  "activity": {
+    "idle": "Bezczynna",
+    "heating": "Ogrzewanie",
+    "dhw": "Ciepła woda",
+    "cooling": "Chłodzenie"
   }
 }

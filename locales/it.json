@@ -51,5 +51,24 @@
     "status_estimate": "Nessun contatore: si usa la stima",
     "status_unavailable": "Il contatore __name__ non è disponibile; si usa la stima",
     "repair_help": "Misuri già una pompa di calore con un contatore di energia separato in Homey (ad esempio uno Shelly EM sul suo circuito)? Sceglilo qui. La pompa di calore mostrerà la potenza e il consumo misurati al posto della stima; la stima continua per confronto e subentra se il contatore non è disponibile. Poi, in Homey Energy, includi la pompa di calore ed escludi il contatore, così nulla viene contato due volte."
+  },
+  "curve": {
+    "live": "in diretta dalla pompa di calore",
+    "learnt": "dalla curva appresa",
+    "unknown": "sconosciuta a questa temperatura esterna",
+    "learnt_range": "appresa a __count__ temperature esterne (da __from__ a __to__ °C)",
+    "nothing_learnt": "ancora nulla di appreso: l'app impara la curva mentre è selezionato il riscaldamento con la modalità automatica attiva, anche a zona spenta",
+    "blocked_auto_off": "non sta imparando: la modalità automatica è disattivata",
+    "blocked_cooling": "non sta imparando: è selezionato il raffrescamento",
+    "blocked_night_setback": "non sta imparando: la riduzione notturna è attiva",
+    "blocked_sg_ready": "non sta imparando: SG Ready è attivo",
+    "blocked_no_reading": "non sta imparando: nessuna lettura del registro 40062",
+    "blocked_refused": "questa pompa di calore non fornisce il registro 40062"
+  },
+  "activity": {
+    "idle": "Inattiva",
+    "heating": "Riscaldamento",
+    "dhw": "Acqua calda",
+    "cooling": "Raffrescamento"
   }
 }

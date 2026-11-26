@@ -1,0 +1,43 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Compressor frequency",
+    "nl": "Compressorfrequentie",
+    "da": "Kompressorfrekvens",
+    "de": "Verdichterfrequenz",
+    "es": "Frecuencia del compresor",
+    "fr": "Fréquence du compresseur",
+    "it": "Frequenza del compressore",
+    "no": "Kompressorfrekvens",
+    "sv": "Kompressorfrekvens",
+    "pl": "Częstotliwość sprężarki",
+    "ru": "Частота компрессора",
+    "ko": "압축기 주파수",
+    "ar": "تردد الضاغط"
+  },
+  "desc": {
+    "en": "Compressor speed read from the heat pump; 0 = stopped. Lags a stop by about half a minute.",
+    "nl": "Toerental van de compressor, uitgelezen uit de warmtepomp; 0 = stil. Loopt bij een stop ongeveer een halve minuut achter.",
+    "da": "Kompressorens hastighed aflæst fra varmepumpen; 0 = stoppet. Halter ca. et halvt minut efter ved stop.",
+    "de": "Verdichterdrehzahl aus der Wärmepumpe; 0 = aus. Folgt einem Stopp etwa eine halbe Minute später.",
+    "es": "Velocidad del compresor leída de la bomba de calor; 0 = parado. Refleja una parada con medio minuto de retraso.",
+    "fr": "Vitesse du compresseur lue sur la pompe à chaleur ; 0 = arrêté. Suit un arrêt avec environ une demi-minute de retard.",
+    "it": "Velocità del compressore letta dalla pompa di calore; 0 = fermo. Segue un arresto con circa mezzo minuto di ritardo.",
+    "no": "Kompressorens hastighet lest fra varmepumpen; 0 = stoppet. Henger ca. et halvt minutt etter ved stopp.",
+    "sv": "Kompressorns hastighet avläst från värmepumpen; 0 = stoppad. Släpar ungefär en halv minut efter vid stopp.",
+    "pl": "Prędkość sprężarki odczytana z pompy ciepła; 0 = zatrzymana. Zatrzymanie widać z opóźnieniem ok. pół minuty.",
+    "ru": "Частота компрессора из теплового насоса; 0 = остановлен. Остановка видна примерно через полминуты.",
+    "ko": "히트펌프에서 읽은 압축기 속도, 0 = 정지. 정지는 약 30초 늦게 반영됩니다.",
+    "ar": "سرعة الضاغط المقروءة من المضخة الحرارية؛ 0 = متوقف. يظهر التوقف بتأخير نحو نصف دقيقة."
+  },
+  "units": {
+    "en": "Hz"
+  },
+  "decimals": 0,
+  "min": 0,
+  "max": 150,
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true
+}

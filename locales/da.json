@@ -51,5 +51,24 @@
     "status_estimate": "Ingen måler: skønnet bruges",
     "status_unavailable": "Måler __name__ er ikke tilgængelig; skønnet bruges",
     "repair_help": "Måler du allerede en varmepumpe med en separat energimåler i Homey (for eksempel en Shelly EM på dens gruppe)? Vælg den her. Varmepumpen viser så den målte effekt og det målte forbrug i stedet for skønnet; skønnet kører videre til sammenligning og tager over, hvis måleren ikke er tilgængelig. Inkluder bagefter varmepumpen i Homey Energy og udelad måleren, så intet tælles to gange."
+  },
+  "curve": {
+    "live": "direkte fra varmepumpen",
+    "learnt": "fra den lærte kurve",
+    "unknown": "ukendt ved denne udetemperatur",
+    "learnt_range": "lært ved __count__ udetemperaturer (__from__ til __to__ °C)",
+    "nothing_learnt": "intet lært endnu: appen lærer kurven, mens opvarmning er valgt med automatisk tilstand slået til, også med zonen slukket",
+    "blocked_auto_off": "lærer ikke nu: automatisk tilstand er slået fra",
+    "blocked_cooling": "lærer ikke nu: køling er valgt",
+    "blocked_night_setback": "lærer ikke nu: natsænkning er slået til",
+    "blocked_sg_ready": "lærer ikke nu: SG Ready er aktiv",
+    "blocked_no_reading": "lærer ikke nu: ingen aflæsning af register 40062",
+    "blocked_refused": "denne varmepumpe leverer ikke register 40062"
+  },
+  "activity": {
+    "idle": "Inaktiv",
+    "heating": "Opvarmning",
+    "dhw": "Varmt vand",
+    "cooling": "Køling"
   }
 }

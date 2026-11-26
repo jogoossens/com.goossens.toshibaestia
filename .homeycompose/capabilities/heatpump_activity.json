@@ -1,0 +1,110 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Activity",
+    "nl": "Werking",
+    "da": "Drift",
+    "de": "Betrieb",
+    "es": "Funcionamiento",
+    "fr": "Fonctionnement",
+    "it": "Funzionamento",
+    "no": "Drift",
+    "sv": "Drift",
+    "pl": "Praca",
+    "ru": "Работа",
+    "ko": "운전",
+    "ar": "التشغيل"
+  },
+  "desc": {
+    "en": "What the heat pump is heating or cooling now: the compressor or a heater (from the compressor and the water temperatures, updated every poll).",
+    "nl": "Wat de warmtepomp nu verwarmt of koelt: de compressor of een weerstand (uit de compressor en de watertemperaturen, bij elke uitlezing).",
+    "da": "Hvad varmepumpen opvarmer eller køler nu: kompressoren eller et varmelegeme (ud fra kompressoren og vandtemperaturerne, ved hver aflæsning).",
+    "de": "Was die Wärmepumpe gerade heizt oder kühlt: Verdichter oder Heizstab (aus Verdichter und Wassertemperaturen, bei jeder Abfrage).",
+    "es": "Lo que la bomba de calor calienta o enfría ahora: el compresor o una resistencia (según el compresor y las temperaturas del agua, en cada lectura).",
+    "fr": "Ce que la pompe à chaleur chauffe ou refroidit maintenant : le compresseur ou une résistance (d'après le compresseur et les températures d'eau, à chaque lecture).",
+    "it": "Cosa sta riscaldando o raffrescando ora la pompa di calore: il compressore o una resistenza (dal compressore e dalle temperature dell'acqua, a ogni lettura).",
+    "no": "Hva varmepumpen varmer eller kjøler nå: kompressoren eller et varmeelement (ut fra kompressoren og vanntemperaturene, ved hver avlesning).",
+    "sv": "Vad värmepumpen värmer eller kyler nu: kompressorn eller en elpatron (utifrån kompressorn och vattentemperaturerna, vid varje avläsning).",
+    "pl": "Co pompa ciepła teraz grzeje lub chłodzi: sprężarka lub grzałka (na podstawie sprężarki i temperatur wody, przy każdym odczycie).",
+    "ru": "Что тепловой насос сейчас нагревает или охлаждает: компрессор или нагреватель (по компрессору и температурам воды, при каждом опросе).",
+    "ko": "히트펌프가 지금 난방 또는 냉방하는 대상: 압축기 또는 히터 (압축기와 물 온도 기준, 매 조회 시).",
+    "ar": "ما تقوم المضخة الحرارية بتدفئته أو تبريده الآن: الضاغط أو سخان (حسب الضاغط ودرجات حرارة الماء، عند كل قراءة)."
+  },
+  "values": [
+    {
+      "id": "idle",
+      "title": {
+        "en": "Idle",
+        "nl": "Stil",
+        "da": "Inaktiv",
+        "de": "Inaktiv",
+        "es": "Inactiva",
+        "fr": "À l'arrêt",
+        "it": "Inattiva",
+        "no": "Inaktiv",
+        "sv": "Inaktiv",
+        "pl": "Bezczynna",
+        "ru": "Простой",
+        "ko": "대기",
+        "ar": "متوقفة"
+      }
+    },
+    {
+      "id": "heating",
+      "title": {
+        "en": "Heating",
+        "nl": "Verwarmen",
+        "da": "Opvarmning",
+        "de": "Heizen",
+        "es": "Calefacción",
+        "fr": "Chauffage",
+        "it": "Riscaldamento",
+        "no": "Oppvarming",
+        "sv": "Uppvärmning",
+        "pl": "Ogrzewanie",
+        "ru": "Отопление",
+        "ko": "난방",
+        "ar": "تدفئة"
+      }
+    },
+    {
+      "id": "dhw",
+      "title": {
+        "en": "Hot water",
+        "nl": "Warm water",
+        "da": "Varmt vand",
+        "de": "Warmwasser",
+        "es": "Agua caliente",
+        "fr": "Eau chaude",
+        "it": "Acqua calda",
+        "no": "Varmtvann",
+        "sv": "Varmvatten",
+        "pl": "Ciepła woda",
+        "ru": "Горячая вода",
+        "ko": "온수",
+        "ar": "ماء ساخن"
+      }
+    },
+    {
+      "id": "cooling",
+      "title": {
+        "en": "Cooling",
+        "nl": "Koelen",
+        "da": "Køling",
+        "de": "Kühlen",
+        "es": "Refrigeración",
+        "fr": "Refroidissement",
+        "it": "Raffrescamento",
+        "no": "Kjøling",
+        "sv": "Kylning",
+        "pl": "Chłodzenie",
+        "ru": "Охлаждение",
+        "ko": "냉방",
+        "ar": "تبريد"
+      }
+    }
+  ],
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor"
+}

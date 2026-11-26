@@ -51,5 +51,24 @@
     "status_estimate": "Geen meter: de schatting wordt gebruikt",
     "status_unavailable": "Meter __name__ is niet beschikbaar; de schatting wordt gebruikt",
     "repair_help": "Meet je een warmtepomp al met een aparte energiemeter in Homey (bijvoorbeeld een Shelly EM op zijn groep)? Kies hem hier. De warmtepomp toont dan het gemeten vermogen en verbruik in plaats van de schatting; de schatting blijft meedraaien ter vergelijking en neemt over als de meter niet beschikbaar is. Neem daarna in Homey Energy de warmtepomp op en sluit de meter uit, zodat niets dubbel telt."
+  },
+  "curve": {
+    "live": "live van de warmtepomp",
+    "learnt": "uit de geleerde stooklijn",
+    "unknown": "onbekend bij deze buitentemperatuur",
+    "learnt_range": "geleerd bij __count__ buitentemperaturen (__from__ tot __to__ °C)",
+    "nothing_learnt": "nog niets geleerd: de app leert de stooklijn terwijl verwarmen gekozen is met de automatische stand aan, ook met de zone uit",
+    "blocked_auto_off": "leert nu niet: automatische stand uit",
+    "blocked_cooling": "leert nu niet: koelen gekozen",
+    "blocked_night_setback": "leert nu niet: nachtverlaging aan",
+    "blocked_sg_ready": "leert nu niet: SG Ready actief",
+    "blocked_no_reading": "leert nu niet: geen uitlezing van register 40062",
+    "blocked_refused": "deze warmtepomp levert register 40062 niet"
+  },
+  "activity": {
+    "idle": "Stil",
+    "heating": "Verwarmen",
+    "dhw": "Warm water",
+    "cooling": "Koelen"
   }
 }

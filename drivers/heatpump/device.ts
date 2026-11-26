@@ -28,10 +28,13 @@ import {
   energyKwh,
   type LearntState,
   type PowerConfig,
+  type Activity,
   type PowerSample,
   type RefrigerantCheckState,
 } from './power-model';
 import { ExternalMeterLink, isMeterGone } from './external-meter';
+import { HeatingCurve, validTarget, type CurveOccasions } from './heating-curve';
+import { OptionalRead } from '../../modbus/optional-read';
 
 type TempScaling = 'x1' | 'x10';
 type ThermostatMode = 'off' | 'heat' | 'cool';
@@ -72,6 +75,7 @@ interface DeviceSettings {
   detectedSlaveAddress?: string;
   detectedBaudRate?: string;
   lastSeen?: string;
+  curveStatus?: string;        // read-only: where the weather-curve value comes from (heating-curve.ts)
   // Season detection (see season.ts). Optional: devices paired before 1.1.0
   // may not have them yet, so seasonConfig() falls back to the defaults.
   seasonAuto?: boolean;
@@ -284,6 +288,21 @@ const ALWAYS_ON_CAPABILITIES: Array<[string, Record<string, unknown>?]> = [
     ar: 'متوسط درجة الحرارة الخارجية',
   } }],
   ['season'],
+  // What the compressor or a heater serves now (power-model activity)
+  ['heatpump_activity'],
+  // Weather curve (heating-curve.ts)
+  ['measure_temperature.flow_target', { title: {
+    en: 'Flow target in use', nl: 'Aanvoerdoel nu', da: 'Fremløbsmål nu', de: 'Vorlauf-Sollwert aktuell',
+    es: 'Objetivo de impulsión actual', fr: 'Consigne de départ actuelle', it: 'Obiettivo di mandata attuale',
+    no: 'Turmål nå', sv: 'Framledningsmål nu', pl: 'Bieżąca docelowa temp. zasilania', ru: 'Текущая цель подачи',
+    ko: '현재 공급 목표', ar: 'هدف التدفق الحالي',
+  } }],
+  ['measure_temperature.curve_target', { title: {
+    en: 'Weather curve flow', nl: 'Aanvoer volgens stooklijn', da: 'Fremløb efter varmekurve', de: 'Vorlauf nach Heizkurve',
+    es: 'Impulsión según curva de calefacción', fr: 'Départ selon la loi d\'eau', it: 'Mandata secondo la curva climatica',
+    no: 'Turtemperatur etter varmekurve', sv: 'Framledning enligt värmekurva', pl: 'Zasilanie wg krzywej grzewczej',
+    ru: 'Подача по отопительной кривой', ko: '난방 곡선 공급 온도', ar: 'التدفق حسب منحنى التدفئة',
+  } }],
 ];
 
 /** External meter (1.2.0): maintenance action, only in a build with homey:manager:api (local install). */
@@ -351,11 +370,14 @@ export default class HeatpumpDevice extends Homey.Device {
   private heaterHours: { value: number; sinceMs: number; countedS: number; coveredS: number } | null = null;
   private meterKwh = 0;
   private meterKwhSavedMs = 0;
-  // Consecutive failed reads of the undocumented registers; after three they're left alone until an app restart.
-  private undocumentedFailures = 0;
+  // Retry pacing for the undocumented registers 40021–40032 (modbus/optional-read.ts).
+  private undocumentedRead = new OptionalRead();
   private refrigerantCheckSavedMs = 0;
   // Outdoor samples of the current hour; stored as one hourly average when the hour ends.
   private outdoorHour: { hour: number; sum: number; count: number } | null = null;
+  // Weather curve learnt from register 40062 (heating-curve.ts); occasions in store `curveOccasions`.
+  private curve!: HeatingCurve;
+  private flowTargetRead = new OptionalRead();
 
   private get app(): ToshibaEstiaApp {
     return this.homey.app as ToshibaEstiaApp;
@@ -381,6 +403,9 @@ export default class HeatpumpDevice extends Homey.Device {
     await this.syncOptionalCapabilities(settings);
     this.registerCapabilityListeners();
     this.initPower(settings);
+    this.curve = new HeatingCurve((this.getStoreValue('curveOccasions') as CurveOccasions | null) ?? {});
+    // Test installs of 2026-11-01 stored single points; the occasions replace them.
+    if (this.getStoreValue('curvePoints') != null) await this.unsetStoreValue('curvePoints').catch(() => undefined);
     this.applyExternalMeter().catch((err) => this.error('applyExternalMeter', err));
     await this.updateSeason(settings).catch((err) => this.error('updateSeason', err));
 
@@ -857,6 +882,35 @@ export default class HeatpumpDevice extends Homey.Device {
     }
   }
 
+  /**
+   * Show what the heat pump serves now and, on a change, fire activity_changed. The
+   * compressor frequency (undocumented register 40032) is added once the unit has proven it
+   * reports it, so units without it don't get an empty tile. `null` (registers not trusted)
+   * empties the tile instead of leaving a stale value; `undefined` (no reading this poll) keeps it.
+   */
+  private async applyActivity(activity: Activity, compressorHz: number | null | undefined): Promise<void> {
+    if (compressorHz === null) {
+      if (this.hasCapability('compressor_frequency') && this.getCapabilityValue('compressor_frequency') !== null) {
+        await this.setCapabilityValue('compressor_frequency', null).catch(() => undefined);
+      }
+    } else if (compressorHz !== undefined) {
+      if (!this.hasCapability('compressor_frequency')) {
+        await this.addCapability('compressor_frequency').catch((err) => this.error('addCapability compressor_frequency', err));
+      }
+      if (this.hasCapability('compressor_frequency')) {
+        await this.setCapabilityValue('compressor_frequency', compressorHz).catch(() => undefined);
+      }
+    }
+    if (!this.hasCapability('heatpump_activity')) return;
+    const previous = this.getCapabilityValue('heatpump_activity') as Activity | null;
+    if (previous === activity) return;
+    await this.setCapabilityValue('heatpump_activity', activity).catch(() => undefined);
+    if (previous == null) return;
+    await this.homey.flow.getDeviceTriggerCard('activity_changed')
+      .trigger(this, { activity: this.homey.__(`activity.${activity}`) }, {})
+      .catch((err) => this.error('activity_changed trigger failed', err));
+  }
+
   /** Set the season and fire the season_changed trigger. */
   public async setSeason(season: Season): Promise<void> {
     if (!this.hasCapability('season') || this.getCapabilityValue('season') === season) return;
@@ -936,23 +990,69 @@ export default class HeatpumpDevice extends Homey.Device {
   }
 
   /**
-   * Registers 40021–40032 (TC, TE, compressor Hz, …) aren't in Toshiba's list: read them
-   * on their own so a unit that rejects them can't break the main poll, and stop asking
-   * after three refusals in a row.
+   * Registers outside Toshiba's list, read on their own so they can't break the main poll. Paced by
+   * OptionalRead: a unit that refuses them is asked once a day, a passing failure retried with a pause.
    */
-  private async readUndocumented(endpoint: ModbusEndpoint): Promise<Record<number, number> | undefined> {
-    if (this.undocumentedFailures >= 3) return undefined;
+  private async readOptional(gate: OptionalRead, endpoint: ModbusEndpoint, registers: number[], what: string): Promise<Record<number, number> | undefined> {
+    const nowMs = Date.now();
+    if (!gate.due(nowMs)) return undefined;
     try {
-      const snap = await this.app.modbus.readRegisters(endpoint, UNDOCUMENTED_REGISTERS);
-      this.undocumentedFailures = 0;
+      const snap = await this.app.modbus.readRegisters(endpoint, registers);
+      gate.succeeded();
       return snap;
     } catch (err) {
-      this.undocumentedFailures += 1;
-      if (this.undocumentedFailures >= 3) {
-        this.log('Registers 40021–40032 not readable, power estimate uses water temperatures only:', err instanceof Error ? err.message : err);
-      }
+      const line = gate.failed(err, nowMs);
+      if (line) this.log(`${what}: ${line}`);
       return undefined;
     }
+  }
+
+  /** TC, TE, compressor Hz, … for the power estimate; without them it uses the water temperatures. */
+  private async readUndocumented(endpoint: ModbusEndpoint): Promise<Record<number, number> | undefined> {
+    return this.readOptional(this.undocumentedRead, endpoint, UNDOCUMENTED_REGISTERS, 'Registers 40021–40032');
+  }
+
+  /** Register 40062, the zone 1 flow target in use. */
+  private async readFlowTarget(endpoint: ModbusEndpoint): Promise<number | undefined> {
+    const snap = await this.readOptional(this.flowTargetRead, endpoint, [REGISTERS.zone1FlowTarget.number], 'Register 40062');
+    return snap?.[REGISTERS.zone1FlowTarget.number];
+  }
+
+  /**
+   * Flow target in use (40062) and the weather curve's flow temperature for the current outdoor
+   * temperature: live while 40062 is the curve, otherwise from the learnt degrees. See heating-curve.ts.
+   */
+  private async updateCurve(snapshot: Record<number, number>, flowTargetRaw: number | undefined, s: DeviceSettings): Promise<void> {
+    const temp = (raw: number | undefined) => (raw === undefined ? null : this.scale(raw, s));
+    const targetC = validTarget(temp(flowTargetRaw));
+    const outdoorC = temp(snapshot[REGISTERS.outdoorTemp.number]);
+    if (this.curve.update({
+      outdoorC,
+      targetC,
+      heating: snapshot[REGISTERS.operationMode.number] === 1,
+      autoTemp: snapshot[REGISTERS.autoTempOnOff.number] === 1,
+      nightSetback: snapshot[REGISTERS.nightSetbackOnOff.number] === 1,
+      sgForcedOn: this.getStoreValue('sgForcedOn') === true,
+      hour: Math.floor(Date.now() / 3600e3),
+    })) {
+      await this.setStoreValue('curveOccasions', this.curve.occasions);
+    }
+    const curve = this.curve.value(outdoorC);
+    if (this.hasCapability('measure_temperature.flow_target')) {
+      await this.setCapabilityValue('measure_temperature.flow_target', targetC);
+    }
+    if (this.hasCapability('measure_temperature.curve_target')) {
+      await this.setCapabilityValue('measure_temperature.curve_target', curve.celsius);
+    }
+    const points = this.curve.points;
+    const learnt = points.length
+      ? this.homey.__('curve.learnt_range', { count: points.length, from: points[0][0], to: points[points.length - 1][0] })
+      : this.homey.__('curve.nothing_learnt');
+    const { blocker } = this.curve;
+    const why = blocker === 'no_reading' && this.flowTargetRead.refusedByUnit ? 'refused' : blocker;
+    const curveStatus = [this.homey.__(`curve.${curve.source}`), learnt, why && this.homey.__(`curve.blocked_${why}`)]
+      .filter(Boolean).join(' · ');
+    if (s.curveStatus !== curveStatus) await this.setSettings({ curveStatus }).catch((err) => this.error('setSettings curveStatus', err));
   }
 
   /**
@@ -1043,6 +1143,7 @@ export default class HeatpumpDevice extends Homey.Device {
     });
     this.refrigerantCheck.update(sample, reading.waterSaysOn);
     this.lastPowerSample = sample;
+    await this.applyActivity(reading.activity, trusted ? sample.compressorHz ?? undefined : null);
 
     // The heater-hours bookkeeping always runs, so it stays consistent across meter on/off.
     const heaterBackfillKwh = this.reconcileHeaterHours(snapshot[REGISTERS.backupHeaterHours.number], reading.heaterW, sample.timeMs, s);
@@ -1128,6 +1229,8 @@ export default class HeatpumpDevice extends Homey.Device {
       const snapshot = await this.app.modbus.readRegisters(endpoint, registers);
       const extra = await this.readUndocumented(endpoint);
       await this.applySnapshot(snapshot, settings, extra);
+      const flowTarget = await this.readFlowTarget(endpoint);
+      await this.updateCurve(snapshot, flowTarget, settings).catch((err) => this.error('updateCurve', err));
       await this.setAvailable();
       await this.setSettings({ lastSeen: new Date().toISOString() }).catch(() => undefined);
 

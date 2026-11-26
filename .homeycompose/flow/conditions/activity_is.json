@@ -1,0 +1,118 @@
+{
+  "id": "activity_is",
+  "title": {
+    "en": "Activity !{{is|is not}} …",
+    "nl": "Werking !{{is|is niet}} …",
+    "da": "Drift !{{er|er ikke}} …",
+    "de": "Betrieb !{{ist|ist nicht}} …",
+    "es": "Funcionamiento !{{es|no es}} …",
+    "fr": "Fonctionnement !{{est|n'est pas}} …",
+    "it": "Funzionamento !{{è|non è}} …",
+    "no": "Drift !{{er|er ikke}} …",
+    "sv": "Drift !{{är|är inte}} …",
+    "pl": "Praca !{{to|to nie}} …",
+    "ru": "Работа !{{—|— не}} …",
+    "ko": "운전 !{{이(가)|이(가) 아님}} …",
+    "ar": "التشغيل !{{هو|ليس}} …"
+  },
+  "titleFormatted": {
+    "en": "Activity !{{is|is not}} [[activity]]",
+    "nl": "Werking !{{is|is niet}} [[activity]]",
+    "da": "Drift !{{er|er ikke}} [[activity]]",
+    "de": "Betrieb !{{ist|ist nicht}} [[activity]]",
+    "es": "Funcionamiento !{{es|no es}} [[activity]]",
+    "fr": "Fonctionnement !{{est|n'est pas}} [[activity]]",
+    "it": "Funzionamento !{{è|non è}} [[activity]]",
+    "no": "Drift !{{er|er ikke}} [[activity]]",
+    "sv": "Drift !{{är|är inte}} [[activity]]",
+    "pl": "Praca !{{to|to nie}} [[activity]]",
+    "ru": "Работа !{{—|— не}} [[activity]]",
+    "ko": "운전 !{{이(가)|이(가) 아님}} [[activity]]",
+    "ar": "التشغيل !{{هو|ليس}} [[activity]]"
+  },
+  "args": [
+    {
+      "name": "device",
+      "type": "device",
+      "filter": "driver_id=heatpump"
+    },
+    {
+      "name": "activity",
+      "type": "dropdown",
+      "values": [
+        {
+          "id": "idle",
+          "label": {
+            "en": "Idle",
+            "nl": "Stil",
+            "da": "Inaktiv",
+            "de": "Inaktiv",
+            "es": "Inactiva",
+            "fr": "À l'arrêt",
+            "it": "Inattiva",
+            "no": "Inaktiv",
+            "sv": "Inaktiv",
+            "pl": "Bezczynna",
+            "ru": "Простой",
+            "ko": "대기",
+            "ar": "متوقفة"
+          }
+        },
+        {
+          "id": "heating",
+          "label": {
+            "en": "Heating",
+            "nl": "Verwarmen",
+            "da": "Opvarmning",
+            "de": "Heizen",
+            "es": "Calefacción",
+            "fr": "Chauffage",
+            "it": "Riscaldamento",
+            "no": "Oppvarming",
+            "sv": "Uppvärmning",
+            "pl": "Ogrzewanie",
+            "ru": "Отопление",
+            "ko": "난방",
+            "ar": "تدفئة"
+          }
+        },
+        {
+          "id": "dhw",
+          "label": {
+            "en": "Hot water",
+            "nl": "Warm water",
+            "da": "Varmt vand",
+            "de": "Warmwasser",
+            "es": "Agua caliente",
+            "fr": "Eau chaude",
+            "it": "Acqua calda",
+            "no": "Varmtvann",
+            "sv": "Varmvatten",
+            "pl": "Ciepła woda",
+            "ru": "Горячая вода",
+            "ko": "온수",
+            "ar": "ماء ساخن"
+          }
+        },
+        {
+          "id": "cooling",
+          "label": {
+            "en": "Cooling",
+            "nl": "Koelen",
+            "da": "Køling",
+            "de": "Kühlen",
+            "es": "Refrigeración",
+            "fr": "Refroidissement",
+            "it": "Raffrescamento",
+            "no": "Kjøling",
+            "sv": "Kylning",
+            "pl": "Chłodzenie",
+            "ru": "Охлаждение",
+            "ko": "냉방",
+            "ar": "تبريد"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1498,6 +1498,41 @@
         "value": "—"
       },
       {
+        "id": "curveStatus",
+        "type": "label",
+        "value": "—",
+        "label": {
+          "en": "Weather curve",
+          "nl": "Stooklijn",
+          "da": "Varmekurve",
+          "de": "Heizkurve",
+          "es": "Curva de calefacción",
+          "fr": "Loi d'eau",
+          "it": "Curva climatica",
+          "no": "Varmekurve",
+          "sv": "Värmekurva",
+          "pl": "Krzywa grzewcza",
+          "ru": "Отопительная кривая",
+          "ko": "난방 곡선",
+          "ar": "منحنى التدفئة"
+        },
+        "hint": {
+          "en": "Where \"Weather curve flow\" comes from: live from the heat pump while heating is selected with automatic mode on (weather compensation) and no night setback or SG Ready, also with the zone off. Every outdoor degree keeps its last five hours; their median counts, so one odd hour changes nothing and a curve changed on the remote takes over after a few hours at that temperature. Between learnt temperatures the value is interpolated; outside them it stays empty.",
+          "nl": "Waar \"Aanvoer volgens stooklijn\" vandaan komt: live van de warmtepomp terwijl verwarmen gekozen is met de automatische stand (weersafhankelijk) aan en zonder nachtverlaging of SG Ready, ook met de zone uit. Elke graad buitentemperatuur onthoudt zijn laatste vijf uren; de middelste waarde telt, dus één afwijkend uur verandert niets en een op de bediening gewijzigde stooklijn neemt het over na enkele uren bij die temperatuur. Tussen geleerde temperaturen wordt geïnterpoleerd; daarbuiten blijft hij leeg.",
+          "da": "Hvor \"Fremløb efter varmekurve\" kommer fra: direkte fra varmepumpen, mens opvarmning er valgt med automatisk tilstand (vejrkompensering) slået til og uden natsænkning eller SG Ready, også med zonen slukket. Hver udegrad husker sine seneste fem timer; medianen tæller, så én afvigende time ændrer intet, og en kurve ændret på betjeningen tager over efter nogle timer ved den temperatur. Mellem lærte temperaturer interpoleres værdien; uden for dem forbliver den tom.",
+          "de": "Woher „Vorlauf nach Heizkurve“ kommt: live von der Wärmepumpe, während Heizen mit eingeschaltetem Automatikbetrieb (witterungsgeführt) und ohne Nachtabsenkung oder SG Ready gewählt ist, auch bei ausgeschalteter Zone. Jedes Grad Außentemperatur behält seine letzten fünf Stunden; der Median zählt, sodass eine abweichende Stunde nichts ändert und eine an der Fernbedienung geänderte Heizkurve nach einigen Stunden bei dieser Temperatur übernimmt. Zwischen gelernten Temperaturen wird interpoliert; außerhalb bleibt der Wert leer.",
+          "es": "De dónde viene \"Impulsión según curva de calefacción\": en directo de la bomba de calor mientras está seleccionada la calefacción con el modo automático (compensación climática) activado y sin reducción nocturna ni SG Ready, también con la zona apagada. Cada grado exterior guarda sus últimas cinco horas; cuenta la mediana, así que una hora atípica no cambia nada y una curva cambiada en el mando se impone tras unas horas a esa temperatura. Entre temperaturas aprendidas se interpola; fuera de ellas queda vacía.",
+          "fr": "D'où vient « Départ selon la loi d'eau » : en direct de la pompe à chaleur lorsque le chauffage est sélectionné avec le mode automatique (loi d'eau) activé, sans réduit de nuit ni SG Ready, même zone éteinte. Chaque degré extérieur garde ses cinq dernières heures ; la médiane compte, donc une heure atypique ne change rien et une loi d'eau modifiée sur la commande s'impose après quelques heures à cette température. Entre les températures apprises, la valeur est interpolée ; en dehors, elle reste vide.",
+          "it": "Da dove viene \"Mandata secondo la curva climatica\": in diretta dalla pompa di calore mentre è selezionato il riscaldamento con la modalità automatica (compensazione climatica) attiva e senza riduzione notturna né SG Ready, anche a zona spenta. Ogni grado esterno conserva le sue ultime cinque ore; conta la mediana, quindi un'ora anomala non cambia nulla e una curva modificata sul comando subentra dopo alcune ore a quella temperatura. Tra le temperature apprese il valore è interpolato; al di fuori resta vuoto.",
+          "no": "Hvor \"Turtemperatur etter varmekurve\" kommer fra: direkte fra varmepumpen mens oppvarming er valgt med automatisk modus (værkompensering) på og uten nattsenking eller SG Ready, også med sonen av. Hver utegrad husker sine siste fem timer; medianen teller, så én avvikende time endrer ingenting, og en kurve endret på betjeningen tar over etter noen timer ved den temperaturen. Mellom lærte temperaturer interpoleres verdien; utenfor dem forblir den tom.",
+          "sv": "Var \"Framledning enligt värmekurva\" kommer ifrån: direkt från värmepumpen medan värme är vald med automatiskt läge (väderkompensering) på och utan nattsänkning eller SG Ready, även med zonen av. Varje utomhusgrad sparar sina fem senaste timmar; medianen räknas, så en avvikande timme ändrar inget och en kurva som ändrats på manöverpanelen tar över efter några timmar vid den temperaturen. Mellan inlärda temperaturer interpoleras värdet; utanför dem förblir det tomt.",
+          "pl": "Skąd pochodzi „Zasilanie wg krzywej grzewczej”: na żywo z pompy ciepła, gdy wybrane jest grzanie z włączonym trybem automatycznym (pogodowym), bez obniżenia nocnego i SG Ready, także przy wyłączonej strefie. Każdy stopień temperatury zewnętrznej zachowuje ostatnie pięć godzin; liczy się mediana, więc jedna nietypowa godzina nic nie zmienia, a krzywa zmieniona na sterowniku przejmuje po kilku godzinach przy tej temperaturze. Między wyuczonymi temperaturami wartość jest interpolowana; poza nimi pozostaje pusta.",
+          "ru": "Откуда берётся «Подача по отопительной кривой»: напрямую от теплового насоса, пока выбран нагрев с включённым автоматическим режимом (погодозависимым) без ночного понижения и SG Ready, в том числе при выключенной зоне. Каждый градус наружной температуры хранит свои последние пять часов; учитывается медиана, поэтому один нетипичный час ничего не меняет, а кривая, изменённая на пульте, вступает в силу через несколько часов при этой температуре. Между изученными температурами значение интерполируется; вне их оно пустое.",
+          "ko": "\"난방 곡선 공급 온도\"의 출처: 야간 감온이나 SG Ready 없이 자동 모드(외기 보상)가 켜진 상태로 난방이 선택되어 있는 동안(구역이 꺼져 있어도) 히트 펌프에서 직접 가져옵니다. 외기 온도 1도마다 최근 다섯 시간을 기억하고 그 중앙값을 사용하므로, 한 시간의 이상값은 영향을 주지 않으며 리모컨에서 바꾼 곡선은 그 온도에서 몇 시간 후에 반영됩니다. 학습한 온도 사이는 보간하고, 그 범위 밖에서는 비어 있습니다.",
+          "ar": "مصدر \"التدفق حسب منحنى التدفئة\": مباشرة من المضخة الحرارية أثناء اختيار التدفئة مع تشغيل الوضع التلقائي (التعويض حسب الطقس) ودون خفض ليلي أو SG Ready، حتى مع إيقاف المنطقة. تحتفظ كل درجة حرارة خارجية بآخر خمس ساعات لها؛ ويُعتمد الوسيط، فلا تغيّر ساعة شاذة واحدة شيئاً، ويحل المنحنى المعدّل من وحدة التحكم محل القديم بعد بضع ساعات عند تلك الدرجة. بين درجات الحرارة المتعلمة تُستوفى القيمة؛ وخارجها تبقى فارغة."
+        }
+      },
+      {
         "id": "lastSeen",
         "type": "label",
         "label": {

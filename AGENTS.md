@@ -38,9 +38,9 @@ The Waveshare runs in **Modbus TCP ↔ Modbus RTU** mode on port 502. Register n
 .homeycompose/                ← source of truth; CLI generates app.json
   app.json                    ← top-level metadata (id, version, name, etc.)
   capabilities/               ← custom capabilities + 1 shadow (target_temperature.json)
-  flow/triggers/              ← fault_triggered.json, season_changed.json
-  flow/conditions/            ← alarm_is_active.json, season_is.json
-  flow/actions/               ← dhw_boost_for.json, zone1_temperature_set.json, auto_temp_set.json, season_set.json
+  flow/triggers/              ← fault_triggered.json, season_changed.json, activity_changed.json
+  flow/conditions/            ← alarm_is_active.json, season_is.json, hotwater_is_on.json, activity_is.json
+  flow/actions/               ← dhw_boost_for.json, dhw_temperature_set.json, zone1_temperature_set.json, auto_temp_set.json, season_set.json
 
 drivers/heatpump/
   driver.compose.json         ← class=heatpump, capabilities array, capabilitiesOptions, pair[]
@@ -105,6 +105,7 @@ The `dhw` group is in `OPTIONAL_CAPABILITIES` AND in the manifest. This is inten
 
 **C. Custom capabilities, defined in `.homeycompose/capabilities/*.json`.**
 - `fault_code` (read-only string)
+- `heatpump_activity` (read-only enum idle/heating/dhw/cooling = the power model's `activity`; flow cards `activity_is`, `activity_changed`) and `compressor_frequency` (Hz, register 40032; added at runtime once the undocumented registers are trusted, so units without it get no empty tile)
 - `boost_hotwater`, `frost_protection`, `night_setback`, `auto_temp`, `antibacteria` (writable booleans)
 - `target_temperature.json` — see "Shadow capabilities" below
 
@@ -323,7 +324,7 @@ The BMS-IFMB0UEW-E exposes no power, kWh, current or flow register. A full read-
 | 40032 | compressor frequency (Hz); lags the real stop by ~35 s |
 | 40033 | FAN1 (rpm) |
 
-Read in one separate request (40021–40032) so a unit that rejects them can't break the main poll; three refusals in a row → not read until restart.
+Read in one separate request (40021–40032) so a unit that rejects them can't break the main poll, paced by `modbus/optional-read.ts`: a unit that refuses them (Modbus exception 1–3) is asked once a day; any other failure is retried the next poll, then after 2, 4, 8 … up to 60 min. Before 1.3.0 three failures in a row stopped the reads until an app restart, so one Wi-Fi hiccup could leave the power estimate on water temperatures for weeks.
 
 ### Frequency model (R32 units, primary)
 
@@ -355,7 +356,7 @@ Validation (11 kW AIO HWT-1101HW-E + HWT-1101F21ST6W-E):
 
 **Open risk — winter / maximum frequency:** against the Data Book the model reads 12–24 % low at maximum frequency on the bigger compressors (1101 at 100 Hz, 1401 at 82 Hz), most at A−7. On the metered unit up to 80 Hz it is within ±5 %, so efficiency probably drops further at the highest speeds. Not modelled until winter data (power meter) shows it; an efficiency term over pressure ratio or frequency would have to fit both the meter and the Data Book points of every unit.
 
-The registers are used only when `RefrigerantSensorCheck` trusts them (store key `sensorCheck`): ≥ 20 idle polls with 0 Hz and TE within 2 K of outdoor, ≥ 5 polls where the water side shows a run with Hz > 0, TE ≥ 4 K away and TC ≥ TWI − 2 (the liquid leaves at the return-water end; the old TC ≥ TWO − 3 missed 12 % of the polls of 2026-10-13 in floor heating and could have dropped the trust in a heating season), and at most one miss per two confirmations. A register stuck at 0, a constant or an outdoor-like value never passes.
+The registers are used only when `RefrigerantSensorCheck` trusts them (store key `sensorCheck`): ≥ 20 idle polls with 0 Hz and TE within 2 K of outdoor, ≥ 5 polls where the water side shows a run with Hz > 0, TE ≥ 4 K away and TC ≥ TWI − 2 (the liquid leaves at the return-water end; the old TC ≥ TWO − 3 missed 12 % of the polls of 2026-10-13 in floor heating and could have dropped the trust in a heating season), and at most one miss per two confirmations. A register stuck at 0, a constant or an outdoor-like value never passes. The counts are capped at 1000; when one reaches the cap, all three are halved (ratio kept, recent polls keep counting). Before 1.3.0 the confirm count just stopped at 1000 while the misses around starts and stops kept growing, so after ~6 weeks of running the registers lost their trust for good (seen 2026-11-25: frequency tile frozen at 30 Hz, power back on water temperatures). Without trust the frequency tile is emptied, not left at its last value.
 
 ### Water model (fallback: R410A, 1401 without calibration, or before the check passes)
 
@@ -365,7 +366,7 @@ The registers are used only when `RefrigerantSensorCheck` trusts them (store key
 |---|---|
 | Performance (water model) | R32 401/601/801/1101: "part load capacity and input" + "average heating capacity" tables of the Estia R32 Engineering Data Book (`data/r32-tables.json`; input excludes the water pump). Other models (R32 1401, R410A S4/S5/Hi Power): rated COP from `MODEL_PRESETS` (capacity ÷ heating input at A7/W35), shaped by the 1101 COP curve over outdoor/water temperature. Above LWT 55 °C the part-load result is scaled by the max-frequency COP ratio. |
 | Water flow | Learnt from hot-water heat-ups: `flow = tank litres × tank rise / ∫ΔT dt` over compressor-only DHW segments (≥ 10 min, ≥ 8 K rise; tank start = the reading before the run, the sensor dips ~1 K when the pump starts), median of the last 7. Until then the rated flow (capacity at 5 K ΔT). The `flowLpm` setting overrides both — the only way to correct it on installs without a tank. |
-| Compressor on/off | Register **40028 (TE, undocumented)** when `RefrigerantSensorCheck` trusts it: \|TE − TO\| ≥ 4 K. Trusted only after ≥ 20 quiet-water polls with TE within 2 K of outdoor **and** ≥ 10 polls where the water side shows a run and TE is ≥ 4 K away (misses ≤ 20 %): a constant or an outdoor-like value never passes. Read in its own request; three refusals in a row → water only until restart. Otherwise the water side: on at a **start** (TWO moving ≥ 2 K away from TWI within 2 min, in the expected direction) or a steady ΔT ≥ 3 K with TWO flat for 5 min; off after two polls without the expected ΔT. |
+| Compressor on/off | Register **40028 (TE, undocumented)** when `RefrigerantSensorCheck` trusts it: \|TE − TO\| ≥ 4 K. Trusted only after ≥ 20 quiet-water polls with TE within 2 K of outdoor **and** ≥ 10 polls where the water side shows a run and TE is ≥ 4 K away (misses ≤ 20 %): a constant or an outdoor-like value never passes. Read in its own request, paced like the other undocumented registers (see above); water only while it isn't read. Otherwise the water side: on at a **start** (TWO moving ≥ 2 K away from TWI within 2 min, in the expected direction) or a steady ΔT ≥ 3 K with TWO flat for 5 min; off after two polls without the expected ΔT. |
 | What is served | DHW only on → `dhw` (the 3-way valve can only point at the tank). Zone only → `heating`/`cooling` from register 40003. Both → ΔT sign, tank rising. **Register 40003 is only used while the zone is on** — it keeps "cool" while the zone is off, which made pre-1.2.0 versions treat DHW heat-ups as cooling (no power during the run, phantom power during the cool-down after it). |
 | Backup heater | Recognised 1–3 polls after a DHW hand-over; when that's ≤ 5 min after the compressor stopped, the gap is booked on the meter (`backfillKwh`). THO − TWO ≥ 2 K for ≥ 60 s, TWI steady, and the water flowing: with the compressor on, TWO and THO steady; with it off, TWO within +1/−3 K of TWI. Power = heater steps (3 kW) from flow × (THO − TWO), capped at the `backupHeaterKW` setting. |
 | Boost heater | During a boost Toshiba switches the backup heater on at once (service manual § 7-3 items 8, 10), and the pump then runs at any flow (11–26 l/min seen), so THO − TWO is too small to judge. `boostActive` = Modbus/remote boost (40009) **or** SG "System Forced ON" reported by a Flow (action card `sg_forced_on_set`, store `sgForcedOn`) with setting `sgHeaterAllowed` (= DN 6CE 0, Toshiba default). Then the heater counts at its rating while THO ≥ TWO + 1 K for 2 min and the tank is under the boost set point (40213). Validated on the 2026-10-05 SG boost: 1.04 vs 1.11 kWh (−6 %; heater nominal 3.0 vs ~3.3 kW measured). |
@@ -457,6 +458,14 @@ Languages currently shipped: `en`, `nl`, `da`, `de`, `es`, `fr`, `it`, `no`, `sv
 - `nextSeason()` applies the switch points with hysteresis (defaults: summer ≥ 24 / leave ≤ 22, winter ≤ 14 / leave ≥ 16). With no season yet it picks the nearest band (midpoints 23 and 15).
 - `season` is read-only (sensor). A setable picker shared Homey's picker component with `thermostat_mode`, and opening the device page then set the season — so a hand-picked season goes through the `season_set` flow card → `setSeason()`, which fires `season_changed`. Automatic detection then only changes it again when the average is past a switch point.
 - The app never changes the heat pump's mode from the season — that's up to the user's flows.
+
+## 9c. Weather curve (heating-curve.ts)
+
+`measure_temperature.flow_target` and `measure_temperature.curve_target` are always-on caps; the setting label `curveStatus` says where the curve value comes from and, when it isn't learning, why.
+- **Register 40062** (undocumented; own request, paced by `modbus/optional-read.ts` like 40021–40032) = the zone 1 flow target the unit holds now: the curve's value in automatic mode (27 °C at 22–26 °C outside on the test unit = curve 23 + DN 27 shift 4; 31 °C at 12 °C on 2026-11-01), the fixed setpoint 40004 otherwise. It follows the mode in 40003 **also with zone 1 off** (cooling: 16), so the curve can be read without the unit heating: on 2026-11-01, zone off, switching auto-temp on gave 35 → 31 within ~30 s and back to 35 after switching it off. After a change it lags up to ~30 s and can step (35 → 34 → 32). `flow_target` shows it as is (bad reads → null).
+- **`curve_target` live** = 40062 while heating is selected (40003 = 1), auto-temp on, no night setback (DN 26 lowers it), no SG "System Forced ON" (store `sgForcedOn`, DN AC raises it); otherwise `curveStatus` names the blocker. The first poll in that state is skipped, then the same value on two polls in a row counts.
+- **Learnt** (store `curveOccasions`): per whole outdoor degree at most one value per clock hour, the last 5 kept, older than 400 days dropped. A degree's value is the median once two hours agree within 1 K (an even count needs its middle pair within 1 K). One odd hour (a shift the app can't see) changes nothing; a curve changed on the remote takes over after ~3 hours at that degree, without wiping anything. Between learnt degrees: linear interpolation (the real curve has knees at its DN points, so a wide gap can be ~1 K off until it fills in); outside them null (flat curve ends: no extrapolation). Store writes at most once per degree-hour.
+- Tests: `test/heating-curve.test.ts` (12–19 Oct 2026 polls at 15/30/60 s, fixture `r32s1-1101-curve-2026-10.csv`: only 27 is ever live or kept, never the 20/32/35 around it) and `test/optional-read.test.ts`. Not yet seen: the curve below 12 °C, night setback and SG on 40062.
 
 ---
 
